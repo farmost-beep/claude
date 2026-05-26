@@ -89,7 +89,7 @@ class ProfPDF(FPDF):
         self.set_text_color(*C_GRAY)
         self.cell(CONTENT_W, 7, f"— {self.page_no()} —", align="C")
 
-    def cover_page(self):
+    def cover_page(self, show_author=True, show_goals=True):
         self.add_page()
         self.set_fill_color(*C_ACCENT)
         self.rect(0, 0, 210, 100, "F")
@@ -103,13 +103,15 @@ class ProfPDF(FPDF):
         mid = 105
         self.line(mid - 30, self.get_y(), mid + 30, self.get_y())
         self.ln(12)
-        self.set_font("ST", "", 12)
-        self.set_text_color(*C_WHITE)
-        self.cell(CONTENT_W, 9, f"{self.author}   {self.today}", align="C")
-        self.ln(24)
-        self.set_font("HT", "", 10)
-        self.set_text_color(*C_GRAY)
-        self.cell(CONTENT_W, 7, "投资成功 · 事业进阶 · 家庭支持 · 百岁健康 · AI能力 · 知识库", align="C")
+        if show_author:
+            self.set_font("ST", "", 12)
+            self.set_text_color(*C_WHITE)
+            self.cell(CONTENT_W, 9, f"{self.author}   {self.today}", align="C")
+            self.ln(24)
+        if show_goals:
+            self.set_font("HT", "", 10)
+            self.set_text_color(*C_GRAY)
+            self.cell(CONTENT_W, 7, "投资成功 · 事业进阶 · 家庭支持 · 百岁健康 · AI能力 · 知识库", align="C")
 
     def body(self, text):
         self.set_font("ST", "", 10.5)
@@ -241,14 +243,14 @@ def clean_text(text):
     return text
 
 
-def markdown_to_pdf(md_path, pdf_path, title):
+def markdown_to_pdf(md_path, pdf_path, title, **kwargs):
     with open(md_path, "r") as f:
         lines = f.readlines()
 
     pdf = ProfPDF(title)
     pdf.set_left_margin(LEFT_M)
     pdf.set_right_margin(LEFT_M)
-    pdf.cover_page()
+    pdf.cover_page(**kwargs)
 
     in_code = False
     skip_mermaid = False
@@ -325,11 +327,11 @@ def main():
     total = 0
     today_label = date.today().isoformat()
 
-    def build(md_path, pdf_path, label):
+    def build(md_path, pdf_path, label, **kwargs):
         nonlocal total
         if os.path.exists(md_path):
             print(f"  [{label}] {os.path.basename(md_path)} -> {os.path.basename(pdf_path)}")
-            markdown_to_pdf(md_path, pdf_path, label)
+            markdown_to_pdf(md_path, pdf_path, label, **kwargs)
             total += 1
         else:
             print(f"  SKIP (not found): {md_path}")
@@ -390,15 +392,19 @@ def main():
         ("career", "上海光机所杭州光机所合作方案_20260527"),
         ("career", "神州信息综合金融服务方案_20260527"),
         ("investment", "投资思维框架_Margin_Discipline_Freedom_演讲稿_20260527"),
-        ("ai", "快速掌握AI手册_20260527"),
-        ("ai", "快速学习Claude_Code手册_20260527"),
-        ("ai", "快速学习Harness手册_20260527"),
-        ("ai", "一天学会Claude_Code_20260527"),
+        ("ai", "快速掌握AI手册_20260527", False, False),
+        ("ai", "快速学习Claude_Code手册_20260527", False, False),
+        ("ai", "快速学习Harness手册_20260527", False, False),
+        ("ai", "一天学会Claude_Code_20260527", False, False),
         ("family", "上海大学考研完全手册_20260527"),
     ]
-    for folder, name in standalone:
+    for entry in standalone:
+        folder, name = entry[0], entry[1]
+        kwargs = {}
+        if len(entry) >= 4:
+            kwargs = {"show_author": entry[2], "show_goals": entry[3]}
         build(os.path.join(GOALS_DIR, folder, f"{name}.md"),
-              os.path.join(GOALS_DIR, folder, f"{name}.pdf"), name)
+              os.path.join(GOALS_DIR, folder, f"{name}.pdf"), name, **kwargs)
 
     crosscut = [
         "幸福人生AI增强仪表盘_20260527",

@@ -1,6 +1,5 @@
 # 快速学习Claude Code手册
 
-> 陈颖芳 | 2026-05-27 | v1.0
 > 适用对象：已会用Claude对话，想进阶到Claude Code提高效率的人
 > 前置要求：已安装Claude Code CLI，在终端中可以使用`claude`命令
 
