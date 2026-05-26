@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# Node.js
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# .workbuddy metadata (tool artifacts)
+.workbuddy/
+
+# Claude
+.claude/settings.local.json
+
+# Generated output PDFs (tracked in WorkBuddy/输出pdf/)
+*.pdf
+*.pptx
+*.docx
+
+# System
+*.swp
+*.swo
+*~
