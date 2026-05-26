@@ -1,0 +1,14 @@
+{
+  "tasks": [
+    {
+      "id": "f8e61ede",
+      "cron": "57 8 * * *",
+      "prompt": "/loop 搜索今天关于AI的最前沿发展，包括：1.新工具发布 2.重要论文或思想观点 3.AI对社会工作方式的改变 4.政策监管动向。筛选最重要的3-5条，以\"日期+标题+一句话要点+来源链接\"格式，追加记录到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202605.md。然后告诉我今天最重要的发现。",
+      "createdAt": 1779837125158,
+      "recurring": true,
+      "createdBySessionId": "71902245-1d39-407c-920a-b12333995151",
+      "createdByPid": 2526,
+      "createdByProcStart": "Tue May 26 13:22:38 2026"
+    }
+  ]
+}

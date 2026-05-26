@@ -396,6 +396,7 @@ def main():
         ("ai", "快速学习Claude_Code手册_20260527", False, False),
         ("ai", "快速学习Harness手册_20260527", False, False),
         ("ai", "一天学会Claude_Code_20260527", False, False),
+        ("ai", "每日AI前沿收集_20260527", False, False),
         ("family", "上海大学考研完全手册_20260527"),
     ]
     for entry in standalone:
