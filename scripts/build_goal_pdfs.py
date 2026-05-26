@@ -186,43 +186,89 @@ class ProfPDF(FPDF):
     def table(self, rows):
         if not rows:
             return
+        # Normalize all rows to same column count
         ncols = max(len(r) for r in rows)
-        col_w = CONTENT_W // ncols
+        norm = []
+        for r in rows:
+            row = [clean_text(c) for c in r]
+            while len(row) < ncols:
+                row.append("")
+            norm.append(row)
+
+        # Estimate CJK-aware character width per column
+        def cjk_len(s):
+            n = 0
+            for ch in s:
+                n += 2 if '一' <= ch <= '鿿' or '　' <= ch <= '〿' or '＀' <= ch <= '￯' else 1
+            return max(n, 1)
+
+        col_weights = []
+        for ci in range(ncols):
+            max_len = max(cjk_len(r[ci]) for r in norm)
+            col_weights.append(max_len)
+
+        total_w = sum(col_weights)
+        min_w = 22  # minimum column width in mm
+        col_w = []
+        for w in col_weights:
+            cw = max(min_w, (w / total_w) * CONTENT_W)
+            col_w.append(cw)
+
+        # Scale down if total exceeds CONTENT_W
+        scale = CONTENT_W / sum(col_w)
+        if scale < 1.0:
+            col_w = [w * scale for w in col_w]
+
         tbl_font_sz = 8.5
-        line_h = 6.5
+        line_h = 5.5
+        pad = 1.8  # cell padding each side
+
+        def draw_cell(x, y, w, text, font_style="", fill_color=None, align="L"):
+            self.set_xy(x + pad, y + 0.8)
+            if fill_color:
+                self.set_fill_color(*fill_color)
+            self.set_font("HT" if font_style == "B" else "ST", font_style, tbl_font_sz)
+            self.multi_cell(w - pad * 2, line_h, text, border=0, fill=fill_color is not None, align=align)
+            return self.get_y()
+
+        def draw_row_border(y, heights):
+            self.set_draw_color(220, 224, 228)
+            self.set_line_width(0.08)
+            row_h = max(heights) + 1.6
+            x = LEFT_M
+            for ci in range(ncols):
+                self.rect(x, y, col_w[ci], row_h, "D")
+                x += col_w[ci]
 
         # Header
-        self.set_fill_color(*C_TBL_HEAD)
         self.set_text_color(*C_WHITE)
-        self.set_font("HT", "B", tbl_font_sz)
-        y0 = self.get_y()
-        max_h = line_h
-        for i, cell in enumerate(rows[0]):
-            self.set_xy(LEFT_M + i * col_w, y0)
-            self.multi_cell(col_w, line_h, clean_text(cell), border=0, fill=True, align="C")
-            max_h = max(max_h, self.get_y() - y0)
-        self.set_y(y0 + max_h + 2)
+        y_start = self.get_y()
+        h_heights = []
+        x = LEFT_M
+        for ci in range(ncols):
+            cell_h = draw_cell(x, y_start, col_w[ci], norm[0][ci], "B", C_TBL_HEAD, "C") - y_start
+            h_heights.append(cell_h)
+            x += col_w[ci]
+        draw_row_border(y_start, h_heights)
+        self.set_y(y_start + max(h_heights) + 1.6)
 
         # Data rows
-        for r, row in enumerate(rows[1:], 1):
-            if all(re.match(r"^[-:]+$", clean_text(c)) for c in row):
+        for ri, row in enumerate(norm[1:], 1):
+            if all(re.match(r"^[-:\s]+$", c) for c in row):
                 continue
-            fill = C_TBL_ROW if r % 2 == 0 else C_WHITE
-            self.set_fill_color(*fill)
+            fill = C_TBL_ROW if ri % 2 == 0 else C_WHITE
             self.set_text_color(*C_DARK)
-            self.set_font("ST", "", tbl_font_sz)
             yr = self.get_y()
-            max_rh = line_h
-            for i, cell in enumerate(row):
-                self.set_xy(LEFT_M + i * col_w, yr)
-                self.multi_cell(col_w, line_h, clean_text(cell), border=0, fill=True)
-                max_rh = max(max_rh, self.get_y() - yr)
-            # Subtle separator after each data row
-            self.set_draw_color(225, 228, 232)
-            self.set_line_width(0.1)
-            row_bottom = yr + max_rh
-            self.line(LEFT_M, row_bottom, LEFT_M + CONTENT_W, row_bottom)
-            self.set_y(row_bottom + 1)
+            d_heights = []
+            x = LEFT_M
+            for ci in range(ncols):
+                ch = draw_cell(x, yr, col_w[ci], row[ci], "", fill) - yr
+                d_heights.append(ch)
+                x += col_w[ci]
+            draw_row_border(yr, d_heights)
+            self.set_y(yr + max(d_heights) + 1.6)
+
+        self.ln(3)
 
 
 def clean_text(text):
