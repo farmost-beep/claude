@@ -93,25 +93,10 @@ class ProfPDF(FPDF):
         self.add_page()
         self.set_fill_color(*C_ACCENT)
         self.rect(0, 0, 210, 100, "F")
-        self.set_y(28)
+        self.set_y(38)
         self.set_font("HT", "B", 26)
         self.set_text_color(*C_WHITE)
         self.multi_cell(CONTENT_W, 15, self.title_text, align="C")
-        self.ln(5)
-        self.set_draw_color(*C_WHITE)
-        self.set_line_width(0.3)
-        mid = 105
-        self.line(mid - 30, self.get_y(), mid + 30, self.get_y())
-        self.ln(12)
-        if show_author:
-            self.set_font("ST", "", 12)
-            self.set_text_color(*C_WHITE)
-            self.cell(CONTENT_W, 9, f"{self.author}   {self.today}", align="C")
-            self.ln(24)
-        if show_goals:
-            self.set_font("HT", "", 10)
-            self.set_text_color(*C_GRAY)
-            self.cell(CONTENT_W, 7, "投资成功 · 事业进阶 · 家庭支持 · 百岁健康 · AI能力 · 知识库", align="C")
 
     def body(self, text):
         self.set_font("ST", "", 10.5)
@@ -121,12 +106,46 @@ class ProfPDF(FPDF):
         if not text.strip():
             self.ln(4)
             return
-        # Indent first line with 2-em space for body paragraphs
+        # Detect inline pipe-separated content: render as mini table
         stripped = text.lstrip()
+        if " | " in stripped and not stripped.startswith("|"):
+            parts = [p.strip() for p in stripped.split(" | ")]
+            if len(parts) >= 2:
+                self._inline_table(parts)
+                return
+        # Indent first line with 2-em space for body paragraphs
         if stripped and not stripped.startswith(("-", "1.", "2.", "3.", "4.", "5.", "6.", "7.", "8.", "9.", "0.", "┌", "├", "│", "└", " ")):
             indent = "　　"  # 2 full-width spaces = 2em
             text = indent + stripped
         self.multi_cell(CONTENT_W, 5.9, text)
+
+    def _inline_table(self, cells):
+        """Render a single-row table from pipe-separated inline text."""
+        n = len(cells)
+        col_w = CONTENT_W // n
+        tbl_font_sz = 9
+        line_h = 5.5
+        pad = 1.5
+        y0 = self.get_y()
+        heights = []
+        x = LEFT_M
+        for ci, cell in enumerate(cells):
+            self.set_xy(x + pad, y0 + 0.5)
+            self.set_font("ST", "", tbl_font_sz)
+            self.set_text_color(*C_DARK)
+            self.multi_cell(col_w - pad * 2, line_h, cell, border=0, fill=False)
+            heights.append(self.get_y() - y0)
+            x += col_w
+        row_h = max(heights) + 1.0
+        # Draw cell borders
+        self.set_draw_color(210, 214, 220)
+        self.set_line_width(0.08)
+        x = LEFT_M
+        for ci in range(n):
+            self.set_fill_color(248, 249, 250)
+            self.rect(x, y0, col_w, row_h, "DF")
+            x += col_w
+        self.set_y(y0 + row_h + 2)
 
     def heading(self, level, text):
         font_specs = {
