@@ -120,31 +120,48 @@ class ProfPDF(FPDF):
         self.multi_cell(CONTENT_W, 5.9, text)
 
     def _inline_table(self, cells):
-        """Render a single-row table from pipe-separated inline text."""
+        """Render a single-row table from pipe-separated inline text with proportional columns."""
         n = len(cells)
-        col_w = CONTENT_W // n
-        tbl_font_sz = 9
+        # CJK-aware width estimation per cell
+        def cjk_len(s):
+            n_ch = 0
+            for ch in s:
+                n_ch += 2 if '一' <= ch <= '鿿' or '　' <= ch <= '〿' or '＀' <= ch <= '￯' else 1
+            return max(n_ch, 1)
+        weights = [cjk_len(c) for c in cells]
+        total_w = sum(weights)
+        min_w = 22
+        col_widths = []
+        for w in weights:
+            cw = max(min_w, (w / total_w) * CONTENT_W)
+            col_widths.append(cw)
+        scale = CONTENT_W / sum(col_widths)
+        if scale < 1.0:
+            col_widths = [w * scale for w in col_widths]
+
+        tbl_font_sz = 8.5
         line_h = 5.5
         pad = 1.5
         y0 = self.get_y()
         heights = []
         x = LEFT_M
         for ci, cell in enumerate(cells):
-            self.set_xy(x + pad, y0 + 0.5)
+            cw = col_widths[ci]
+            self.set_xy(x + pad, y0 + 0.8)
             self.set_font("ST", "", tbl_font_sz)
             self.set_text_color(*C_DARK)
-            self.multi_cell(col_w - pad * 2, line_h, cell, border=0, fill=False)
+            self.set_fill_color(248, 249, 250)
+            self.multi_cell(cw - pad * 2, line_h, cell, border=0, fill=True)
             heights.append(self.get_y() - y0)
-            x += col_w
-        row_h = max(heights) + 1.0
+            x += cw
+        row_h = max(heights) + 1.6
         # Draw cell borders
         self.set_draw_color(210, 214, 220)
         self.set_line_width(0.08)
         x = LEFT_M
         for ci in range(n):
-            self.set_fill_color(248, 249, 250)
-            self.rect(x, y0, col_w, row_h, "DF")
-            x += col_w
+            self.rect(x, y0, col_widths[ci], row_h, "D")
+            x += col_widths[ci]
         self.set_y(y0 + row_h + 2)
 
     def heading(self, level, text):
@@ -170,6 +187,12 @@ class ProfPDF(FPDF):
 
     def blockquote(self, text):
         text = clean_text(text)
+        # Detect inline pipe-separated content in blockquote: render as table
+        if " | " in text and not text.strip().startswith("|"):
+            parts = [p.strip() for p in text.split(" | ")]
+            if len(parts) >= 2:
+                self._inline_table(parts)
+                return
         self.set_font("ST", "", 10)
         self.set_text_color(55, 65, 60)
         y0 = self.get_y()
