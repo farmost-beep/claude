@@ -393,6 +393,7 @@ def main():
         ("ai", "快速掌握AI手册_20260527"),
         ("ai", "快速学习Claude_Code手册_20260527"),
         ("ai", "快速学习Harness手册_20260527"),
+        ("ai", "一天学会Claude_Code_20260527"),
         ("family", "上海大学考研完全手册_20260527"),
     ]
     for folder, name in standalone:
