@@ -1,4 +1,4 @@
-"""将五大目标 Markdown 框架文档转换为 PDF"""
+"""将幸福人生顶层文档 + 六大目标 Markdown 文档转换为 PDF"""
 import os
 import re
 from fpdf import FPDF
@@ -11,6 +11,16 @@ GOAL_FILES = {
     "family": "子女成长支持计划",
     "health": "百岁健康计划",
     "ai": "AI能力提升路线图",
+    "knowledge-base": "个人知识库与思维框架建设路线图",
+}
+
+OPS_FILES = {
+    "investment": "投资自由操作手册",
+    "career": "事业进阶操作手册",
+    "family": "子女成长支持操作手册",
+    "health": "百岁健康操作手册",
+    "ai": "AI能力提升操作手册",
+    "knowledge-base": "个人知识库与思维框架操作手册",
 }
 
 FONT_DIR = "/System/Library/Fonts"
@@ -191,9 +201,37 @@ def markdown_to_pdf(md_path, pdf_path, title):
         pdf.set_text_color(30, 30, 30)
         safe_multi_cell(pdf, CONTENT_W, 5.5, raw)
 
+    pdf.output(pdf_path)
+
 
 def main():
+    # Top-level document
+    top_md = os.path.join(GOALS_DIR, "幸福人生描述.md")
+    top_pdf = os.path.join(GOALS_DIR, "幸福人生描述.pdf")
+    if os.path.exists(top_md):
+        print(f"Generating: 幸福人生描述.pdf ...")
+        markdown_to_pdf(top_md, top_pdf, "幸福人生描述")
+        print(f"  -> {top_pdf}")
+
+    # 30-day launch plan
+    launch_md = os.path.join(GOALS_DIR, "幸福人生30天启动计划.md")
+    launch_pdf = os.path.join(GOALS_DIR, "幸福人生30天启动计划.pdf")
+    if os.path.exists(launch_md):
+        print(f"Generating: 幸福人生30天启动计划.pdf ...")
+        markdown_to_pdf(launch_md, launch_pdf, "幸福人生30天启动计划")
+        print(f"  -> {launch_pdf}")
+
     for key, name in GOAL_FILES.items():
+        md_path = os.path.join(GOALS_DIR, key, f"{name}.md")
+        pdf_path = os.path.join(GOALS_DIR, key, f"{name}.pdf")
+        if os.path.exists(md_path):
+            print(f"Generating: {name}.pdf ...")
+            markdown_to_pdf(md_path, pdf_path, name)
+            print(f"  -> {pdf_path}")
+        else:
+            print(f"SKIP (not found): {md_path}")
+
+    for key, name in OPS_FILES.items():
         md_path = os.path.join(GOALS_DIR, key, f"{name}.md")
         pdf_path = os.path.join(GOALS_DIR, key, f"{name}.pdf")
         if os.path.exists(md_path):

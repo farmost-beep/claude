@@ -1,6 +1,6 @@
 # Claude Code 使用精通手册
 
-> 读者：陈颖芳 | 版本：v1.0 | 2026-05-26
+> 读者：陈颖芳 | 版本：v1.1 | 2026-05-27
 
 ---
 
@@ -100,18 +100,37 @@ Claude Code 直接读你的文件，不需要你复制粘贴内容：
 
 ### 3.1 记忆系统的架构
 
-Claude Code 的记忆系统围绕 CLAUDE.md 构建。核心文件是项目根目录下的 `CLAUDE.md`，它被每次对话自动加载。
+Claude Code 的记忆系统由两层构成：
+
+**第一层：CLAUDE.md（项目级 + 用户级）**
+
+核心文件是项目根目录下的 `CLAUDE.md`，它被每次对话自动加载。
 
 在你当前的项目中，`CLAUDE.md` 保存了：
 - 你的个人信息（陈颖芳，1977年生，中科大，邮储银行）
-- 你的四大目标（投资、事业、家庭、健康）
+- 你的六大目标（投资、事业、家庭、健康、AI能力、知识库与思维框架）
 - Karpathy 四条原则（保持简单、手术刀式改动等）
-
-这构成了每次对话的"基础人格"。
 
 除了 CLAUDE.md，还有一个扩展记忆体系：**分类记忆文件**。你可以将特定话题的长期记忆拆分到独立文件中，例如：
 - `deliverables/investment/投资自由路线图.md` —— 投资目标、框架、数据
 - `deliverables/health/百岁健康计划.md` —— 健康指标、计划、进度
+
+**第二层：Auto Memory（自动记忆系统）**
+
+Claude Code 还具备持久化的 auto memory 系统（位于 `~/.claude/projects/`），由 `MEMORY.md` 索引和分类记忆文件组成。四种记忆类型：
+
+| 类型 | 说明 | 你的实际记忆文件 |
+|------|------|------------------|
+| **user** | 关于你的固定背景信息 | `user_profile.md`（六大目标、投资理念） |
+| **feedback** | 你对产出的偏好和反复出现的修改意见 | `feedback_coding_style.md`（Karpathy原则）、`feedback_verify_file_write.md`（写后验证） |
+| **project** | 项目级别的规则和约定 | `goal_docs_pdf.md`（双版本维护）、`investment_masters_project.md` |
+| **reference** | 外部系统指针 | 待补充（如 Linear 项目、Grafana 面板等） |
+
+两层的分工：
+- **CLAUDE.md**：每次对话自动加载，放最核心的身份+原则，保持精简
+- **Auto Memory**：按需查阅，放详细规则、项目约定、反馈记录，可以更丰富
+
+这种双层设计的好处：CLAUDE.md 不会膨胀影响对话效率，但详细规则仍然持久存在、跨对话可查。
 
 ### 3.2 四种记忆类型
 
@@ -156,7 +175,7 @@ CLAUDE.md 在项目根目录，它是**项目级记忆**——换了电脑、换
 
 **直接对话模式**：你问，Claude Code 答。一个请求一个响应。适合简单操作——改一行配置、查一个信息、生成一个短文本。
 
-**Agent 模式**：你给目标，Claude Code 自主规划步骤、调用工具、检查结果、迭代修正，直到完成目标或遇到阻塞。适合复杂任务——生成一份完整的投资分析报告、构建一个PDF生成脚本、同时处理五个目标的文档更新。
+**Agent 模式**：你给目标，Claude Code 自主规划步骤、调用工具、检查结果、迭代修正，直到完成目标或遇到阻塞。适合复杂任务——生成一份完整的投资分析报告、构建一个PDF生成脚本、同时处理六个目标的文档更新。
 
 判断标准：
 - 单步骤 → 直接对话
@@ -178,7 +197,7 @@ Claude Code 可以分派不同类型的 Subagent：
 
 **同时处理互不依赖的独立任务。**
 
-正例（你在项目中已实践的模式）：同时跑五个 Agent，每个负责一个目标领域（投资、事业、家庭、健康、AI）的文档更新。五个目标之间互不依赖，Agent 互相看不见对方——这正是并行的最佳场景。
+正例（你在项目中已实践的模式）：同时跑六个 Agent，每个负责一个目标领域（投资、事业、家庭、健康、AI、知识库）的文档更新。六个目标之间互不依赖，Agent 互相看不见对方——这正是并行的最佳场景。
 
 反例：先让 Agent A 生成投资分析，再让 Agent B 基于那个分析生成PPT。这两个任务有依赖关系（B需要A的输出），不能并行。应该先串行执行 A，再串行执行 B，或者在A完成后自动触发B。
 
@@ -187,14 +206,14 @@ Claude Code 可以分派不同类型的 Subagent：
 并行出不等于不汇总。典型流程：
 1. 同时分发 N 个 Agent，每个处理独立模块
 2. 所有 Agent 完成后，你用直接对话模式（或一个新 Agent）汇总结果
-3. 汇总时聚焦"交叉检查"和"一致性"——比如五个目标计划的时间线是否冲突、资源是否重复计算
+3. 汇总时聚焦"交叉检查"和"一致性"——比如六个目标计划的时间线是否冲突、资源是否重复计算
 
 ### 4.4 后台运行
 
 `run_in_background` 参数让 Agent 在后台执行，你不需要守着它。
 
 适用场景：
-- PDF 生成（你的 build_goal_pdfs.py 跑一次要处理五个文件，耗时较长）
+- PDF 生成（你的 build_goal_pdfs.py 跑一次要处理六个文件，耗时较长）
 - 需要等待外部 API 响应的任务
 - 你不急于拿到结果、可以先做别的事的任务
 
@@ -268,9 +287,9 @@ Skill 是 Claude Code 的"专业模块"。当前你的项目环境中可用的 S
 
 ## 第六章：实战工作流
 
-### 6.1 五大目标的 Claude Code 使用模式
+### 6.1 六大目标的 Claude Code 使用模式
 
-基于你已有的项目结构，五个目标各自有不同的最适配的 Claude Code 模式：
+基于你已有的项目结构，六个目标各自有不同的最适配的 Claude Code 模式：
 
 **投资**：
 - 多 Agent 并行分析多只股票（每个 Agent 独立跑一只股票的大师模型）
@@ -297,10 +316,15 @@ Skill 是 Claude Code 的"专业模块"。当前你的项目环境中可用的 S
 - 这份手册本身就是 AI 产出
 - 后续适合"学习笔记"模式——每次学到新用法，追加到对应章节
 
+**知识库与思维框架**：
+- Obsidian Vault `6goals` 的内容维护（MOC 页面、知识卡片、wikilink）
+- 跨域连接发掘（如 INV↔TF 的双向链接建立）
+- 适合"每周维护"模式——每周日 30 分钟批量更新
+
 ### 6.2 多 Agent 并行工作流
 
 **何时分发**：
-- 任务之间零依赖（五大目标的文档更新互不依赖 → 可并行）
+- 任务之间零依赖（六大目标的文档更新互不依赖 → 可并行）
 - 每个任务的数据源独立（研究A股不需要等港股的数据 → 可并行）
 - 每个任务有清晰的独立验收标准
 
@@ -337,17 +361,44 @@ Markdown 源文件 → build_goal_pdfs.py → PDF 输出
 
 ### 6.4 记忆更新流
 
-你的记忆文件主要分布在两个位置：
+你的记忆文件分布在三个位置：
 
 | 位置 | 内容 | 更新频率 |
 |------|------|----------|
 | `CLAUDE.md` | 个人信息、原则 | 低，基本不变 |
+| `~/.claude/projects/.../memory/` | Auto Memory（用户档案、反馈、项目规则） | 中，有新规则或偏好变化时更新 |
 | `deliverables/*/` 各目标文档 | 目标定义、进度 | 中，按需更新 |
 
 更新原则：
-- 你发现新偏好 → 更新 CLAUDE.md（如"所有PDF用STHeiti字体"）
+- 你发现新偏好 → 更新 Auto Memory 文件 + CLAUDE.md（如"写文件后必须验证"）
 - 目标有了里程碑式的变化 → 更新对应 deliverable 文档
 - 日常的小进度 → 不需要每次记录，积累到一定量再批量更新
+
+### 6.5 Obsidian Vault 与知识库联动
+
+你在 `/Users/cyingfang/Documents/Obsidian Vault 6goals/` 建立了目标导向的 Obsidian Vault：
+
+```
+Obsidian Vault 6goals/
+├── 00-MOC/             # 7个内容地图（首页 + 6目标MOC）
+├── 01-投资成功/
+├── 02-事业进阶/
+├── 03-家庭支持/
+├── 04-百岁健康/
+├── 05-AI能力/
+├── 06-知识库/
+├── templates/          # 知识卡片模板
+└── assets/             # 图片、附件
+```
+
+**与 deliverable 文件的关系**：
+- `deliverables/` 是"权威源"——含完整路线图，Markdown+PDF 双版本
+- Obsidian Vault 是"导航层"——含摘要 + wikilink 互链，方便日常浏览和知识连接
+- 两者不重复——Vault 中的目标主页只放摘要和关键数据，详细内容链接回 deliverable 文件
+
+**维护规则**：
+- 目标内容有重大更新时：先改 deliverable Markdown → 生成 PDF → 同步更新 Vault 中的摘要
+- 日常知识积累（卡片、MOC、连接）：直接在 Obsidian 中操作，不需反映到 deliverable
 
 ---
 
@@ -444,6 +495,18 @@ Claude Code 支持 Hook 机制——在特定时机自动执行操作。通过 `
 
 **解决方案**：明确你说的是"生成完整报告"而不是"给我建议"。你的 Karpathy 第四条原则"目标驱动"——每个改动要能验证——就是对付偷懒的最好工具。再加一句："如果报告少于 3000 字，视为未完成。"
 
+### 8.6 多个文件源的一致性
+
+**症状**：同一个信息出现在了 deliverable、Obsidian Vault、Auto Memory 三个地方，但内容不一致。比如投资目标金额在 deliverable 里是 937 万，在 Obsidian 里是旧的 900 万。
+
+**原因**：你的信息现在分布在三个层级：deliverable（权威源）、Obsidian Vault（导航层）、Auto Memory（记忆层）。更新一个地方时容易遗漏其他位置。
+
+**解决方案**：
+- **deliverable 是唯一权威源**：任何涉及目标数据、里程碑、计划的更新，只改 deliverable Markdown
+- **Obsidian Vault 放摘要**：Vault 中的目标主页只写摘要和关键数字，通过 wikilink 引回 deliverable
+- **Auto Memory 不放具体数据**：Memory 文件只放规则、偏好、约定，不放目标数据（如投资金额、体重目标）
+- **一致性检查**：每季度用一句指令做交叉验证——"对比所有目标文档的 deliverable 版本和 Obsidian 版本，找出不一致的数据"
+
 ---
 
 ## 附录 A：常用命令速查表
@@ -451,7 +514,7 @@ Claude Code 支持 Hook 机制——在特定时机自动执行操作。通过 `
 | 操作 | 指令示例 | 使用场景 |
 |------|----------|----------|
 | 更新 PDF | `运行 scripts/build_goal_pdfs.py` | Markdown 修改后生成新 PDF |
-| 并行更新五个目标 | `同时更新投资/事业/家庭/健康/AI 五个目标的文档` | 批量维护 |
+| 并行更新六个目标 | `同时更新投资/事业/家庭/健康/AI/知识库六个目标的文档` | 批量维护 |
 | 投资分析 | `参考大师模型，分析 [股票代码]` | 单只股票深度分析 |
 | 生成 PPT | `把 [文档名].md 转成PPT` | 汇报材料准备 |
 | 读文件 | `读取 deliverables/investment/投资自由路线图.md 的第三部分` | 查阅已有内容 |
@@ -463,21 +526,67 @@ Claude Code 支持 Hook 机制——在特定时机自动执行操作。通过 `
 ## 附录 B：推荐的目录结构
 
 ```
-claude/
-├── CLAUDE.md                    # 项目级记忆（自动加载）
+claude/                                  # Git 仓库（Markdown+PDF 源文件）
+├── CLAUDE.md                            # 项目级记忆（自动加载）
 ├── .claude/
-│   └── settings.local.json      # 权限配置
-├── scripts/                     # 所有生成脚本
-│   ├── build_goal_pdfs.py      #   Markdown→PDF 生成
+│   └── settings.local.json              # 权限配置
+├── scripts/                             # 所有生成脚本
+│   ├── build_goal_pdfs.py              #   Markdown→PDF 生成（6个目标）
 │   └── ...
-└── deliverables/               # 所有产出物
-    ├── investment/             #   投资目标
-    │   ├── 投资自由路线图.md
-    │   └── 投资自由路线图.pdf
-    ├── career/                 #   事业目标
-    ├── health/                 #   健康目标
-    ├── family/                 #   家庭目标
-    └── ai/                     #   AI能力提升目标
+├── deliverables/                        # 所有产出物
+│   ├── investment/                     #   投资目标
+│   │   ├── 投资自由路线图.md
+│   │   └── 投资自由路线图.pdf
+│   ├── career/                         #   事业目标
+│   │   ├── 事业进阶路线图.md
+│   │   └── 事业进阶路线图.pdf
+│   ├── family/                         #   家庭目标
+│   │   ├── 子女成长支持计划.md
+│   │   └── 子女成长支持计划.pdf
+│   ├── health/                         #   健康目标
+│   │   ├── 百岁健康计划.md
+│   │   └── 百岁健康计划.pdf
+│   ├── ai/                             #   AI能力目标
+│   │   ├── AI能力提升路线图.md
+│   │   ├── AI能力提升路线图.pdf
+│   │   ├── Claude Code使用精通手册.md
+│   │   └── Claude Code使用精通手册.pdf
+│   └── knowledge-base/                 #   知识库目标（第6目标）
+│       ├── 个人知识库与思维框架建设路线图.md
+│       └── 个人知识库与思维框架建设路线图.pdf
+├── package.json
+└── install.sh
+
+~/.claude/                               # 用户级 Claude Code 配置
+├── CLAUDE.md                            # 用户级记忆（所有项目生效）
+├── settings.json                        # 全局设置
+└── projects/                            # Auto Memory 持久化
+    └── -Users-cyingfang-claude/
+        └── memory/
+            ├── MEMORY.md                # 记忆索引
+            ├── user_profile.md
+            ├── feedback_coding_style.md
+            ├── feedback_verify_file_write.md
+            ├── goal_docs_pdf.md
+            └── investment_masters_project.md
+
+~/Documents/Obsidian Vault 6goals/        # Obsidian 知识库
+├── 00-MOC/                              # 内容地图（首页 + 6目标MOC）
+│   ├── 🏠 首页.md
+│   ├── 投资成功 MOC.md
+│   ├── 事业进阶 MOC.md
+│   ├── 家庭支持 MOC.md
+│   ├── 百岁健康 MOC.md
+│   ├── AI能力 MOC.md
+│   └── 知识库 MOC.md
+├── 01-投资成功/投资自由路线图.md
+├── 02-事业进阶/事业进阶路线图.md
+├── 03-家庭支持/子女成长支持计划.md
+├── 04-百岁健康/百岁健康计划.md
+├── 05-AI能力/AI能力提升路线图.md
+├── 06-知识库/个人知识库与思维框架.md
+├── templates/知识卡片模板.md
+└── assets/
 ```
 
 **关键约定**：
@@ -485,6 +594,8 @@ claude/
 - `deliverables/` 只放内容，不放脚本
 - 每个目标一个子目录，Markdown + PDF 双版本同目录
 - `.claude/` 只放配置，不放代码
+- Obsidian Vault 是导航层，deliverable 是权威源
+- Auto Memory 在 `~/.claude/projects/` 按项目隔离
 
 ## 附录 C：CLAUDE.md 模板
 
@@ -515,3 +626,5 @@ claude/
 ---
 
 > 本手册由 Claude Code 生成，基于陈颖芳的实际使用案例编写。建议每季度检查一次是否需要更新——你的使用水平在提升，手册也应该跟着变。
+>
+> v1.1 更新（2026-05-27）：六大目标（新增知识库与思维框架）、Auto Memory 系统说明、Obsidian Vault 6goals 联动、写后验证规则、目录结构更新。
