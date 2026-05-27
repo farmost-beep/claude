@@ -491,7 +491,7 @@ EXEC_FILES = {
 
 STANDALONE = [
     ("career", "科技金融/科技金融方法论"),
-    ("career", "科技金融/中级经济师_经济学基础_学习笔记"),
+    ("career", "科技金融方法论/中级经济师_经济学基础_学习笔记"),
     ("career", "科技金融/中国科技金融市场全景_20260527"),
     ("career", "科技金融/上海孵化基地调研报告_20260527"),
     ("career", "客户方案/客户拜访简报_神州信息_20260527"),
@@ -607,6 +607,28 @@ def main():
     # Root cross-cutting
     for name in CROSSCUT:
         build_root(name, name)
+
+    # Auto-discover any remaining .md files not yet processed
+    auto_count = 0
+    for root, dirs, files in os.walk(GOALS_DIR):
+        for f in files:
+            if not f.endswith('.md'):
+                continue
+            md_path = os.path.join(root, f)
+            pdf_path = md_path.replace('.md', '.pdf')
+            if not os.path.exists(pdf_path):
+                rel = os.path.relpath(md_path, GOALS_DIR)
+                folder = os.path.dirname(rel)
+                name = f[:-3]  # strip .md
+                label = name.replace('_', ' ')[:40]
+                if folder:
+                    build(folder, name, label)
+                else:
+                    build_root(name, label)
+                auto_count += 1
+
+    if auto_count:
+        print(f"\n(Auto-discovered {auto_count} new files.)")
 
     print(f"\nDone. {total} PDFs generated.")
 
