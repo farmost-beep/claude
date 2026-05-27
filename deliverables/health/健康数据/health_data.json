@@ -1,0 +1,66 @@
+{
+  "user": "陈颖芳",
+  "age": 49,
+  "gender": "男",
+  "height_cm": 178,
+  "baseline_date": "2026-06-01",
+  "baseline": {
+    "weight_kg": null,
+    "waist_cm": null,
+    "resting_hr_bpm": null,
+    "blood_pressure_sys": null,
+    "blood_pressure_dia": null,
+    "knee_pushups": null,
+    "bodyweight_squats": null,
+    "plank_seconds": null,
+    "wall_sit_seconds": null,
+    "walk_12min_km": null,
+    "smoking": null,
+    "drinking": null,
+    "avg_steps_5day": null,
+    "avg_water_liters_5day": null,
+    "avg_sleep_hours_5day": null,
+    "avg_bed_time_5day": null,
+    "avg_energy_score_5day": null
+  },
+  "daily_records": [],
+  "weekly_summaries": [],
+  "monthly_summaries": [],
+  "alert_thresholds": {
+    "green": {
+      "exercise_week": ">=5天运动且>=6天饮食达标",
+      "all_metrics_on_target": "所有指标在目标范围内"
+    },
+    "yellow": {
+      "bp_3day_high": "血压连续3天 >135/85 mmHg",
+      "no_exercise_3day": "连续3天未运动",
+      "weight_gain_week": "周体重增幅 >1kg",
+      "sleep_low_3day": "连续3天睡眠 <6小时",
+      "water_low_3day": "连续3天饮水 <2L",
+      "muscle_soreness_persist": "运动后肌肉酸痛持续 >24小时"
+    },
+    "red": {
+      "bp_5day_very_high": "血压持续 >145/95 已达5天",
+      "bp_3day_140_90": "血压 >140/90 连续3天",
+      "chest_pain_exercise": "运动中胸痛/胸闷/心慌/出冷汗"
+    }
+  },
+  "target_values": {
+    "blood_pressure": "<130/80 mmHg",
+    "resting_hr": "60-75 bpm",
+    "weight": "<76 kg (BMI<24)",
+    "waist": "<85 cm",
+    "steps_daily": ">=8000步",
+    "sleep_hours": "6.5-8.5小时",
+    "bed_time": "不晚于23:30",
+    "sleep_quality": ">=3分 (1-5)",
+    "water_daily": ">=2.5L",
+    "exercise_weekly": ">=5天",
+    "diet_weekly": ">=6天达标",
+    "knee_pushups": ">=10个",
+    "bodyweight_squats": ">=15个",
+    "plank_seconds": ">=30秒",
+    "wall_sit_seconds": ">=30秒",
+    "walk_12min_km": ">=1.2公里"
+  }
+}

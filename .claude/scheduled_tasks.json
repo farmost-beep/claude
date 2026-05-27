@@ -5,6 +5,7 @@
       "cron": "57 8 * * *",
       "prompt": "/loop 搜索今天关于AI的最前沿发展，包括：1.新工具发布 2.重要论文或思想观点 3.AI对社会工作方式的改变 4.政策监管动向。筛选最重要的3-5条，以\"日期+标题+一句话要点+来源链接\"格式，追加记录到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202605.md。然后告诉我今天最重要的发现。",
       "createdAt": 1779837125158,
+      "lastFiredAt": 1779845791461,
       "recurring": true,
       "createdBySessionId": "71902245-1d39-407c-920a-b12333995151",
       "createdByPid": 2526,
@@ -15,10 +16,41 @@
       "cron": "47 9 * * *",
       "prompt": "执行三大Managed Agents日常循环：\n\n**1. Dreaming**：回顾 /Users/cyingfang/.claude/projects/-Users-cyingfang-claude/memory/ 下所有记忆文件，检查 (a)新产生的矛盾/冲突 (b)过时信息 (c)遗漏的连接。如果发现问题，直接修复并记录到记忆文件。\n\n**2. Multiagent**：并行扫描六大目标目录，检查每个目标 (a)新增.md是否都有.pdf (b)内容一致性 (c)日期引用是否过期。输出一个简短的质量报告到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202605.md 的当日条目下。\n\n**3. Outcomes**：独立验证Dreaming发现的修复是否真的被完成。如果修复未完成或错误，重新修复。\n\n最后，总结今天发现和修复了什么问题，如果一切正常就说\"系统健康\"。",
       "createdAt": 1779842786284,
+      "lastFiredAt": 1779848480951,
       "recurring": true,
       "createdBySessionId": "71902245-1d39-407c-920a-b12333995151",
       "createdByPid": 2526,
       "createdByProcStart": "Tue May 26 13:22:38 2026"
+    },
+    {
+      "id": "cb82afd6",
+      "cron": "3 9 * * *",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/push_briefing.py morning，将早间简报推送到微信。不要做其他事情，只执行这条命令。",
+      "createdAt": 1779914159019,
+      "recurring": true,
+      "createdBySessionId": "87587ccc-b7cb-4bbf-80e0-75448960fb5c",
+      "createdByPid": 53071,
+      "createdByProcStart": "Wed May 27 04:42:57 2026"
+    },
+    {
+      "id": "cdbf5950",
+      "cron": "7 21 * * *",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/push_briefing.py evening，将晚间检视提醒推送到微信。不要做其他事情，只执行这条命令。",
+      "createdAt": 1779914159034,
+      "recurring": true,
+      "createdBySessionId": "87587ccc-b7cb-4bbf-80e0-75448960fb5c",
+      "createdByPid": 53071,
+      "createdByProcStart": "Wed May 27 04:42:57 2026"
+    },
+    {
+      "id": "ed808970",
+      "cron": "42 22 * * *",
+      "prompt": "执行每日自动commit：在 /Users/cyingfang/well-being 目录下，运行 git status 检查是否有未提交的变更。如果有变更（包括被删除的文件、新增的文件、修改的文件），按以下规则commit：\n\n1. 用 git add -A 暂存所有变更\n2. 分析变更内容，生成一条简洁的中文commit信息，格式为 \"每日自动commit：YYYY-MM-DD：<变更摘要>\"，例如\"每日自动commit：2026-05-28：deliverables文件夹重组，文件按子目录分类归位\"\n3. 用 git commit -m 提交\n4. 运行 git status 确认提交成功\n\n如果没有变更，什么都不做，直接回复\"今日无变更，跳过commit\"。",
+      "createdAt": 1779921087615,
+      "recurring": true,
+      "createdBySessionId": "f9d3fe1f-75e4-48ea-897f-7fb125ce1985",
+      "createdByPid": 83003,
+      "createdByProcStart": "Wed May 27 22:25:00 2026"
     }
   ]
 }

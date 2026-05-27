@@ -7,6 +7,8 @@
 风控: 单票≤15%, 总仓位≤80%, 回撤熔断20%, 单票止损15%
 """
 
+import json
+import yaml
 import numpy as np
 import pandas as pd
 from pathlib import Path
@@ -25,10 +27,11 @@ def compute_zscore(series: pd.Series) -> pd.Series:
     return (series - mean_val) / std_val
 
 
-def compute_factor_scores(fundamentals: pd.DataFrame) -> pd.Series:
+def compute_factor_scores(fundamentals: pd.DataFrame, weights: dict = None) -> pd.Series:
     """
     计算综合因子评分（指标6）
-    Score = 0.30×Z(1/PE) + 0.20×Z(1/PB) + 0.25×Z(ROE) + 0.15×Z(RevGrowth) + 0.10×Z(Momentum)
+    Score = w_ep×Z(1/PE) + w_bp×Z(1/PB) + w_roe×Z(ROE) + w_rev×Z(RevGrowth) + w_mom×Z(Momentum)
+    权重从 config.yaml 的 factors 节读取，未传入时使用默认值。
     """
     df = fundamentals.copy()
 
@@ -54,28 +57,47 @@ def compute_factor_scores(fundamentals: pd.DataFrame) -> pd.Series:
     df['Z_rev'] = compute_zscore(df['rev_growth'])
     df['Z_mom'] = compute_zscore(df['momentum'])
 
-    # 加权综合
+    # 加权综合（从 config 读取权重，未传入时使用默认值）
+    if weights is None:
+        w_ep, w_bp, w_roe, w_rev, w_mom = 0.30, 0.20, 0.25, 0.15, 0.10
+    else:
+        w_ep = weights.get("ep_weight", 0.30)
+        w_bp = weights.get("bp_weight", 0.20)
+        w_roe = weights.get("roe_weight", 0.25)
+        w_rev = weights.get("rev_growth_weight", 0.15)
+        w_mom = weights.get("momentum_weight", 0.10)
+
     df['composite'] = (
-        0.30 * df['Z_ep']
-        + 0.20 * df['Z_bp']
-        + 0.25 * df['Z_roe']
-        + 0.15 * df['Z_rev']
-        + 0.10 * df['Z_mom']
+        w_ep * df['Z_ep']
+        + w_bp * df['Z_bp']
+        + w_roe * df['Z_roe']
+        + w_rev * df['Z_rev']
+        + w_mom * df['Z_mom']
     )
 
     return df['composite']
 
 
-def filter_universe(stock_data: dict, date) -> list:
-    """准入过滤（3.1节）：PE>0, PB>0"""
+def filter_universe(stock_data: dict, date, filters: dict = None) -> list:
+    """准入过滤（3.1节）：PE > pe_min, PB > pb_min, days_listed >= min_days_listed, avg_daily_volume >= min_daily_volume"""
+    if filters is None:
+        filters = {}
+    pe_min = filters.get("pe_min", 0)
+    pb_min = filters.get("pb_min", 0)
+    min_days_listed = filters.get("min_days_listed", 0)
+    min_daily_volume = filters.get("min_daily_volume", 0)
     qualified = []
     for code, df in stock_data.items():
         if date not in df.index:
             continue
         row = df.loc[date]
-        if row['PE_TTM'] <= 0:
+        if row['PE_TTM'] <= pe_min:
             continue
-        if row['PB_LF'] <= 0:
+        if row['PB_LF'] <= pb_min:
+            continue
+        if min_days_listed > 0 and row.get('days_listed', 0) < min_days_listed:
+            continue
+        if min_daily_volume > 0 and row.get('avg_daily_volume', 0) < min_daily_volume:
             continue
         qualified.append(code)
     return qualified
@@ -98,6 +120,20 @@ def run_backtest(config: dict) -> dict:
     top_n = selection.get("top_n", 10)
     buffer_n = selection.get("buffer_n", 5)
     rebalance_months = selection.get("rebalance_months", [3, 6, 9, 12])
+    sell_threshold_cfg = selection.get("sell_threshold", None)
+
+    # ── 因子权重（从 config 读取）──
+    factors_cfg = config.get("factors", {})
+    weights = {
+        "ep_weight": factors_cfg.get("ep_weight", 0.30),
+        "bp_weight": factors_cfg.get("bp_weight", 0.20),
+        "roe_weight": factors_cfg.get("roe_weight", 0.25),
+        "rev_growth_weight": factors_cfg.get("rev_growth_weight", 0.15),
+        "momentum_weight": factors_cfg.get("momentum_weight", 0.10),
+    }
+
+    # ── 准入过滤参数（从 config 读取）──
+    filters_cfg = config.get("filters", {})
 
     risk_cfg = config.get("risk", {})
     total_position_pct = risk_cfg.get("total_position_pct", 80) / 100.0
@@ -111,83 +147,149 @@ def run_backtest(config: dict) -> dict:
     stamp_tax = config.get("stamp_tax", 0.001)
     slippage = config.get("slippage", 0.001)
 
-    # ── 生成模拟科技股数据 ──
-    np.random.seed(42)
+    # ── 生成交易日期序列 ──
     dates = pd.bdate_range(start_date, end_date)
 
-    # 创建20只模拟A股科技股
-    stock_codes = [
-        "TECH_A_300750",  # 新能源科技
-        "TECH_A_002415",  # 安防科技
-        "TECH_A_688981",  # 半导体
-        "TECH_A_688111",  # 办公软件
-        "TECH_A_002230",  # AI语音
-        "TECH_A_688012",  # 半导体设备
-        "TECH_A_300124",  # 工业自动化
-        "TECH_A_002049",  # 芯片设计
-        "TECH_A_688036",  # 手机
-        "TECH_A_688008",  # 芯片互联
-        "TECH_A_300782",  # 射频芯片
-        "TECH_A_688256",  # AI芯片
-        "TECH_A_002920",  # 汽车电子
-        "TECH_A_603501",  # 芯片设计2
-        "TECH_A_688561",  # 网络安全
-        "TECH_A_300661",  # 模拟芯片
-        "TECH_A_688536",  # 模拟芯片2
-        "TECH_A_300474",  # GPU
-        "TECH_A_688126",  # 硅片
-        "TECH_A_688065",  # 生物合成
-    ]
+    # ── 获取数据（真实或模拟）──
+    data_source = config.get("data_source", "mock")
+    use_mock_data = True
 
-    # 为每只股票生成真实感的价格和因子数据
-    stocks_data = {}
-    for i, code in enumerate(stock_codes):
-        # 随机种子（确保可复现）
-        rng = np.random.RandomState(100 + i)
+    if data_source == "real":
+        try:
+            from data.fetch_data import get_real_data
+            start_d = start_date.replace("-", "")
+            end_d = end_date.replace("-", "")
+            real_stocks, fundamentals_df = get_real_data(start_d, end_d)
 
-        # 价格路径：带漂移的几何布朗运动
-        drift = rng.uniform(0.03, 0.13) / 252  # 年化3%-13%
-        vol = rng.uniform(0.20, 0.40) / np.sqrt(252)
-        daily_returns = rng.normal(drift, vol, len(dates))
+            if not real_stocks:
+                print("Warning: 未获取到真实数据，回退到模拟数据")
+            else:
+                # 限制测试股票数量（--max N）
+                max_stocks = config.get("_max_stocks", 0)
+                if max_stocks > 0 and len(real_stocks) > max_stocks:
+                    real_stocks = dict(list(real_stocks.items())[:max_stocks])
+                    print(f"已限制为前 {max_stocks} 只股票进行测试")
 
-        # 加入一些市场级别的波动（模拟2022年熊市、2024年牛市）
-        market_factor = np.zeros(len(dates))
-        for j, d in enumerate(dates):
-            if d.year == 2022:
-                market_factor[j] = -0.0005  # 2022年熊市
-            elif d.year == 2024 and d.month >= 9:
-                market_factor[j] = 0.0015  # 2024年9月后牛市
-            elif d.year == 2025 and d.month <= 3:
-                market_factor[j] = 0.0008
+                # 合并基本面数据到行情DataFrame
+                fund_lookup = {}
+                if not fundamentals_df.empty:
+                    for _, row in fundamentals_df.iterrows():
+                        sym = row.get('symbol', '')
+                        fund_lookup[sym] = {
+                            'EPS': row.get('EPS', None),
+                            'BVPS': row.get('BVPS', None),
+                            'ROE_TTM': row.get('ROE_TTM', None),
+                            'revenue_growth_yoy': row.get('revenue_growth_yoy', None),
+                        }
 
-        combined_returns = daily_returns + market_factor + rng.normal(0, 0.0003, len(dates))
-        prices = 50.0 * np.exp(np.cumsum(combined_returns))
+                for code, df in real_stocks.items():
+                    latest_close = df['close'].iloc[-1]
+                    if code in fund_lookup:
+                        f = fund_lookup[code]
+                        eps = f.get('EPS')
+                        bvps = f.get('BVPS')
+                        eps = float(eps) if eps is not None and not (isinstance(eps, float) and np.isnan(eps)) else None
+                        bvps = float(bvps) if bvps is not None and not (isinstance(bvps, float) and np.isnan(bvps)) else None
+                        df['PE_TTM'] = latest_close / eps if eps and eps > 0 else 0.0
+                        df['PB_LF'] = latest_close / bvps if bvps and bvps > 0 else 0.0
+                        roe = f.get('ROE_TTM')
+                        rev_g = f.get('revenue_growth_yoy')
+                        df['ROE_TTM'] = float(roe) if roe is not None and not (isinstance(roe, float) and np.isnan(roe)) else 0.0
+                        df['revenue_growth_yoy'] = float(rev_g) if rev_g is not None and not (isinstance(rev_g, float) and np.isnan(rev_g)) else 0.0
+                    else:
+                        df['PE_TTM'] = 0.0
+                        df['PB_LF'] = 0.0
+                        df['ROE_TTM'] = 0.0
+                        df['revenue_growth_yoy'] = 0.0
 
-        # 设置PE/PB/ROE等基本面因子（与价格弱相关，模拟真实世界的价值发现过程）
-        base_pe = rng.uniform(12, 35)
-        base_pb = rng.uniform(1.2, 4.5)
-        base_roe = rng.uniform(0.05, 0.25)
-        base_rev_growth = rng.uniform(0.02, 0.25)
+                    df['momentum_6m'] = df['close'].pct_change(126).fillna(0)
+                    df['avg_daily_volume'] = df['volume'].rolling(20).mean().fillna(0)
+                    df['days_listed'] = 9999
 
-        df = pd.DataFrame({
-            'open': prices * (1 + rng.normal(0, 0.003, len(dates))),
-            'high': prices * (1 + abs(rng.normal(0, 0.008, len(dates)))),
-            'low': prices * (1 - abs(rng.normal(0, 0.008, len(dates)))),
-            'close': prices,
-            'volume': rng.randint(5000000, 80000000, len(dates)),
-            'PE_TTM': np.clip(base_pe + rng.normal(0, 0.05, len(dates)).cumsum() * 0.1 + rng.normal(0, 2, len(dates)), 3, 80),
-            'PB_LF': np.clip(base_pb + rng.normal(0, 0.01, len(dates)).cumsum() * 0.05 + rng.normal(0, 0.3, len(dates)), 0.3, 8),
-            'ROE_TTM': np.clip(base_roe + rng.normal(0, 0.001, len(dates)).cumsum() * 0.01 + rng.normal(0, 0.02, len(dates)), 0.01, 0.40),
-            'revenue_growth_yoy': np.clip(base_rev_growth + rng.normal(0, 0.001, len(dates)).cumsum() * 0.005 + rng.normal(0, 0.05, len(dates)), -0.15, 0.50),
-            'momentum_6m': np.zeros(len(dates)),
-            'avg_daily_volume': rng.uniform(15_000_000, 60_000_000),
-            'days_listed': rng.randint(400, 2500),
-        }, index=dates)
+                stocks_data = real_stocks
+                use_mock_data = False
+        except ImportError:
+            print("Warning: akshare 未安装，回退到模拟数据")
+        except Exception as e:
+            print(f"Warning: 获取真实数据失败 ({e})，回退到模拟数据")
 
-        # 计算6个月动量（滚动126日）
-        df['momentum_6m'] = df['close'].pct_change(126).fillna(0)
+    if use_mock_data:
+        # ── 生成模拟科技股数据 ──
+        np.random.seed(42)
 
-        stocks_data[code] = df
+        # 创建20只模拟A股科技股
+        stock_codes = [
+            "TECH_A_300750",  # 新能源科技
+            "TECH_A_002415",  # 安防科技
+            "TECH_A_688981",  # 半导体
+            "TECH_A_688111",  # 办公软件
+            "TECH_A_002230",  # AI语音
+            "TECH_A_688012",  # 半导体设备
+            "TECH_A_300124",  # 工业自动化
+            "TECH_A_002049",  # 芯片设计
+            "TECH_A_688036",  # 手机
+            "TECH_A_688008",  # 芯片互联
+            "TECH_A_300782",  # 射频芯片
+            "TECH_A_688256",  # AI芯片
+            "TECH_A_002920",  # 汽车电子
+            "TECH_A_603501",  # 芯片设计2
+            "TECH_A_688561",  # 网络安全
+            "TECH_A_300661",  # 模拟芯片
+            "TECH_A_688536",  # 模拟芯片2
+            "TECH_A_300474",  # GPU
+            "TECH_A_688126",  # 硅片
+            "TECH_A_688065",  # 生物合成
+        ]
+
+        # 为每只股票生成真实感的价格和因子数据
+        stocks_data = {}
+        for i, code in enumerate(stock_codes):
+            # 随机种子（确保可复现）
+            rng = np.random.RandomState(100 + i)
+
+            # 价格路径：带漂移的几何布朗运动
+            drift = rng.uniform(0.03, 0.13) / 252  # 年化3%-13%
+            vol = rng.uniform(0.20, 0.40) / np.sqrt(252)
+            daily_returns = rng.normal(drift, vol, len(dates))
+
+            # 加入一些市场级别的波动（模拟2022年熊市、2024年牛市）
+            market_factor = np.zeros(len(dates))
+            for j, d in enumerate(dates):
+                if d.year == 2022:
+                    market_factor[j] = -0.0005  # 2022年熊市
+                elif d.year == 2024 and d.month >= 9:
+                    market_factor[j] = 0.0015  # 2024年9月后牛市
+                elif d.year == 2025 and d.month <= 3:
+                    market_factor[j] = 0.0008
+
+            combined_returns = daily_returns + market_factor + rng.normal(0, 0.0003, len(dates))
+            prices = 50.0 * np.exp(np.cumsum(combined_returns))
+
+            # 设置PE/PB/ROE等基本面因子（与价格弱相关，模拟真实世界的价值发现过程）
+            base_pe = rng.uniform(12, 35)
+            base_pb = rng.uniform(1.2, 4.5)
+            base_roe = rng.uniform(0.05, 0.25)
+            base_rev_growth = rng.uniform(0.02, 0.25)
+
+            df = pd.DataFrame({
+                'open': prices * (1 + rng.normal(0, 0.003, len(dates))),
+                'high': prices * (1 + abs(rng.normal(0, 0.008, len(dates)))),
+                'low': prices * (1 - abs(rng.normal(0, 0.008, len(dates)))),
+                'close': prices,
+                'volume': rng.randint(5000000, 80000000, len(dates)),
+                'PE_TTM': np.clip(base_pe + rng.normal(0, 0.05, len(dates)).cumsum() * 0.1 + rng.normal(0, 2, len(dates)), 3, 80),
+                'PB_LF': np.clip(base_pb + rng.normal(0, 0.01, len(dates)).cumsum() * 0.05 + rng.normal(0, 0.3, len(dates)), 0.3, 8),
+                'ROE_TTM': np.clip(base_roe + rng.normal(0, 0.001, len(dates)).cumsum() * 0.01 + rng.normal(0, 0.02, len(dates)), 0.01, 0.40),
+                'revenue_growth_yoy': np.clip(base_rev_growth + rng.normal(0, 0.001, len(dates)).cumsum() * 0.005 + rng.normal(0, 0.05, len(dates)), -0.15, 0.50),
+                'momentum_6m': np.zeros(len(dates)),
+                'avg_daily_volume': rng.uniform(15_000_000, 60_000_000),
+                'days_listed': rng.randint(400, 2500),
+            }, index=dates)
+
+            # 计算6个月动量（滚动126日）
+            df['momentum_6m'] = df['close'].pct_change(126).fillna(0)
+
+            stocks_data[code] = df
 
     # ── 找出季度调仓日期 ──
     rebalance_dates = set()
@@ -210,7 +312,12 @@ def run_backtest(config: dict) -> dict:
     meltdown_recovery_threshold = 0  # 回撤恢复到此百分比以下才解除熔断
 
     # ── 每日主循环 ──
+    any_stock = next(iter(stocks_data)) if stocks_data else None
     for date_idx, date in enumerate(dates):
+        # 跳过非交易日（中国节假日：无任何股票有行情数据）
+        if any_stock and date not in stocks_data[any_stock].index:
+            continue
+
         # ── 计算当前持仓市值和总资产 ──
         total_position_market_value = 0.0
         for code, h in list(holdings.items()):
@@ -241,7 +348,10 @@ def run_backtest(config: dict) -> dict:
                     continue
                 if date not in stocks_data[code].index:
                     continue
-                prev_row = stocks_data[code].iloc[date_idx - 1]
+                stock_idx = stocks_data[code].index.get_loc(date)
+                if stock_idx == 0:
+                    continue
+                prev_row = stocks_data[code].iloc[stock_idx - 1]
                 curr_close = float(stocks_data[code].loc[date, 'close'])
                 prev_close = float(prev_row['close'])
                 if prev_close > 0:
@@ -314,7 +424,7 @@ def run_backtest(config: dict) -> dict:
             position_multiplier = 0.5 if consecutive_stops >= max_consecutive_stops else 1.0
 
             # 准入过滤
-            qualified = filter_universe(stocks_data, date)
+            qualified = filter_universe(stocks_data, date, filters_cfg)
             if len(qualified) < top_n:
                 # 不够N只，全选
                 selected = qualified
@@ -333,18 +443,18 @@ def run_backtest(config: dict) -> dict:
                 df_fund = pd.DataFrame(fund_data).T
 
                 # 综合评分
-                composite_scores = compute_factor_scores(df_fund)
+                composite_scores = compute_factor_scores(df_fund, weights)
 
                 # 选前N
                 selected = composite_scores.nlargest(min(top_n, len(composite_scores))).index.tolist()
 
             # ── 卖出不在选股范围的持仓（条件1: 调仓退出）──
-            sell_threshold = top_n + buffer_n
+            sell_threshold = sell_threshold_cfg if sell_threshold_cfg is not None else top_n + buffer_n
             for code in list(holdings.keys()):
                 if code in paused_stocks:
                     continue
                 # 计算当前持有股票的评分排名
-                qualified_all = filter_universe(stocks_data, date)
+                qualified_all = filter_universe(stocks_data, date, filters_cfg)
                 if len(qualified_all) >= sell_threshold:
                     fund_data_all = {}
                     for c in qualified_all:
@@ -357,7 +467,7 @@ def run_backtest(config: dict) -> dict:
                             'momentum_6m': float(row['momentum_6m']),
                         }
                     df_fund_all = pd.DataFrame(fund_data_all).T
-                    scores_all = compute_factor_scores(df_fund_all)
+                    scores_all = compute_factor_scores(df_fund_all, weights)
                     rank = scores_all.rank(ascending=False)
                     stock_rank = rank.get(code, 0)
                     if stock_rank > sell_threshold:
@@ -390,6 +500,8 @@ def run_backtest(config: dict) -> dict:
             )
             current_total_value = cash + pos_val
 
+            if len(selected) == 0:
+                continue  # 无合格标的，跳过本次调仓
             target_total_position = current_total_value * total_position_pct * position_multiplier
             target_per_stock_value = min(
                 target_total_position / len(selected),
@@ -483,7 +595,9 @@ def run_backtest(config: dict) -> dict:
             paused_stocks.clear()
 
     # ── 计算最终回测指标 ──
-    return _compute_metrics(daily_values, trades, initial_cash)
+    result = _compute_metrics(daily_values, trades, initial_cash)
+    result['_stock_data'] = stocks_data
+    return result
 
 
 # ═══════════════════════════════════════════════════════
@@ -569,9 +683,105 @@ def _compute_metrics(daily_values: list, trades: list, initial_cash: float) -> d
     }
 
 
+def compute_benchmark_metrics(stock_data: dict, initial_capital: float) -> dict:
+    """
+    Simulate a buy-and-hold equal-weight portfolio of all stocks as benchmark proxy.
+    Returns: annual_return, sharpe, max_drawdown (same metrics as strategy).
+
+    Without actual index data, equal-weight is a reasonable proxy. If a real
+    benchmark data source is added later, this function's signature supports
+    passing in external price data for any benchmark.
+    """
+    if not stock_data:
+        return {'annual_return': 0.0, 'sharpe': 0.0, 'max_drawdown': 0.0}
+
+    first_code = next(iter(stock_data))
+    dates = stock_data[first_code].index
+    n_stocks = len(stock_data)
+    capital_per_stock = initial_capital / n_stocks
+
+    # Precompute shares for each stock (held constant from its own first available date)
+    shares = {}
+    for code, df in stock_data.items():
+        stock_dates = df.index
+        if len(stock_dates) == 0:
+            shares[code] = 0.0
+            continue
+        day0_close = float(df.iloc[0]['close'])
+        shares[code] = capital_per_stock / day0_close if day0_close > 0 else 0.0
+
+    # Compute daily portfolio value
+    portfolio_values = []
+    for date in dates:
+        total = 0.0
+        for code, s in shares.items():
+            if date in stock_data[code].index:
+                total += s * float(stock_data[code].loc[date, 'close'])
+        portfolio_values.append(total)
+
+    values = portfolio_values
+    final_value = values[-1]
+    total_return = (final_value - initial_capital) / initial_capital * 100
+
+    days = len(values)
+    years = max(days / 252, 0.5)
+    annual_return = ((1 + total_return / 100) ** (1 / years) - 1) * 100
+
+    # Max drawdown
+    peak = values[0]
+    max_dd = 0.0
+    for v in values:
+        if v > peak:
+            peak = v
+        dd = (peak - v) / peak * 100
+        if dd > max_dd:
+            max_dd = dd
+
+    # Sharpe ratio
+    daily_rets = []
+    for i in range(1, len(values)):
+        if values[i - 1] > 0:
+            daily_rets.append((values[i] - values[i - 1]) / values[i - 1])
+    if daily_rets and len(daily_rets) > 1:
+        avg_daily = float(np.mean(daily_rets))
+        std_daily = float(np.std(daily_rets, ddof=1))
+        sharpe = (avg_daily / std_daily) * np.sqrt(252) if std_daily > 0 else 0.0
+    else:
+        sharpe = 0.0
+
+    return {
+        'annual_return': round(annual_return, 2),
+        'sharpe': round(sharpe, 2),
+        'max_drawdown': round(max_dd, 2),
+    }
+
+
 def _empty_result() -> dict:
     return {
         'annual_return': 0, 'max_drawdown': 0, 'sharpe': 0,
         'win_rate': 0, 'profit_loss_ratio': 0, 'total_trades': 0,
         'error': '无可用数据',
     }
+
+
+if __name__ == "__main__":
+    import sys, yaml, json
+    from pathlib import Path
+    config_path = Path(__file__).parent / "config.yaml"
+    with open(config_path) as f:
+        config = yaml.safe_load(f)
+    # CLI override: python3 strategy.py --real 或 python3 strategy.py --real --max 30
+    if "--real" in sys.argv:
+        config["data_source"] = "real"
+    if "--max" in sys.argv:
+        idx = sys.argv.index("--max")
+        if idx + 1 < len(sys.argv):
+            config["_max_stocks"] = int(sys.argv[idx + 1])
+    initial_cash = float(config.get("initial_cash", 1_000_000))
+    result = run_backtest(config)
+    stock_data = result.pop('_stock_data', None)
+    if stock_data:
+        benchmark = compute_benchmark_metrics(stock_data, initial_cash)
+        result['benchmark'] = benchmark
+        result['excess_return'] = round(result['annual_return'] - benchmark['annual_return'], 2)
+    print(json.dumps(result, indent=2, ensure_ascii=False))
