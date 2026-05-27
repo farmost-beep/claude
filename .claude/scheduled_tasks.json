@@ -51,6 +51,15 @@
       "createdBySessionId": "f9d3fe1f-75e4-48ea-897f-7fb125ce1985",
       "createdByPid": 83003,
       "createdByProcStart": "Wed May 27 22:25:00 2026"
+    },
+    {
+      "id": "e0680cd9",
+      "cron": "25 9 29 5 *",
+      "prompt": "提醒：现在是5月29日周五上午9:25。今天P0待办事项——拨打银行客服电话，确认9月到期60万信用贷还本的6项关键信息：1) 当前贷款余额 2) 是否可提前还款 3) 有无提前还款违约金 4) 还本账户信息 5) 还本截止时间 6) 是否需要书面申请。预计耗时15-20分钟。这是直接影响9月财务安全的行动。",
+      "createdAt": 1779922028672,
+      "createdBySessionId": "44766fbf-746b-4a5b-a276-c865b2bf2683",
+      "createdByPid": 84388,
+      "createdByProcStart": "Wed May 27 22:40:07 2026"
     }
   ]
 }
