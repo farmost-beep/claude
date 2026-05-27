@@ -9,6 +9,16 @@
       "createdBySessionId": "71902245-1d39-407c-920a-b12333995151",
       "createdByPid": 2526,
       "createdByProcStart": "Tue May 26 13:22:38 2026"
+    },
+    {
+      "id": "50dffd02",
+      "cron": "47 9 * * *",
+      "prompt": "执行三大Managed Agents日常循环：\n\n**1. Dreaming**：回顾 /Users/cyingfang/.claude/projects/-Users-cyingfang-claude/memory/ 下所有记忆文件，检查 (a)新产生的矛盾/冲突 (b)过时信息 (c)遗漏的连接。如果发现问题，直接修复并记录到记忆文件。\n\n**2. Multiagent**：并行扫描六大目标目录，检查每个目标 (a)新增.md是否都有.pdf (b)内容一致性 (c)日期引用是否过期。输出一个简短的质量报告到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202605.md 的当日条目下。\n\n**3. Outcomes**：独立验证Dreaming发现的修复是否真的被完成。如果修复未完成或错误，重新修复。\n\n最后，总结今天发现和修复了什么问题，如果一切正常就说\"系统健康\"。",
+      "createdAt": 1779842786284,
+      "recurring": true,
+      "createdBySessionId": "71902245-1d39-407c-920a-b12333995151",
+      "createdByPid": 2526,
+      "createdByProcStart": "Tue May 26 13:22:38 2026"
     }
   ]
 }

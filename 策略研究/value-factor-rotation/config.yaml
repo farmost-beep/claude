@@ -1,0 +1,45 @@
+# === 回测参数 ===
+initial_cash: 1000000
+start_date: "2021-01-01"
+end_date: "2025-12-31"
+benchmark: "000300.SH"
+market: "A股"
+
+# === 交易成本 ===
+commission: 0.00025
+stamp_tax: 0.001
+slippage: 0.001
+
+# === 选股参数 ===
+selection:
+  top_n: 10
+  buffer_n: 5
+  rebalance_months: [3, 6, 9, 12]
+
+# === 因子权重 ===
+factors:
+  ep_weight: 0.30
+  bp_weight: 0.20
+  roe_weight: 0.25
+  rev_growth_weight: 0.15
+  momentum_weight: 0.10
+
+# === 准入过滤 ===
+filters:
+  min_days_listed: 252
+  min_daily_volume: 10000000
+  pe_min: 0
+  pb_min: 0
+
+# === 风控参数 ===
+risk:
+  total_position_pct: 80
+  single_stock_pct: 15
+  stop_loss_pct: 15
+  drawdown_meltdown_pct: 20
+  max_consecutive_stops: 3
+  extreme_drop_pct: 8
+
+# === 数据源 ===
+data_source: "mock"
+data_cycle: "daily"
