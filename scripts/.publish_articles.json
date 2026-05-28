@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "科技金融的第三条道路：从财务信用到技术信用的银行转型框架",
+    "file": "career/发表文章/公众号文章_科技金融第三条道路_20260528.md",
+    "tags_caixin": "金融,银行,科技金融,科创金融",
+    "tags_wechat": "#科技金融 #银行转型 #科创金融 #信贷创新",
+    "summary": "在国有大行靠规模碾压、互联网银行靠流量获客之外，科技金融是否存在第三条道路？本文提出五层生态位框架。",
+    "plan_date_caixin": "2026-05-29",
+    "plan_date_wechat": "2026-06-04",
+    "platform": "both"
+  },
+  {
+    "id": 2,
+    "title": "含科量：一套让银行看得懂科技企业的评分体系",
+    "file": "career/发表文章/公众号文章_含科量五维评分_20260528.md",
+    "tags_caixin": "金融,银行,信用评估,科创企业",
+    "tags_wechat": "#科技金融 #信用评估 #科创企业 #银行实务",
+    "summary": "五维评分（研发强度、专利密度、技术壁垒、人才结构、产业位势）+TRL技术成熟度分层，将技术评估转化为可操作的信贷决策流程。",
+    "plan_date_caixin": "2026-05-30",
+    "plan_date_wechat": "2026-06-08",
+    "platform": "both"
+  },
+  {
+    "id": 3,
+    "title": "万亿俱乐部：16家银行科技金融实力排名揭示了什么",
+    "file": "career/发表文章/公众号文章_万亿俱乐部排名_20260528.md",
+    "tags_caixin": "金融,银行,行业分析,数据报告",
+    "tags_wechat": "#科技金融 #银行排名 #行业分析 #数据报告",
+    "summary": "规模不等于能力：真正的科技金融竞争力体现在并购贷款深度、成长期企业占比和技术评价体系老练程度上。",
+    "plan_date_caixin": "2026-05-31",
+    "plan_date_wechat": "2026-06-11",
+    "platform": "both"
+  },
+  {
+    "id": 4,
+    "title": "Anthropic不公开的方法论，我逆向推导出了18条原则",
+    "file": "career/发表文章/公众号文章_AI方法论18条原则_20260528.md",
+    "tags_caixin": "",
+    "tags_wechat": "#AI方法论 #Anthropic #效率提升 #个人成长",
+    "summary": "从问答模式到管理模式：Anthropic工程师使用AI的18条原则，分四层飞轮，每条附带可直接操作的指令模板。",
+    "plan_date_caixin": "",
+    "plan_date_wechat": "2026-05-29",
+    "platform": "wechat"
+  },
+  {
+    "id": 5,
+    "title": "从Claude Code进化轨迹，我逆向推导出了Anthropic不公开的AI方法论",
+    "file": "career/发表文章/公众号文章_逆向推导Anthropic方法论_20260528.md",
+    "tags_caixin": "",
+    "tags_wechat": "#AI方法论 #Anthropic #逆向工程 #技术洞察",
+    "summary": "以Claude Code四个阶段18个能力为观测窗口，逆向推导Anthropic内部使用AI构建软件的完整方法论。揭示Dreaming/Outcomes/Managed Agents背后的设计哲学。",
+    "plan_date_caixin": "",
+    "plan_date_wechat": "2026-06-01",
+    "platform": "wechat"
+  },
+  {
+    "id": 6,
+    "title": "AI方法论的认知基础：为什么“管理模式”打败“问答模式”",
+    "file": "career/发表文章/公众号文章_AI方法论认知基础_20260528.md",
+    "tags_caixin": "",
+    "tags_wechat": "#AI方法论 #认知科学 #效率提升 #深度思考",
+    "summary": "从双系统理论、认知卸载、注意力经济学三个认知科学框架，解释为什么Anthropic的“管理模式”比大众的“问答模式”效率高数倍。不是AI能力问题，是协作结构问题。",
+    "plan_date_caixin": "",
+    "plan_date_wechat": "2026-06-05",
+    "platform": "wechat"
+  },
+  {
+    "id": 7,
+    "title": "AI协作的五个结构性反模式——90%的人卡在这里",
+    "file": "career/发表文章/公众号文章_AI协作反模式_20260528.md",
+    "tags_caixin": "",
+    "tags_wechat": "#AI方法论 #反模式 #效率陷阱 #个人成长",
+    "summary": "拆解微观管理、全量审查、从零开始、孤岛使用、用完即弃五个反模式。揭示它们的心理学根源、形成的死亡螺旋、以及逐个击破的方法。",
+    "plan_date_caixin": "",
+    "plan_date_wechat": "2026-06-08",
+    "platform": "wechat"
+  },
+  {
+    "id": 8,
+    "title": "从方法论到个人AI操作系统：构建自进化的飞轮",
+    "file": "career/发表文章/公众号文章_个人AI操作系统_20260528.md",
+    "tags_caixin": "",
+    "tags_wechat": "#AI方法论 #个人系统 #自进化 #飞轮效应",
+    "summary": "AI方法论系列收官。将18条原则组装成记忆层+指令层+质量层+进化层四组件个人AI操作系统，附带从第1天到第7天的三步启动指南和6个月衡量标准。",
+    "plan_date_caixin": "",
+    "plan_date_wechat": "2026-06-12",
+    "platform": "wechat"
+  },
+  {
+    "id": 9,
+    "title": "为了造出Claude，Anthropic先把自己的组织变成了什么样",
+    "file": "career/发表文章/公众号文章_组织AI转型_20260528.md",
+    "tags_caixin": "",
+    "tags_wechat": "#AI方法论 #组织变革 #Anthropic #管理模式 #数字化转型",
+    "summary": "Anthropic能做出Claude Code/Outcomes/Dreaming，不是技术更强，而是先在自己内部完成了五个组织转型：人写代码→人定目标、串行→并行Agent管理、人审查→三层质量网、文档→记忆基础设施、工具→管理系统。产品是组织方式的外化。",
+    "plan_date_caixin": "",
+    "plan_date_wechat": "2026-06-15",
+    "platform": "wechat"
+  },
+  {
+    "id": 10,
+    "title": "当银行遇到管理模式——科技金融的AI重构不是换工具，是换运作方式",
+    "file": "career/发表文章/公众号文章_银行管理模式_20260528.md",
+    "tags_caixin": "金融,银行,科技金融,AI应用",
+    "tags_wechat": "#银行科技 #AI方法论 #管理模式 #科技金融 #数字化转型",
+    "summary": "以银行三个真实业务场景（授信报告3天→3小时、合规审查200页→问题清单、财报分析5天→半天），拆解管理模式的具体操作指令，附带银行专属的四个障碍破解方案。",
+    "plan_date_caixin": "",
+    "plan_date_wechat": "2026-06-18",
+    "platform": "wechat"
+  }
+]
