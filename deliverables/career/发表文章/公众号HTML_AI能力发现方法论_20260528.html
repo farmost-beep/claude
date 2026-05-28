@@ -1,0 +1,377 @@
+<section style="font-size:16px;color:#333;line-height:1.8;letter-spacing:0.5px;">
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">AI能力发现方法论</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>陈颖芳 | 2026年5月</p>
+<p>></p>
+<p>本文约4000字，阅读时间约11分钟。本文仅代表作者个人观点。</p>
+<p>></p>
+<p>方法论系列第十三篇。前十二篇建立了从认知到落地的完整体系，并横向评价了主流产品。这一篇回答一个更底层的问题——在这个AI能力以周为单位迭代的时代，你怎么系统化地知道"AI现在能做什么"？</p>
+</blockquote>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">这个问题的紧迫性</h2>
+<br/>
+<p>一个事实：<strong>大多数人对自己使用的AI产品的真实能力边界，了解程度不超过30%。</strong></p>
+<br/>
+<p>不是因为他们不够聪明。是因为三个结构性问题：</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>1. 信息洪流</strong>：每天几十篇论文、十几个新产品、上百条"AI又突破了"的推文——你不可能全看</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>2. 炒作噪音</strong>：每个发布都号称"颠覆"，每个demo都看起来完美——你不知道哪个是真的</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>3. 能力颗粒度不匹配</strong>：你知道"AI会写代码"，但不知道它具体在哪种代码、哪个复杂度、哪个环节最擅长——而正是这种颗粒度的了解，决定了你用得好不好</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>AI能力发现的本质不是"多知道一些"，是"知道得比噪音更精确"。</strong></p>
+<br/>
+<p>这篇文章给一套系统化的方法论。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第一层：建立四源信息体系</h2>
+<br/>
+<p>信息源不是越多越好。是每个源回答一个特定的问题。四个源就够了：</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">源一：基准和榜单（回答"AI现在客观上能做到什么程度"）</h3>
+<br/>
+<p>不要看产品宣传页。看基准测试排名和第三方评测。</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">信息类型</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">具体来源</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">更新频率</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">回答的问题</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">编码能力</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">SWE-bench Verified 排行榜</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">月度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI能独立修多难的bug？</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">推理能力</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">GPQA Diamond、MMLU-Pro</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">季度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI的推理到了什么水平？</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">长上下文</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">RULER、Needle-in-a-Haystack</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">新模型发布时</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">长文档理解真的可靠吗？</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">Agent能力</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">WebArena、OSWorld</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">季度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI能自主操作软件吗？</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">多语言</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">MGSM、FLORES</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">新模型发布时</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">中文/日文能力如何？</td>
+</tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>操作</strong>：每季度花30分钟扫一遍主要基准排名。不需要看每篇论文，只需要知道"目前第一名是谁、比三个月前提升了多少、在哪个维度提升最大"。</p>
+<br/>
+<p>最关键的一条规则：<strong>看基准不要只看总分。</strong> 总分掩盖了能力的长短腿。要看子项得分——一个模型总分提升了10%，但如果代码能力下降了而推理能力飙升了，对你用不用得上的判断完全不同。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">源二：产品变更日志（回答"我能用上什么新东西"）</h3>
+<br/>
+<p>比论文更重要的信号源。因为论文到产品有6-18个月的滞后，而产品变更日志是你立刻能用上的。</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">信息类型</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">具体来源</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">频率</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">重点看什么</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">Claude Code 更新</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Anthropic Release Notes</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">双周</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">新工具、新Agent能力、新记忆功能</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">Cursor / Copilot 更新</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">产品Changelog</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">月度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Agent模式演进、新集成</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">模型能力更新</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">各厂商Blog</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">新模型发布</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">能力对比表、实际benchmark</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">MCP / 插件生态</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">GitHub Trending</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">持续</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">新工具接入、新使用模式</td>
+</tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>操作</strong>：订阅三个RSS/Newsletter：Anthropic Blog、OpenAI Blog、GitHub Trending（AI相关）。每周10分钟扫标题，看到"新功能"才点进去。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">源三：实战案例（回答"别人是怎么用的，效果真的好吗"）</h3>
+<br/>
+<p>基准测试告诉你AI能做什么，实战案例告诉你AI在真实场景中能做什么——两者之间通常有30-50%的衰减。</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">信息类型</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">最佳来源</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">为什么这个源好</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">工程实践</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Hacker News 的AI相关讨论</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">评论区的质疑比文章本身更有价值</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">投资研究</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Substack上的独立分析师</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">独立作者比机构报告敢说真话</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">产品设计</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">X(Twitter)上的一线从业者</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">真实工作流 > 官方Demo</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">学术突破</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">arXiv Sanity Preserver</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">按热度排序，天然过滤噪音</td>
+</tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>操作</strong>：关注10-20个"一手实践者"而不是"AI评论家"。判断标准——这个人的Twitter/GitHub里有没有他自己动手跑过的代码和真实结果，还是只有转发和评论。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">源四：反向信号（回答"什么被过度炒作了"）</h3>
+<br/>
+<p>最被低估的信息源。知道什么不行，比知道什么行，更有决策价值。</p>
+<br/>
+<p>反向信号的最佳来源：</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">- <strong>产品被关闭/停更的公告</strong>（比正面信号诚实100倍）</p>
+<p style="margin:4px 0 4px 20px;">- <strong>大厂内部的AI使用率数据</strong>（如果有渠道的话——大多数内部AI工具的使用率远低于外部宣传）</p>
+<p style="margin:4px 0 4px 20px;">- <strong>失败案例的复盘</strong>（"我们用AI做X，试了三个月，失败了，原因是Y"——这种内容比"我们用AI提升了10倍效率"有价值得多）</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>操作</strong>：每当你看到一个"AI改变了X"的热门文章，搜索"AI failed X"或"X AI limitations"。正反两面的信息同时看，比只看一面更有判断力。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第二层：能力评估四步法</h2>
+<br/>
+<p>发现了一个新能力/新工具后，怎么判断它值不值得你花时间？四步：</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">第1步：能力定位——它在"能力成熟度曲线"的哪个位置？</h3>
+<br/>
+<p>每项AI能力都经过四个阶段。你在哪个阶段介入，决定了你投入多少时间：</p>
+<br/>
+<p>```</p>
+<p>阶段一：论文突破（学术圈）</p>
+<p>  → 看到论文标题很兴奋 → 实际：90%不会变成可用产品</p>
+<p>  → 你的策略：记录+等待。不投入时间。</p>
+<br/>
+<p>阶段二：产品原型（早期采用者）</p>
+<p>  → 有demo了，但只对特定场景效果惊艳</p>
+<p>  → 你的策略：花15分钟跑一次demo。判断"在我的场景中潜在价值多大"</p>
+<br/>
+<p>阶段三：产品化（可稳定使用）</p>
+<p>  → 有API/产品了，文档完善了，有bug但不多</p>
+<p>  → 你的策略：花1-2小时深度测试你的真实场景。如果不通过，等下一版</p>
+<br/>
+<p>阶段四：基础设施（默认可用）</p>
+<p>  → 已经成为标配，所有人都在用</p>
+<p>  → 你的策略：不要再花时间"评估"了。直接用。你不会花时间"评估搜索引擎有没有用"</p>
+<p>```</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>核心规则</strong>：永远不要在阶段一投入超过记录的时间。永远不要在阶段四还在"观望"。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">第2步：能力边界测试——用你的真实场景，不是官方的demo</h3>
+<br/>
+<p>官方demo是最差的能力评估工具。它们经过精心挑选，只展示模型最强的一面。</p>
+<br/>
+<p>你的测试应该回答三个问题：</p>
+<br/>
+<p>```</p>
+<p>边界问题1：这个能力在我的场景中，最差表现是什么？</p>
+<p>  操作：用你最难的、最边缘的、最乱的真实数据测试</p>
+<p>  判断：如果最差表现你能接受，那平均表现只会更好</p>
+<br/>
+<p>边界问题2：这个能力的"断崖"在哪里？</p>
+<p>  操作：逐步增加难度（更长的输入、更复杂的逻辑、更模糊的指令），找到断崖</p>
+<p>  判断：你的日常使用场景在断崖之上还是之下？</p>
+<br/>
+<p>边界问题3：这个能力的一致性如何？</p>
+<p>  操作：同样的输入跑3次，看产出的方差</p>
+<p>  判断：如果需要精确输出的场景，方差大=不可用</p>
+<p>```</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">第3步：ROI估算——这个能力在我的工作流中能省多少时间？</h3>
+<br/>
+<p>不要凭感觉。用数字：</p>
+<br/>
+<p>```</p>
+<p>ROI = (旧方式耗时 - 新方式耗时) × 使用频次 - 学习成本 - 验证成本</p>
+<br/>
+<p>例子：新Agent能力"自动代码审查"</p>
+<p>- 旧方式：人工审查30分钟/次</p>
+<p>- 新方式：AI审查5分钟 + 人确认10分钟 = 15分钟/次</p>
+<p>- 使用频次：每周5次</p>
+<p>- 每周节省：75分钟</p>
+<p>- 学习成本：首次配置30分钟</p>
+<p>- 验证成本：前两周每次多花5分钟确认 = 50分钟</p>
+<p>- 首月净节省：75×4 - 30 - 50 = 220分钟</p>
+<p>- ROI：显著正向 → 值得投入</p>
+<p>```</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>ROI为负不代表能力差。</strong> 可能只是你的使用频次太低。AI辅助写遗嘱——能力很强，但你一年只用一次，ROI就低。AI辅助写周报——能力一般，但你每周用，ROI就高。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">第4步：校准周期——多久重新评估一次？</h3>
+<br/>
+<p>AI能力在快速变化。三个月前"不行"的，今天可能"行了"。反之亦然——三个月前"惊艳"的，今天可能已经被更好的方案取代。</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">能力类型</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">建议重评估周期</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">原因</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">模型基础能力（推理、编码等）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">每次新模型发布</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">代际提升可能在一次发布中发生断崖式变化</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">工具/产品能力</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">每月</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">产品迭代快，月度更新可能包含关键功能</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">Agent/编排能力</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">每两周</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">这是目前迭代最快的领域</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">垂直领域能力（法律、医疗等）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">每季度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">垂直领域变化慢，受监管约束</td>
+</tr>
+</table>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第三层：个人AI能力雷达——一个活文档</h2>
+<br/>
+<p>把前两层结合起来，维护一个个人AI能力雷达。这不是"AI行业全景图"（太大，维护不了），而是"对我有价值的AI能力地图"。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">雷达的四个象限</h3>
+<br/>
+<p>```</p>
+<p>        高频使用</p>
+<p>            |</p>
+<p>    ┌───────┼───────┐</p>
+<p>    │ 核心区 │ 探索区 │</p>
+<p>    │ (深耕) │ (实验) │</p>
+<p>    │       │       │</p>
+<p>成熟 ─┼───────┼───────┤─ 新兴</p>
+<p>    │       │       │</p>
+<p>    │ 惰性区 │ 观望区 │</p>
+<p>    │ (保持) │ (记录) │</p>
+<p>    └───────┼───────┘</p>
+<p>            |</p>
+<p>        低频使用</p>
+<p>```</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>核心区（高频+成熟）</strong>：你已经熟练掌握、每天都在用的能力。比如用Claude Code做代码编写和审查。</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">- 策略：深耕优化。写更好的记忆文件、更精细的Agent配置。</p>
+<p style="margin:4px 0 4px 20px;">- 回顾频率：每月一次"有没有新的最佳实践？"</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>探索区（高频+新兴）</strong>：你每天都在做但还在探索AI怎么帮的事。比如投资分析中的自动研报交叉审查。</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">- 策略：主动实验。每周花1-2小时测试新能力在这个区的应用。</p>
+<p style="margin:4px 0 4px 20px;">- 回顾频率：每周一次"这周测试了什么？"</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>惰性区（低频+成熟）</strong>：AI已经很擅长但你不需要经常做的事。比如AI翻译文档。</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">- 策略：保持现状。不需要优化，用的时候知道有就行。</p>
+<p style="margin:4px 0 4px 20px;">- 回顾频率：每季度一次"是否有更好方案？"</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>观望区（低频+新兴）</strong>：AI的炫酷新能力但和你关系不大。比如AI视频生成——如果你不做视频内容，就不值得投入时间。</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">- 策略：记录+等待。看到新闻时记一笔，不投入时间。</p>
+<p style="margin:4px 0 4px 20px;">- 回顾频率：每季度一次"是否进入了我的使用范围？"</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">雷达更新节奏</h3>
+<br/>
+<p>每周15分钟就够了：</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">1. 扫一遍四个信息源（5分钟）</p>
+<p style="margin:4px 0 4px 20px;">2. 更新雷达——新能力进入哪个象限？（5分钟）</p>
+<p style="margin:4px 0 4px 20px;">3. 决定本周要测试什么（5分钟）</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第四层：从发现到内化——一个完整的测试循环</h2>
+<br/>
+<p>发现一个可能对你有价值的新AI能力后，不要"等有空了试试"。用这个循环：</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">Day 1：15分钟快速验证（不通过就放弃）</h3>
+<br/>
+<p>```</p>
+<p>用你的真实数据/场景跑一次。</p>
+<p>只回答一个问题：这个能力在我的场景中，下限表现我能不能接受？</p>
+<p>  → 能 → 进入Day 2</p>
+<p>  → 不能 → 记录结果和原因，三个月后重看</p>
+<p>```</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">Day 2：30分钟深度边界测试（找到能力的真实范围）</h3>
+<br/>
+<p>```</p>
+<p>用最极端的数据跑3次。</p>
+<p>找到：</p>
+<p>  1. 什么情况下表现断崖式下降？</p>
+<p>  2. 一致性能接受吗？</p>
+<p>  3. 和现有方案比，差异具体在哪里？</p>
+<p>```</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">Day 3：整合到工作流</h3>
+<br/>
+<p>```</p>
+<p>如果前两步通过：</p>
+<p>  1. 写一份简短的使用规范（什么是这个能力擅长/不擅长的）</p>
+<p>  2. 在你的工作流中找一个真实任务，用新能力做</p>
+<p>  3. 对比新旧产出，决定是"替代旧方式"还是"作为补充"</p>
+<p>```</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>三天、一小时。</strong> 这比"先收藏以后看"有价值100倍。因为70%的"以后看"永远不会看。而这一小时，要么让你发现一个能省你大量时间的能力，要么让你在未来三个月不用再惦记它。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">如果只能做一件事</h2>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>建一个个人AI能力雷达。</strong> 用四个象限把自己的AI使用情况可视化。每周花15分钟更新。</p>
+<br/>
+<p>这个动作看似简单，但它强迫你做一件事：<strong>把"AI现在能做什么"这个模糊的焦虑，变成"对我有价值的AI能力有哪些，分别在什么阶段"这个清晰的地图。</strong></p>
+<br/>
+<p>焦虑来自模糊。清晰消除焦虑。</p>
+<br/>
+<p>---</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p><strong>作者简介</strong>：本文仅代表作者个人观点。AI辅助，长期专注于科技金融与商业实践，持续探索AI工具在金融领域的应用方法论。</p>
+<p>></p>
+<p><strong>系列文章</strong>：</p>
+<p>- ①-⑫ 从方法论到落地实践、产品推演的完整体系</p>
+<p>- ⑬ 本文——AI能力发现方法论</p>
+</blockquote>
+</section>
