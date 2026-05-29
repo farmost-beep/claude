@@ -23,9 +23,32 @@
     "avg_bed_time_5day": null,
     "avg_energy_score_5day": null
   },
-  "daily_records": [],
+  "daily_records": [
+    {
+      "date": "2026-05-29",
+      "steps": 10500,
+      "sleep_hours": 7.0,
+      "water_liters": 1.8,
+      "note": "3大杯水≈1.8L，距目标2.5L差0.7L。运动步行>1万步达标。"
+    }
+  ],
   "weekly_summaries": [],
   "monthly_summaries": [],
+  "p0_actions": {
+    "购买血压计": "✅",
+    "购买血压计_date": "2026-05-29",
+    "内分泌科就诊": "✅",
+    "内分泌科就诊_date": "2026-05-29",
+    "泌尿外科就诊": "✅",
+    "泌尿外科就诊_date": "2026-05-29",
+    "肠镜+胃镜": "✅",
+    "肠镜+胃镜_date": "2026-05-29",
+    "启动降脂饮食": "✅",
+    "启动降脂饮食_date": "2026-05-29",
+    "眼科验光配镜": "⬜",
+    "血管外科评估": "⬜",
+    "牙科检查": "⬜"
+  },
   "alert_thresholds": {
     "green": {
       "exercise_week": ">=5天运动且>=6天饮食达标",

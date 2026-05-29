@@ -1,0 +1,346 @@
+<section style="font-size:16px;color:#333;line-height:1.8;letter-spacing:0.5px;">
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">为什么国内产品需要单独评价</h2>
+<br/>
+<p>三个现实原因：</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>第一，可用性鸿沟。</strong> Claude Code、Devin、Cursor——这些产品的完整能力在国内需要科学上网、海外支付、英文界面。对大多数国内用户来说，"能不能用"比"好不好用"更优先。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>第二，生态差异。</strong> 国内AI产品深度集成本地生态——微信、飞书、钉钉、WPS——这些集成场景在国际产品中完全不存在。飞书内嵌的AI助手在工作流中的价值，不是一个独立的Chat界面可以替代的。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>第三，使用模式不同。</strong> 国内用户更习惯"All-in-One"的超级App模式，而不是CLI+脚本的开发者模式。这决定了产品的交互范式——国内产品偏向"聊天式AI"，国际产品偏向"工具式Agent"。</p>
+<br/>
+<p>评价框架沿用上一篇的10维评分体系，但增加一个中国特有维度。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">评价框架：10+1维</h2>
+<br/>
+<p>沿用前一篇的10维，每维1-5分，新增第11维：</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">#</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">5分标准</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">1-10</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">同前一篇（记忆/Agent编排/验证层/自主性/多模态/学习闭环/团队化/异常聚焦/环境隔离/开放性）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">同前一篇标准</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">11</td>
+<td style="border:1px solid #ddd;padding:6px 8px;"><strong>本土生态集成</strong></td>
+<td style="border:1px solid #ddd;padding:6px 8px;">深度集成国内主流工作流工具（微信/飞书/钉钉/WPS/国产IDE）</td>
+</tr>
+</table>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">产品一：DeepSeek（深度求索）</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>2025年初以DeepSeek-V3和R1震撼全球，目前是国内技术实力最强的基座模型之一。产品形态：Web Chat + App + API。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">逐维评价</h3>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">评分</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">理由</td>
+</tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">记忆系统</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">对话历史保存，但无结构化持久记忆、无自定义规则文件</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">Agent编排</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">API支持Function Calling，但Chat界面无多Agent能力</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">验证层</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无内建验证</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">自主性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">仅问答模式，无自主执行</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">多模态执行</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">文件上传+图片理解，不支持浏览器/Shell操作</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">学习闭环</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">团队化</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">纯个人产品</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">异常聚焦</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">环境隔离</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">开放性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★★☆ (4)</td><td style="border:1px solid #ddd;padding:6px 8px;">开源模型+低价API+兼容OpenAI格式，生态最好</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">本土生态集成</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">无明显生态集成</td></tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>综合：19/55（管理模式成熟度 35%）</strong></p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">一句话诊断</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>最好的国产基座模型，但不是Agent产品。</strong> DeepSeek的核心价值在模型能力（推理强、编码强、中文强、便宜），不在产品形态。把它看作"中国版GPT-4级别的API"，用来给其他Agent产品提供算力，而不是把它当Agent用。</p>
+<br/>
+<p><strong>最适合的场景</strong>：作为Claude Code的替代模型后端、本地私有化部署的基座、中文长文本处理。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">产品二：通义灵码（阿里云）</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>阿里云推出的AI编码助手，深度集成VS Code和JetBrains，背后是通义千问模型。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">逐维评价</h3>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">评分</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">理由</td>
+</tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">记忆系统</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">.lingma/配置目录+项目级规则，但不如CLAUDE.md结构化</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">Agent编排</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">单Agent，无并行编排</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">验证层</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">内建代码审查+单测生成</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">自主性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">Tab补全+问答，无自主多步执行</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">多模态执行</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">VS Code/JetBrains深度集成+终端，IDE内体验流畅</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">学习闭环</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">上下文学习但无跨会话持久化</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">团队化</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">支持企业版+团队配置+代码规范统一管理</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">异常聚焦</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">环境隔离</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">本地运行，无沙箱</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">开放性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">仅限阿里云生态</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">本土生态集成</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★★☆ (4)</td><td style="border:1px solid #ddd;padding:6px 8px;">阿里云全家桶+钉钉+云效DevOps，国内最完整的开发工具链</td></tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>综合：25/55（管理模式成熟度 45%）</strong></p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">一句话诊断</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>国内IDE集成最好的编码助手，但远未到Agent能力。</strong> 通义灵码的定位是"编码辅助"而非"任务执行"。它在代码补全、代码解释、单测生成上表现扎实，但它不会帮你规划任务、拆解步骤、编排多Agent。从管理模式视角看，它处于"工具辅助"（L1）阶段，离"任务委托"（L2）还有距离。</p>
+<br/>
+<p><strong>最适合的场景</strong>：阿里云生态内的日常编码、代码审查、单元测试生成。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">产品三：Kimi（月之暗面/Moonshot AI）</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>以超长上下文（200万字）闻名，产品形态：Web + App + 浏览器插件。国内用户量最大的AI助手之一。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">逐维评价</h3>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">评分</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">理由</td>
+</tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">记忆系统</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">"Kimi记忆"功能——可记住用户偏好和关键信息，国内产品中记忆最好的</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">Agent编排</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无Agent能力</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">验证层</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">自主性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">纯问答模式，但长上下文使它能"记住"整本书的内容来回答</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">多模态执行</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">文件上传+URL抓取+图片理解，但无Shell/浏览器操作</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">学习闭环</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">"记忆"功能有学习能力但较基础</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">团队化</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">个人产品</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">异常聚焦</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">环境隔离</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">开放性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">API可用但生态不如DeepSeek</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">本土生态集成</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">微信小程序+浏览器插件+App</td></tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>综合：18/55（管理模式成熟度 33%）</strong></p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">一句话诊断</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>问答模式的极致——长上下文记忆是独特优势，但不是Agent。</strong> Kimi的200万字上下文本质上是一种"会话内记忆"，这在处理超长文档时非常有用（一份500页的招股书可以完整丢进去）。但它的定位是一个"超级阅读理解器"，不是一个"任务执行器"。从管理模式视角看，Kimi是一个信息处理能力极强的工具，但如果要让它按你的规范、拆解任务、并行执行——它做不到。</p>
+<br/>
+<p><strong>最适合的场景</strong>：超长文档阅读、研报/财报全文分析、知识提取和总结。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">产品四：豆包MarsCode（字节跳动）</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>字节推出的AI编程IDE，基于豆包大模型。产品形态：独立IDE（基于VS Code Fork）+ 浏览器版。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">逐维评价</h3>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">评分</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">理由</td>
+</tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">记忆系统</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">项目上下文感知，但无持久记忆系统</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">Agent编排</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">多步代码修改能力，但不是多Agent编排</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">验证层</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">代码审查+错误修复</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">自主性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">可自主完成多文件代码修改和部署预览</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">多模态执行</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">独立IDE+内置终端+预览+云部署</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">学习闭环</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">无持久学习</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">团队化</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">云端项目共享+协作</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">异常聚焦</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">环境隔离</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">云端沙箱+独立IDE环境</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">开放性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">封闭在字节生态内</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">本土生态集成</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★★☆ (4)</td><td style="border:1px solid #ddd;padding:6px 8px;">字节系全家桶（飞书+火山引擎+ Lark）+ 中文开发体验好</td></tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>综合：27/55（管理模式成熟度 49%）</strong></p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">一句话诊断</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>国内最接近"Agent化"的编码工具，独立IDE策略降低了配置门槛。</strong> MarsCode的策略很聪明——不像通义灵码做IDE插件，而是做一个完整的AI IDE（类似Cursor的路，但是独立产品）。这给了它更大的自主性——不只是补全和问答，而是帮你创建项目、写多文件代码、部署预览。从管理模式视角看，它在从L1（工具辅助）向L2（任务委托）过渡。</p>
+<br/>
+<p><strong>最适合的场景</strong>：中文开发者快速原型开发、飞书生态内应用开发、不需要复杂Agent编排的个人项目。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">产品五：文心一言/Comate（百度）</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>百度AI助手（文心一言）+ 编码助手（Comate），基于ERNIE模型。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">逐维评价</h3>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">评分</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">理由</td>
+</tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">记忆系统</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">对话历史，无结构化记忆</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">Agent编排</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无Agent能力</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">验证层</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">自主性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">基础的多步对话</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">多模态执行</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">Web+App+图片+文件</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">学习闭环</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">团队化</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">企业版可用</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">异常聚焦</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">环境隔离</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">开放性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">API+百度智能云生态+插件</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">本土生态集成</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★★☆ (4)</td><td style="border:1px solid #ddd;padding:6px 8px;">百度搜索+百度网盘+百度地图+文库</td></tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>综合：19/55（管理模式成熟度 35%）</strong></p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">一句话诊断</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>百度生态的入口级AI，搜索+AI的结合是独特优势但不是管理模式。</strong> 文心一言的搜索结果增强是其他产品不具备的——当你的问题需要实时信息时，它能直接搜。但作为一个Agent产品，它还停留在"聊天式AI"阶段。Comate（编码助手）也比较基础。</p>
+<br/>
+<p><strong>最适合的场景</strong>：需要实时搜索信息的问答、百度生态内的文档/网盘处理。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">产品六：智谱清言/CodeGeeX（智谱AI）</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>基于GLM模型，智谱清言是Chat产品，CodeGeeX是编码助手插件。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">逐维评价</h3>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">评分</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">理由</td>
+</tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">记忆系统</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">基础记忆</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">Agent编排</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">AutoGLM——手机端自主操作能力（独特性）</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">验证层</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">自主性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">AutoGLM可自主操作手机App——这个方向非常"Agent"</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">多模态执行</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">手机端操作+代码+图文</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">学习闭环</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">团队化</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">企业版+私有化部署+MaaS平台</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">异常聚焦</td><td style="border:1px solid #ddd;padding:6px 8px;">★☆☆☆☆ (1)</td><td style="border:1px solid #ddd;padding:6px 8px;">无</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">环境隔离</td><td style="border:1px solid #ddd;padding:6px 8px;">★★☆☆☆ (2)</td><td style="border:1px solid #ddd;padding:6px 8px;">私有部署可隔离</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">开放性</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★★☆ (4)</td><td style="border:1px solid #ddd;padding:6px 8px;">开源GLM模型+MaaS平台+多端部署，国内最开放之一</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">本土生态集成</td><td style="border:1px solid #ddd;padding:6px 8px;">★★★☆☆ (3)</td><td style="border:1px solid #ddd;padding:6px 8px;">手机端+WPS+企业微信</td></tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>综合：25/55（管理模式成熟度 45%）</strong></p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">一句话诊断</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>AutoGLM是六款产品中最接近"Agent"概念的——让AI自主操作你的手机。</strong> 这个方向和Claude Code的"Agent执行任务"理念一脉相承，只是执行环境从CLI变成了手机屏幕。CodeGeeX的编码辅助比较基础。从管理模式视角看，智谱在Agent自主性上走对了方向，但产品化程度还非常初级。</p>
+<br/>
+<p><strong>最适合的场景</strong>：AutoGLM——手机端自动化操作（订票、填表、信息查询）；CodeGeeX——基础代码补全；企业私有化部署。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">综合排名</h2>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">排名</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">产品</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">管理模式成熟度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">一句话</td>
+</tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">1</td><td style="border:1px solid #ddd;padding:6px 8px;"><strong>豆包MarsCode</strong></td><td style="border:1px solid #ddd;padding:6px 8px;">49% (27/55)</td><td style="border:1px solid #ddd;padding:6px 8px;">最接近Agent的国产编码工具，独立IDE策略降低了门槛</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">2</td><td style="border:1px solid #ddd;padding:6px 8px;"><strong>通义灵码</strong></td><td style="border:1px solid #ddd;padding:6px 8px;">45% (25/55)</td><td style="border:1px solid #ddd;padding:6px 8px;">IDE集成最好，阿里云生态完整，但仍是辅助而非Agent</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">3</td><td style="border:1px solid #ddd;padding:6px 8px;"><strong>智谱清言/CodeGeeX</strong></td><td style="border:1px solid #ddd;padding:6px 8px;">45% (25/55)</td><td style="border:1px solid #ddd;padding:6px 8px;">AutoGLM方向对，但产品化初级；开源最开放</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">4</td><td style="border:1px solid #ddd;padding:6px 8px;"><strong>DeepSeek</strong></td><td style="border:1px solid #ddd;padding:6px 8px;">35% (19/55)</td><td style="border:1px solid #ddd;padding:6px 8px;">最强国产基座模型，但不是Agent产品</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">5</td><td style="border:1px solid #ddd;padding:6px 8px;"><strong>文心一言/Comate</strong></td><td style="border:1px solid #ddd;padding:6px 8px;">35% (19/55)</td><td style="border:1px solid #ddd;padding:6px 8px;">百度生态入口，搜索增强独特，Agent能力弱</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">6</td><td style="border:1px solid #ddd;padding:6px 8px;"><strong>Kimi</strong></td><td style="border:1px solid #ddd;padding:6px 8px;">33% (18/55)</td><td style="border:1px solid #ddd;padding:6px 8px;">问答模式极致，长上下文记忆独特，不是Agent</td></tr>
+</table>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">国内 vs 国际：差距在哪里</h2>
+<br/>
+<p>将国内6款产品的均分与国际6款产品对比：</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">国际产品均分</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">国内产品均分</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">差距</td>
+</tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">Agent编排</td><td style="border:1px solid #ddd;padding:6px 8px;">2.8</td><td style="border:1px solid #ddd;padding:6px 8px;">1.8</td><td style="border:1px solid #ddd;padding:6px 8px;"><strong>-1.0</strong> 差距最大</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">验证层</td><td style="border:1px solid #ddd;padding:6px 8px;">2.2</td><td style="border:1px solid #ddd;padding:6px 8px;">1.2</td><td style="border:1px solid #ddd;padding:6px 8px;"><strong>-1.0</strong> 差距最大</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">自主性</td><td style="border:1px solid #ddd;padding:6px 8px;">3.2</td><td style="border:1px solid #ddd;padding:6px 8px;">2.3</td><td style="border:1px solid #ddd;padding:6px 8px;">-0.8</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">学习闭环</td><td style="border:1px solid #ddd;padding:6px 8px;">2.2</td><td style="border:1px solid #ddd;padding:6px 8px;">1.5</td><td style="border:1px solid #ddd;padding:6px 8px;">-0.7</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">多模态执行</td><td style="border:1px solid #ddd;padding:6px 8px;">3.0</td><td style="border:1px solid #ddd;padding:6px 8px;">2.5</td><td style="border:1px solid #ddd;padding:6px 8px;">-0.5</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">环境隔离</td><td style="border:1px solid #ddd;padding:6px 8px;">2.8</td><td style="border:1px solid #ddd;padding:6px 8px;">1.7</td><td style="border:1px solid #ddd;padding:6px 8px;">-1.2</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">记忆系统</td><td style="border:1px solid #ddd;padding:6px 8px;">2.7</td><td style="border:1px solid #ddd;padding:6px 8px;">2.2</td><td style="border:1px solid #ddd;padding:6px 8px;">-0.5</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">开放性</td><td style="border:1px solid #ddd;padding:6px 8px;">3.2</td><td style="border:1px solid #ddd;padding:6px 8px;">3.0</td><td style="border:1px solid #ddd;padding:6px 8px;">-0.2 差距最小</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">团队化</td><td style="border:1px solid #ddd;padding:6px 8px;">2.5</td><td style="border:1px solid #ddd;padding:6px 8px;">2.2</td><td style="border:1px solid #ddd;padding:6px 8px;">-0.3</td></tr>
+<tr><td style="border:1px solid #ddd;padding:6px 8px;">本土生态集成</td><td style="border:1px solid #ddd;padding:6px 8px;">—</td><td style="border:1px solid #ddd;padding:6px 8px;">3.3</td><td style="border:1px solid #ddd;padding:6px 8px;">国内独有优势</td></tr>
+</table>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">差距最大的三项</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>Agent编排（1.8 vs 2.8）</strong>：国内产品几乎全部停留在单Agent或无Agent阶段。没有任何一款产品支持"同时启动多个Agent并行执行不同维度的任务"。这是管理模式和生产效率被拉开的核心原因。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>环境隔离（1.7 vs 2.8）</strong>：国内产品几乎没有沙箱/隔离概念。MarsCode的云端沙箱是唯一的例外。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>验证层（1.2 vs 2.2）</strong>：国际产品至少开始有交叉审查和自动验证的基础能力，国内产品在这个维度近乎空白。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">国内的优势</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>本土生态集成（3.3，国际产品此项无意义）</strong>：飞书/钉钉/微信/WPS的深度集成是国际产品无法复制的。一个飞书消息就能触发的AI助手，在工作流中的实际使用频率远超需要打开终端的CLI工具。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>开放性（3.0 vs 3.2，差距最小）</strong>：DeepSeek和智谱的开源+低价API策略使国内在模型可获取性上不输国际。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一个现实建议</h2>
+<br/>
+<p>如果你在国内，想要"管理模式"级别的AI协作体验，当前最务实的路径是：</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>用国产模型作为基座 + 用国际产品的Agent框架。</strong></p>
+<br/>
+<p>具体来说：</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">- 基座模型用DeepSeek API（便宜、中文强、推理好）</p>
+<p style="margin:4px 0 4px 20px;">- Agent工具用Claude Code（通过API代理）+ 自己写的Prompt模板</p>
+<p style="margin:4px 0 4px 20px;">- 长文档处理用Kimi（200万字上下文独步天下）</p>
+<br/>
+<p>这不是一个产品，而是一个组合。但在国内产品的Agent能力赶上之前，这是唯一能同时享受"中文模型能力"和"Agent编排能力"的方式。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>等到国产产品在Agent编排、环境隔离、验证层这三个维度上各提升1-2分——也就是2-3个版本迭代——这个组合策略就需要重新评估了。</strong> 到时候，MarsCode或AutoGLM可能已经填上了Agent能力的缺口。你在国内的AI工作流，可能只需要一个产品。</p>
+<br/>
+<p>---</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p><strong>作者简介</strong>：本文仅代表作者个人观点。AI辅助，长期专注于科技金融与商业实践，持续探索AI工具在金融领域的应用方法论。</p>
+<p>></p>
+<p><strong>系列文章</strong>：</p>
+<p>- ①-⑫ 从方法论到落地实践、产品推演的完整体系</p>
+<p>- ⑬ AI能力发现方法论</p>
+<p>- ⑭ 本文——评价国内主流AI产品</p>
+</blockquote>
+</section>

@@ -1,0 +1,164 @@
+<section style="font-size:16px;color:#333;line-height:1.8;letter-spacing:0.5px;">
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一个前提：Anthropic用AI的方式和你不一样</h2>
+<br/>
+<p>大多数人用AI是"问答模式"——你问一句，它答一句。Anthropic的工程师用AI是"管理团队模式"——你设定方向，AI自己规划、执行、检查、修正、进化。</p>
+<br/>
+<p>这两种模式的区别，就是今天这篇文章要讲的全部内容。</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">问答模式（大多数人在用）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">管理模式（Anthropic在用）</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">你：帮我写个报告 → AI：好的，这是报告 → 你：改一下第二段</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">你：这是背景和格式要求，完成后自己检查一遍再给我 → AI：规划→执行→自查→交付</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">一次做一件事</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">同时启动3个Agent并行工作</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI产出=你要自己验证</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI产出自带自检结果</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">每次对话从零开始</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI记得你的偏好和项目规范</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">你操作AI</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">你指挥AI团队</td>
+</tr>
+</table>
+<br/>
+<p>我花了一周时间逆向研究了Anthropic使用AI构建软件的方法论——从Claude Code的能力进化轨迹中推导出18条原则，分四层，形成一个自我进化的飞轮。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>今天这篇文章，就是这18条原则的完整拆解。</strong> 每条原则都附带"你怎么用"的具体指令，读完可以直接操作。</p>
+<br/>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第2层：学会组织任务（原则6-9）</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>这一层解决：复杂任务怎么交给AI。答案是——拆解、规划、给目标不给步骤。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">原则6：复杂任务拆解+分发</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>不要一个AI做所有事。把大任务拆成3-5个子任务，分给不同Agent并行执行。</strong></p>
+<br/>
+<p>Anthropic的Multiagent系统让多个Agent同时工作，各自负责一个维度。5分钟完成一个人需要1小时的工作。</p>
+<br/>
+<p>正确示范：</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>同时做三件事：1. 帮我查华为昇腾、寒武纪、海光信息的最新AI芯片参数和商业化进展 2. 帮我找这三家公司最近一个季度的财报核心数据 3. 帮我梳理国家对AI芯片的最新政策。每个方向独立完成，最后汇总成一张对比表。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">原则7：Agent角色分工</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>给每个子Agent设定"角色"，它在这个角色下产出更专业。</strong></p>
+<br/>
+<p>Anthropic的子Agent有研究员、审查员、执行者等不同角色。角色越明确，产出越专业。</p>
+<br/>
+<p>试试这样说：</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>你现在扮演三个角色同时工作：角色A"行业分析师"——从市场角度分析；角色B"技术专家"——从技术可行性角度分析；角色C"风险官"——只关注风险点。每个角色独立输出，最后汇总给我。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">原则8：给目标不给步骤</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>说"完成X"，不要说"先做A再做B再做C"。</strong></p>
+<br/>
+<p>这是最重要的原则之一。Anthropic的/goal模式证明——AI自己规划的执行路径，往往比人指定的步骤更优。人擅长定义"要什么"，AI擅长找到"怎么做到"。</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">• 错误："先打开这份文件，找到营收数据，然后和前年对比，再计算增长率，最后画个表"</p>
+<p style="margin:4px 0 4px 20px;">• 正确："帮我分析这份财报的营收变化趋势，找出增长最快和最慢的业务线，用表格呈现"</p>
+<br/>
+<p>检查一下你今天给AI的指令——有没有"怎么做"的内容？试着删掉它们，只留"要什么结果"。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">原则9：规划与执行解耦</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>重要任务先让AI出规划→你审阅→AI按批准的计划执行。</strong></p>
+<br/>
+<p>Anthropic的Ultraplan模式将规划和执行分离。规划阶段可以反复修改，确认后再执行——避免方向性错误。</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>我需要写一份向领导汇报AI产业链投资机会的报告，约3000字。先不要写正文。先列出：1. 报告的整体结构 2. 每个章节要覆盖的要点 3. 需要我补充什么信息。我确认结构后，你再开始写。</p>
+</blockquote>
+<br/>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第4层：启动持续进化（原则15-18）</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>这一层解决：怎么让AI越用越好。答案是——反思、记忆、管理、进化。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">原则15：AI需要反思时间</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>定期让AI回顾历史对话，找模式、找矛盾、找可以进化的地方。</strong></p>
+<br/>
+<p>Anthropic的Dreaming功能——AI在两次工作间隙回顾过去100个会话，清理冲突、合并重复、发现规律。灵感来自人类REM睡眠。</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>回顾我们今天所有的对话。告诉我：1. 我反复问了什么类型的问题？ 2. 我对你的哪些回答不满意？为什么？ 3. 有没有我发现不了但我应该注意的模式？</p>
+</blockquote>
+<br/>
+<p>周期：每天花2分钟做快速回顾，每周花15分钟做深度回顾。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">原则16：长期记忆 > 短期上下文</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>把重要信息写入AI能记住的地方，对话结束知识不丢失。</strong></p>
+<br/>
+<p>Anthropic的MEMORY.md系统——项目规范、个人偏好、经验教训都持久化。每次新对话，AI先读记忆，不用从头解释。</p>
+<br/>
+<p>起步模板：</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>我是[身份]，我的工作习惯：写报告先要提纲确认后动笔；数据要表格呈现，结论要一句话概括；格式要求A4正文小四/12pt。</p>
+</blockquote>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">原则17：Agent是需要管理的持续实体</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>不把AI当"用完即弃"的工具。把它当成需要持续管理和优化的团队成员。</strong></p>
+<br/>
+<p style="margin:4px 0 4px 20px;">• 监控：每天早上检查一下定时Agent是否正常产出</p>
+<p style="margin:4px 0 4px 20px;">• 评估：每周评估一次——产出质量是上升还是下降？</p>
+<p style="margin:4px 0 4px 20px;">• 进化：发现模式后优化指令——"经过这一周，我把日报的格式更新为..."</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">原则18：从使用AI到AI自进化</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>终极状态——AI自己发现问题、自己改进、自己验证。人只需要设定方向。</strong></p>
+<br/>
+<p>这是Anthropic飞轮的终点。Dreaming让AI回顾+Outcomes让AI自评+Multiagent让AI协作——三者结合，AI不再依赖人推动。</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">信号</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">说明</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI发现了一个你自己没注意到的问题</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI的观察力开始超过你</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI主动建议"我们可以这样改进流程"</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI开始思考"怎么做更好"</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">你早上看AI昨晚的产出，只修改了10%</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI的交付质量达到你的90分标准</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">你三天没用AI，回来发现它一直在按规则自动工作</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI不需要你推了</td>
+</tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>不需要着急到达。先稳稳走完前三层，这一层是自然发生的。</strong></p>
+<br/>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">使用红线</h2>
+<br/>
+</section>

@@ -1,0 +1,255 @@
+<section style="font-size:16px;color:#333;line-height:1.8;letter-spacing:0.5px;">
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">推演方法：不是预测，是约束条件下的外推</h2>
+<br/>
+<p>一年后的推演比三年后的推演更难，也更简单。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>更难</strong>，因为具体事件不可预测——哪家公司会发布什么产品、哪个模型会突破什么基准，没人知道。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>更简单</strong>，因为一年太短了——基建不会变、范式不会变、瓶颈不会突然消失。一年后的AI不会和今天有本质不同，但会有数量级的不同。</p>
+<br/>
+<p>推演方法：<strong>五个约束条件 x 四个确定趋势 = 一年后的AI画像。</strong></p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">五个约束条件——决定了什么不可能在一年内发生</h2>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">约束一：训练范式不会变</h3>
+<br/>
+<p>一年后，AI仍然基于Transformer架构的变体。不会有全新的架构范式从论文走向产品——架构创新从论文到规模化部署需要3-5年。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>推论</strong>：能力提升来自规模扩展（更多参数/数据/算力）和后训练优化（RLHF的下一代），而不是架构革命。这意味着——能力提升是渐进的、可预测的。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">约束二：记忆系统不会质变</h3>
+<br/>
+<p>记忆是AI最底层的基础设施问题。当前最好的记忆系统（CLAUDE.md + memory/）仍是文件层的实现。从文件层到数据库层到认知模型层，每一层都是架构级变更，不可能在一年内完成。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>推论</strong>：一年后，你的AI仍然不会自动从交互中学习。你仍然需要手动写记忆文件。但记忆文件的格式、工具、管理方式会更好用。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">约束三：物理世界操作不会规模化</h3>
+<br/>
+<p>具身智能的人形机器人仍然在实验室阶段。成本和可靠性两个瓶颈都不是一年能解决的。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>推论</strong>：一年后的AI仍然主要在数字世界操作。你的工作——投资分析、写报告、做研究——全部是数字世界的，所以AI能覆盖你90%的工作。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">约束四：监管不会追上技术</h3>
+<br/>
+<p>AI监管的立法周期是2-5年（从提案到生效），技术迭代周期是3-6个月（从论文到产品）。这个速度差不会在一年内缩小。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>推论</strong>：一年后，AI的使用边界仍然主要由产品自身定义，而不是法律定义。这对个人使用者是好事（没有合规阻碍），对行业是隐忧（出事后才立法）。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">约束五：中文AI生态不会追平英文</h3>
+<br/>
+<p>中文数据在预训练中的占比、中文开源社区的质量、中文Agent工具的生态——三个维度的差距不是一年能弥补的。缩小，但追不平。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>推论</strong>：一年后，最强的AI工具仍然英文优先。但国产工具的Agent能力会有显著提升——MarsCode和AutoGLM一年后的版本可能让你不需要靠英文工具实现管理模式。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">四个确定趋势——在约束条件下，什么一定会发生</h2>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">趋势一：推理能力从L2.0走到L2.5（确定性：95%）</h3>
+<br/>
+<p>当前最强模型的推理水平在L2（长链推理，能解数学竞赛题）。一年后，L2的深度会增加，但不太可能突破L3（自主发现假设）。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>具体表现</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- 能处理更长的推理链（从10步到50步）</p>
+<p style="margin:4px 0 4px 20px;">- 多步推理的一致性显著提升（不会中间跳步或逻辑断裂）</p>
+<p style="margin:4px 0 4px 20px;">- "推理+执行"的融合更好——不只是"想"，还能在"想"的过程中调用工具验证中间结论</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>对你意味着什么</strong>：一年后的AI能做更深的投资分析——不只是提取指标和对比，而是追踪一条逻辑链（"这个季度毛利率下降→因为原材料涨价→因为上游供应商集中度提高→因为行业整合→这个趋势会不会持续→判断"）。今天你还需要自己串这个链，一年后AI可以串到80%。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">趋势二：Agent编排从实验走向产品化（确定性：90%）</h3>
+<br/>
+<p>Claude Code的多Agent能力现在还需要手动Prompt编排。Devin的自主Pipeline是产品化的但不是开放的。一年后，Agent编排会从"懂的人手动操作"变成"产品化的一键功能"。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>具体表现</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- 主流编码工具会有"创建Agent团队"的图形化配置，不需要写复杂的System Prompt</p>
+<p style="margin:4px 0 4px 20px;">- Agent间自动协调——你不需要写"汇总Agent"，系统自动检测多个Agent产出中的矛盾</p>
+<p style="margin:4px 0 4px 20px;">- Agent模板市场——常见任务的预配置Agent团队，一键部署</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>对你意味着什么</strong>：第十篇的30天启动计划，今天需要你手动给AI写拆解+汇总的Prompt。一年后，很多步骤变成产品功能——点击"创建投资分析Agent组"，选几个模板，就能用了。启动门槛从"需要方法论文档"降到"需要知道这个功能存在"。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">趋势三：国产Agent工具从45%走到55%成熟度（确定性：85%）</h3>
+<br/>
+<p>上一篇评价国产产品最高49%管理模式成熟度。按当前速度，一年后能到55-60%。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>具体表现</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- MarsCode的自主编码能力接近Cursor的Agent模式</p>
+<p style="margin:4px 0 4px 20px;">- AutoGLM的手机自主操作覆盖更多App和场景</p>
+<p style="margin:4px 0 4px 20px;">- 至少一款国产产品会推出"多Agent并行"功能（目前是0款）</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>对你意味着什么</strong>：一年后，你有可能完全用国产工具实现管理模式——不需要科学上网、不需要英文界面、不需要API代理。但不是"今天随便用一个国产工具就能做到"，而是"最强的那个国产工具的Agent能力够用了"。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">趋势四：上下文窗口不再是瓶颈，但"有效使用"仍然是瓶颈（确定性：95%）</h3>
+<br/>
+<p>上下文窗口已经从4K走到200万token。一年后可能到500万甚至1000万。但"把200万token的上下文有效用于复杂推理"仍然是个难题——模型在后半段会"走神"。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>具体表现</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- 长文档的"信息提取"准确率接近100%</p>
+<p style="margin:4px 0 4px 20px;">- 长文档的"跨章节推理"准确率约80-90%</p>
+<p style="margin:4px 0 4px 20px;">- 长文档的"隐性问题发现"（"这篇研报没有说什么"）仍然不可靠</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>对你意味着什么</strong>：一年后，你可以把整份500页的招股书丢给AI，它能把所有财务数据提取出来做对比。但如果问它"这份招股书在刻意回避什么问题"，它仍然会漏。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一年后的AI能力画像</h2>
+<br/>
+<p>综合约束和趋势，2027年中AI的五维能力坐标：</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;font-weight:bold;background:#f5f5f5;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;font-weight:bold;background:#f5f5f5;">2026.5 当前</td>
+<td style="border:1px solid #ddd;padding:6px 8px;font-weight:bold;background:#f5f5f5;">2027.5 推演</td>
+<td style="border:1px solid #ddd;padding:6px 8px;font-weight:bold;background:#f5f5f5;">变化</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">推理与抽象</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L2.0</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L2.5</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">推理链更长更稳，但仍不能自主发现假设</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">记忆与知识</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L1.5</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L2.0</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">跨会话记忆产品化，但仍需手动维护核心规则</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">自主性</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L1.5</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L2.0</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Agent编排产品化，"给定目标自主拆解"成标配</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">多模态交互</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L2.5</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L3.0</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">数字世界操作基本成熟，物理世界仍遥远</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">学习与适应</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L1.5</td>
+<td style="border:1px solid #ddd;padding:6px 8px;text-align:center;">L1.8</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">上下文学习更强，跨会话学习仍无突破</td>
+</tr>
+</table>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>整体进度</strong>：从40-50%走到约55-60%。离AGI还有距离，但离"在日常工作中不可或缺"已经没有距离。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一年后，你所在六个领域的变化</h2>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">投资（第一目标）</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>一年后你能做什么</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- 每季度20家公司的全面体检从半天压缩到30分钟（Agent编排产品化+推理增强）</p>
+<p style="margin:4px 0 4px 20px;">- 持仓追踪从"每周15分钟"变成"AI持续监控+异常自动推送"</p>
+<p style="margin:4px 0 4px 20px;">- 三份研报交叉审查变成一键操作，不再是手动Prompt工程</p>
+<p style="margin:4px 0 4px 20px;">- 记忆文件积累了一年——你的投资分析规范经过4个季度迭代，精准得像另一个你</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>一年后仍然不能做</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- AI不能独立判断"这个管理层是否靠谱"（需要面对面感知，AI没有这个能力）</p>
+<p style="margin:4px 0 4px 20px;">- AI不能预判行业拐点（拐点是结构性的，数据只能描述过去）</p>
+<p style="margin:4px 0 4px 20px;">- AI不能替你承担决策的心理压力（判断的责任永远在你）</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">事业（科技金融）</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>一年后你能做什么</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- 授信报告的AI化程度从"AI辅助写"到"AI写完整初稿+人只判断3-5个关键问题"</p>
+<p style="margin:4px 0 4px 20px;">- 科技企业"含科量"评估从人工打分变成AI自动评估+人确认</p>
+<p style="margin:4px 0 4px 20px;">- 民建提案/政策建议的初稿由AI生成（基于你的记忆文件中的政策框架和数据）</p>
+<p style="margin:4px 0 4px 20px;">- 备考中级经济师时，AI生成针对性的习题和论述题素材</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>一年后仍然不能做</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- AI不能替你参加线下考试</p>
+<p style="margin:4px 0 4px 20px;">- AI不能替你维护客户关系（信任建立在人与人的互动上）</p>
+<p style="margin:4px 0 4px 20px;">- AI不能替你在组织内争取资源和话语权</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">家庭</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>一年后你能做什么</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- 子女教育中的AI辅助从"偶尔用用"到"常规工具"——AI生成个性化练习题、追踪学习进度、推荐阅读材料</p>
+<p style="margin:4px 0 4px 20px;">- 家庭财务规划由AI持续追踪和预警（结合你的投资分析体系）</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">健康</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>一年后你能做什么</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- 健康数据的AI分析更细致——不只是"体重在正常范围"，而是"你的体重变化曲线和你的运动/饮食/睡眠数据的相关性分析"</p>
+<p style="margin:4px 0 4px 20px;">- AI生成的个性化运动和饮食建议</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">AI能力（第五目标）</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>一年后</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- 你的管理模式已经跑通了一年以上——从"有意识地执行"变成"肌肉记忆"</p>
+<p style="margin:4px 0 4px 20px;">- 你的Agent配置库至少10套模板</p>
+<p style="margin:4px 0 4px 20px;">- 你的记忆文件经过数十次迭代，对AI来说是你个人的完整操作手册</p>
+<p style="margin:4px 0 4px 20px;">- Python/自动化能力从基础到能写自己需要的脚本</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">知识库（第六目标）</h3>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>一年后</strong>：</p>
+<p style="margin:4px 0 4px 20px;">- 知识卡片从50张到150+张，覆盖投资框架、科技金融方法论、AI方法论</p>
+<p style="margin:4px 0 4px 20px;">- AI在你的每次协作中自动调用相关卡片，不需要你手动指定</p>
+<p style="margin:4px 0 4px 20px;">- Obsidian + AI双层架构从"搭好了"到"自动化运转了"</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">你现在应该做的五件事</h2>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">第一件：完成管理模式的冷启动（优先级：最高，周期：30天）</h3>
+<br/>
+<p>即第十篇的30天计划。选一个场景（建议：投资分析——你每周花时间最多的任务），建一份规范，跑一次并行流程。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>为什么现在做</strong>：一年后Agent编排产品化了，先行者优势会变成你的工作流优势。你现在花30天建立的管理模式习惯，一年后将变成不可替代的效率差。而那些等产品成熟了再开始的人，少了整整一年的迭代积累。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">第二件：建记忆基础设施（优先级：高，周期：持续）</h3>
+<br/>
+<p>把你所有的判断标准、分析方法、决策规则文档化，存为记忆文件。不只是投资分析规范——健康判断标准、事业决策框架、子女教育原则——每个领域一份。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>为什么现在做</strong>：原则16说"记忆是基础设施"。一年后五个能力维度中最可能落后的是记忆（只从L1.5到L2.0）。记忆系统的进步最慢，所以你现在建的每一份记忆文件，在一年后仍然高度可用。记忆文件的复利效应是六个维度中最强的——写得越早，迭代次数越多，精准度越高。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">第三件：选一个国产Agent工具深度使用（优先级：中，周期：即时开始）</h3>
+<br/>
+<p>从MarsCode或智谱中选一个，不只是试用，是把它融入你的日常工作流。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>为什么现在做</strong>：一年后国产Agent工具的成熟度从49%→55%，这个跃迁看起来不大。但如果你现在就开始用，你会经历它的每一次版本更新，逐渐了解它的能力边界。等它到了55%的时候，你的使用深度远超"刚发现这个功能"的人。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">第四件：建立每周15分钟的AI能力雷达更新（优先级：中，周期：每周）</h3>
+<br/>
+<p>按第十三篇的方法——四个象限，每周15分钟更新。不是为了"了解更多"，是为了"不错过对我有价值的"。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>为什么现在做</strong>：一年后AI产品的迭代速度只会更快。没有雷达的人会被信息洪流淹没。有雷达的人知道——"这件事我需要知道，那件事和我无关"。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">第五件：在一个领域做到"AI比我做得好"（优先级：低但重要，周期：3-6个月）</h3>
+<br/>
+<p>选一个你每天都在做的具体任务（不是"投资分析"这种大类，而是"提取财报核心指标"这种具体子任务），让你的AI在这个任务上的产出超过你自己做的。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>为什么现在做</strong>：这不是为了省时间。是为了让你体验"AI在某件事上做得比你好"是什么感觉。这个体验会改变你对自己角色的认知——从"我是做这件事的人"变成"我是判断这件事是否做对的人"。这种认知转变，是管理模式能否真正内化的关键。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一个反直觉的结论</h2>
+<br/>
+<p>很多人觉得——AI发展太快了，等它稳定下来再投入。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>恰恰相反。AI发展太快，所以等不起。</strong></p>
+<br/>
+<p>一年后的AI不会让你觉得"喔现在终于可以开始用了"。它每3-6个月进步一点，每次进步都不大，但累积起来——一年后回头看你发现回不去了。就像2010年你不会觉得"等移动互联网稳定了再做App"，因为等你觉得稳定了，窗口已经关了。</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>AI能力的"代际跃迁"不是在某一刻发生的。它是在你不知不觉中累积的——直到有一天你在没有AI的情况下做一件事，发现比有AI慢了10倍。</strong></p>
+<br/>
+<p>那才是你真正意识到世界变了的时候。而我希望你是在那一天到来之前，就已经跑了12个月的管理模式。</p>
+<br/>
+<p>---</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p><strong>作者简介</strong>：本文仅代表作者个人观点。AI辅助，长期专注于科技金融与商业实践，持续探索AI工具在金融领域的应用方法论。</p>
+<p>></p>
+<p><strong>系列文章</strong>：</p>
+<p>- ①-⑯ 从方法论到产品评价、AGI定义、未来方向的完整体系</p>
+<p>- ⑰ 本文——一年后的AI推演与个人行动纲领</p>
+</blockquote>
+</section>
