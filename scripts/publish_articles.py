@@ -369,7 +369,7 @@ def publish_caixin(article_ids=None):
             print(f"  📌 发布后运行: python3 scripts/publish_articles.py --mark {article['id']} caixin")
 
         print(f"\n  等待发布完成...关闭浏览器窗口后继续")
-        page.wait_for_close(timeout=600000)
+        page.wait_for_event('close', timeout=600000)
 
     finally:
         browser.close()

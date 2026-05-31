@@ -1,0 +1,131 @@
+<section style="font-size:16px;color:#333;line-height:1.8;letter-spacing:0.5px;">
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">AI工作流⑧：Django创始人的8个Agent工程模式——工程飞轮完整配置</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;"><p>"一天能产出10000行代码。但好代码仍然是贵的——AI不能替你保证可测试性、可维护性和错误处理。"——Simon Willison，Django框架联合创始人</p></blockquote>
+<br/>
+<br/>
+<p>Simon Willison是Django Web框架的联合创始人，Datasette开源工具的作者。他是目前全世界最系统化地记录了"怎么用AI编程"的人。</p>
+<p>他不是"用AI写代码"。他是"设计了一套Agent工程模式，定义了人怎么和AI协作写生产级代码"。</p>
+<p>2025年11月是他定义的拐点：GPT-5.1/5.2和Claude Opus 4.5发布后，AI编程从"大部分时候能用，但得盯着"变成"几乎总是按指令正确执行"。他在Lenny's Podcast上公开了完整的8个工程模式。</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">Simon Willison的Agent工程配置表</h2>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">环节</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI做什么</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Simon做什么</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">对应模式</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">需求定义</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">无</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">写failing test（红灯）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模式3：Red/Green TDD</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">实现</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI读测试→实现功能→直到测试变绿</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">确认测试通过</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模式3</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">项目初始化</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI读取项目状态</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">先让AI跑一遍已有测试</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模式4：First Run the Tests</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">代码理解</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI生成结构化walkthrough文档</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">读文档，建立心智模型</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模式5：Linear Walkthroughs</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">可视化理解</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI生成交互式demo</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">操作demo，直观理解</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模式6：Interactive Explanations</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">质量投入</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">无——AI不能做这个</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">用省下的时间做重构、加测试、改名、模块化</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模式7：Better Code, Not More Code</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">PR审查</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI可以写代码但不能发PR</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">审查后手动提交</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模式8：Never Submit Unreviewed</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">技能积累</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">无</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">把解决的每个问题存成TIL/博客/GitHub</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模式2：Hoard Things</td>
+</tr>
+</table><br/>
+<p>核心哲学：<strong>AI替你省的是打字时间，不是思考时间。用省下的时间做那些"以前觉得不值得花时间"的质量工作。</strong></p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一个真实案例：看不懂自己"写"的SwiftUI App</h2>
+<br/>
+<p>Simon最近用AI"写"了一个SwiftUI App。整个过程他用的是vibe coding——告诉AI要什么，AI生成代码，跑通，继续加功能。</p>
+<p>App工作了。功能齐全。UI正常。</p>
+<p>然后他意识到一个问题：<strong>他完全不知道这个App是怎么工作的。</strong></p>
+<p>他不懂SwiftUI。AI替他写了所有代码。如果后续要改一个细节，他连从哪个文件改起都不知道。</p>
+<p>这时他启动了两个模式来解决：</p>
+<p><strong>模式5（Linear Walkthroughs）：</strong> 他让AI生成了一份结构化的walkthrough文档——每个文件是做什么的、数据怎么流动的、关键函数在哪。读完这份文档，他建立了心智模型。</p>
+<p><strong>模式6（Interactive Explanations）：</strong> 文档还不够直观的地方，他让AI生成交互式的可视化demo——比如阿基米德螺旋线的单词排列算法，看demo比读代码快得多。</p>
+<p>他把这个过程叫<strong>"偿还认知债"（paying down cognitive debt）</strong>。认知债是Simon发明的一个概念，区别于技术债：</p>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;"></td>
+<td style="border:1px solid #ddd;padding:6px 8px;">技术债</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">认知债</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">定义</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">代码写得烂，后续改起来费劲</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">代码能用但你不理解，后续不敢改</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">债主</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">团队/项目</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">你自己</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">偿还方式</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">重构</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">让AI教你理解</td>
+</tr>
+</table><br/>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一次翻车经历："黑暗软件工厂"的极端实验</h2>
+<br/>
+<p>Simon提到一家公司——StrongDM——正在做一个极端的实验。这个实验叫<strong>"黑暗软件工厂"（The Dark Software Factory）</strong>：</p>
+<p><strong>没有人写代码，也没有人读代码。</strong> AI Agent做所有的编码工作。</p>
+<p>怎么保证质量？大量投资在自动化测试和验证上。代码对不对，不靠人看——靠测试过不过。</p>
+<p>Simon的评价不是"这是未来"，而是<strong>"这是一个极端实验，让我们看到边界在哪。"</strong></p>
+<p>他不认为"人不读代码"是对的。但他认为这个实验揭示了一个真实趋势：<strong>验证层（测试、监控、自动化检查）比创建层（写代码）越来越重要。</strong></p>
+<p>他见过的最常见的翻车是：程序员用AI写了代码，自己没读，发了PR。同事也没怎么读，看到测试过了就批准了。代码进了生产环境，工作正常。三个月后出了bug，没人能修——因为没人理解那段代码。</p>
+<p>他的规则是：<strong>绝不提交未经审查的AI生成PR。好PR要附带：代码能工作的证据、适当的scope、上下文说明、手动测试记录。</strong></p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一条可迁移的原则</h2>
+<br/>
+<p><strong>Red/Green TDD——先写红灯测试，让AI去找绿灯。</strong></p>
+<p>这是Simon的8个模式里最核心的一个。具体操作：</p>
+<p><strong>Step 1（你，2分钟）：</strong> 写一个失败的测试（红灯）。这个测试定义"什么是正确"——输入是什么，期望输出是什么。</p>
+<p><strong>Step 2（你，30秒）：</strong> 跑测试，确认它确实失败。这一步比看起来重要——如果测试本来就能通过，说明测试写错了。</p>
+<p><strong>Step 3（AI，1-3分钟）：</strong> 把失败的测试贴给AI："让这个测试通过。"</p>
+<p><strong>Step 4（你，30秒）：</strong> AI提交代码后，跑测试。绿了=通过。</p>
+<p>这四步抓住了AI编程最核心的信任问题：你信任的不是AI的能力，是测试的约束力。AI写出的代码如果不满足测试，说明它没有完成任务。测试过了，起码说明它在被测维度上是正确的。</p>
+<p>Simon说这解决了"AI编程最危险的失败模式"——<strong>代码能跑，但逻辑是错的。</strong> 没有测试，代码"能跑"不代表"做对了"。有测试，"测试绿了"才是"做对了"的最低定义。</p>
+<br/>
+<p><strong>AI工作流·人物篇</strong>：</p>
+<p>- ⑥ Karpathy编程飞轮</p>
+<p>- ⑦ Dario Amodei：CEO飞轮</p>
+<p>- ⑧ Simon Willison：8个Agent工程模式（本文）</p>
+<p>- ⑨ Satya Nadella：微软CEO的5个Prompt</p>
+<p>- ⑩ 三位AI创业CEO：从提案到法务</p>
+</section>

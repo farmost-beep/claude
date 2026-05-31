@@ -13,7 +13,7 @@ knowledge_flywheel.py — 知识库自进化飞轮
   python3 knowledge_flywheel.py --dry-run # 只打印报告
 """
 
-import subprocess
+from lib.wechat import push_to_wechat
 import re
 import sys
 from datetime import datetime, timedelta
@@ -44,15 +44,6 @@ INDEX_FILES = {
     VAULT_ROOT / "01-投资成功" / "大师研究" / "大师研究.md",
     VAULT_ROOT / "00-MOC" / "幸福人生描述.md",
 }
-
-
-def push_to_wechat(title: str, content: str) -> bool:
-    script = SCRIPTS_DIR / "wechat_push.py"
-    result = subprocess.run(
-        ["python3", str(script), title, content],
-        capture_output=True, text=True, timeout=15,
-    )
-    return result.returncode == 0
 
 
 # ============================================================
@@ -264,6 +255,18 @@ def build_report(ghosts: list[dict], orphans: list[str],
         actions.append("知识库健康，保持当前节奏")
     for a in actions:
         lines.append(f"- [ ] {a}")
+    lines.append("")
+
+    lines.append("## L3 质量自检")
+    lines.append("- [ ] 幽灵链接检测覆盖所有MOC文件")
+    lines.append("- [ ] 孤儿检测包含所有索引文件的引用源")
+    lines.append("- [ ] 升级候选判断基于实际引用频率而非猜测")
+    lines.append("")
+
+    lines.append("## L4 飞轮反思")
+    lines.append("- 本周最需要人工判断的发现：")
+    lines.append("- 知识库增长 vs 腐烂的趋势：")
+    lines.append("- 下次扫描可以改进的地方：")
 
     lines.append(f"\n---\n飞轮自动运行 | {now}")
     return "\n".join(lines)

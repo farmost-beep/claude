@@ -1,0 +1,162 @@
+<section style="font-size:16px;color:#333;line-height:1.8;letter-spacing:0.5px;">
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">AI工作流⑥：Karpathy的编程飞轮——从80%手写到80%AI写</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;"><p>"我想我大概从去年12月以来就没自己打过一行代码了。"——Andrej Karpathy，前Tesla AI负责人、OpenAI联合创始人</p></blockquote>
+<br/>
+<br/>
+<p>Karpathy是全世界最顶级的AI工程师之一。他在Stanford教深度学习，在Tesla带Autopilot团队，在OpenAI做早期研究。</p>
+<p>2025年11月以前，他写代码的方式是：80%手写，20%让AI补全。2025年12月以后，比例反了过来：80%AI写，20%他审查和修改。</p>
+<p>这个翻转只用了不到一个月。他说这是"二十年编程生涯中，对基础工作流影响最大的一次变化"。</p>
+<p>下面还原他现在的编程飞轮配置。</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">Karpathy的配置表</h2>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">动作</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">工具</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI做什么</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Karpathy做什么</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">日常编码</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Cursor Tab</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI补全代码，Karpathy起头→AI续写</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">写第一行，确认方向</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">大块功能</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Claude Code / Codex</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI独立完成整个功能模块</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">写spec和测试用例</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">最难bug</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">GPT-5 Pro</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">最后防线——其他工具都搞不定的微妙bug</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">描述bug现象，给上下文</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">代码审查</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">IDE（大屏幕）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">无——AI不审AI的代码</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">像老鹰一样盯着，逐行审</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">研究实验</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Auto Research</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Agent自主设计实验、跑、收集结果</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">定义研究问题，看结果</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">家庭自动化</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Dobby（自建Agent）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">控制灯光/空调/窗帘/泳池/安防</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">发WhatsApp消息</td>
+</tr>
+</table><br/>
+<p><strong>屏幕配置：左侧开4个Claude Code终端，各跑一个独立Agent，各自处理不同任务。右侧一个IDE，用于审查代码和手动修改。</strong></p>
+<p>关键设计：<strong>AI负责执行，测试负责验证，人负责定义"什么是正确"。</strong> Karpathy从不跳过测试——测试是AI的"监考老师"。</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一个真实案例：让Agent跑了一整晚的研究</h2>
+<br/>
+<p>Karpathy最近做了一个实验：让Agent自主做机器学习研究。</p>
+<p>他定义了研究问题，给了Agent访问训练数据和实验环境的权限，然后就去睡觉了。</p>
+<p>第二天早上，Agent交回来一份报告——里面有Karpathy自己没看到的调参方向。Agent跑了几十个实验，记录了结果，推荐了一个最优配置。</p>
+<p>不是Agent比Karpathy聪明。是Agent可以不睡觉。它可以试30种参数组合，记录每一个的结果，比较，再试。人类做这件事会累、会烦、会跳过第15组因为"差不多够了"。</p>
+<p>Karpathy把这个叫做"感受AGI的时刻"——不是无所不知，而是不知疲倦。他说：</p>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;"><p>"看一个Agent不知疲倦地死磕某件事真的很有意思。它们不会累，不会灰心，就是持续尝试——很多时如果换成人，早就放弃了。"</p></blockquote>
+<br/>
+<p><strong>这个案例的核心不是AI多聪明。是AI把人类的瓶颈——耐力——抬高了。Karpathy的价值不是跑实验，是定义该跑什么实验。</strong></p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一次翻车经历：AI把代码写成了意大利面</h2>
+<br/>
+<p>Karpathy在多次访谈中毫不避讳地列出AI编程的问题：</p>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">问题类型</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">具体表现</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">错误假设</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI自行脑补假设，不跟人确认就一路执行到底</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">过度复杂化</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">1000行实现其实可以砍到100行，抽象层膨胀</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">死代码不清</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">产出大量无用代码却不清理</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">不管理困惑</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">不主动寻求澄清、不指出矛盾、过度讨好</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">顺手乱改</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">改掉或删掉自己不理解的注释和代码</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">品味缺失</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">过度防御（滥用try/catch）、重复代码块、不用辅助函数</td>
+</tr>
+</table><br/>
+<p>他说即使写了CLAUDE.md指令，这些问题仍然会发生。</p>
+<p>最经典的一次翻车：他让AI实现一个功能，AI写出了"能用但恶心"的代码——功能是对的，但架构是乱的，抽象是多余的，命名是随意的。"如果是一个人写的，我会觉得这个人编程经验不超过6个月。"</p>
+<p>他的解决方案很简单：<strong>"对于真正重要的代码，在旁边开一个大屏幕IDE，像老鹰一样盯着它。"</strong></p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">Karpathy的"真香"警告：技能萎缩</h2>
+<br/>
+<p>Karpathy说了一句让很多程序员不安的话：</p>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;"><p>"我已经明显感觉到，自己手写代码的能力在慢慢退化。"</p></blockquote>
+<br/>
+<p>但他区分了两个概念：<strong>生成代码</strong>和<strong>判別代码</strong>是大脑里两种不同的能力。生成代码涉及大量语法细节，这个能力在退化。但判別代码——阅读、审查、判断好坏——这个能力还在。</p>
+<p>"如果AI有一天撤下梯子，那些习惯漂浮在云端、失去攀爬能力的人将面对严峻挑战。"</p>
+<p>所以他保持一个习惯：<strong>每天读diff。不是读AI写的代码长什么样，是读diff——改了什么、为什么改、改得对不对。</strong> 这个动作维持他的判別能力。</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一条可迁移的原则</h2>
+<br/>
+<p><strong>从命令式转向宣告式：给AI终点，不给路线图。</strong></p>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">旧方式（命令式）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">新方式（宣告式）</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">打开文件→解析字符串→过滤空格→遍历…</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">"我需要一个处理这种CSV格式并输出图表的脚本，这是规格"</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">每一步都精确指定怎么做</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">只定义成功标准，AI自己找路径</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">一个步骤出错全盘皆错</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI自己撞开每一扇门</td>
+</tr>
+</table><br/>
+<p>具体三步：</p>
+<p>1. <strong>先写测试，再让AI过测试。</strong> 测试就是AI的"监考老师"。不过测试的代码=不及格。</p>
+<p>2. <strong>用MCP给AI装"眼睛"。</strong> 让Agent自己能看报错、能查文档、能回头修。不是你把报错贴给它——是它自己看到。</p>
+<p>3. <strong>最大化杠杆。</strong> 你投入的指令时间越短，AI运行的循环时间越长，你获得的倍率越高。</p>
+<p>Karpathy的工作流核心不是"信任AI"。是"信任测试"——测试过了一切好说，测试不过天王老子也得改。</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">Karpathy对2026年的判断</h2>
+<br/>
+<p>他在今年初说过几件事，正在变成现实：</p>
+<p>- <strong>垃圾内容大爆发</strong>：GitHub、Substack、arXiv将充斥AI生成的低品质内容。辨别力比生产力值钱。</p>
+<p>- <strong>人才结构洗牌</strong>：通才（宏观策略、跨领域）被放大百千倍；只做机械执行的专才被挤压。</p>
+<p>- <strong>10X工程师重新定义</strong>：顶级的不是写得快——是知道该写什么。</p>
+<p>- <strong>客户不再是使用者，是Agent</strong>：App应该只是API，由Agent直接调用。人不再打开App，Agent替你打开。</p>
+<p>最后他给自己定了位，也给了所有内容创作者一个原则：</p>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;"><p><strong>"Agent做不到的事，现在就是你的工作了。Agent做得到的事，它们可能做得比你好，或者很快就会。所以你该策略性地思考你到底要把时间花在哪。"</strong></p></blockquote>
+<br/>
+<br/>
+<p><strong>AI工作流·人物篇</strong>：</p>
+<p>- ⑥ Karpathy编程飞轮（本文）</p>
+<p>- ⑦ Dario Amodei：Anthropic CEO怎么用Claude管公司</p>
+<p>- ⑧ Simon Willison：Django创始人的8个Agent工程模式</p>
+<p>- ⑨ Satya Nadella：微软CEO的5个Prompt</p>
+<p>- ⑩ 三位AI创业CEO：从提案到法务</p>
+</section>

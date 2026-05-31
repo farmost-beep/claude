@@ -9,7 +9,7 @@ career_flywheel.py — 事业成功自进化飞轮
   python3 career_flywheel.py --dry-run # 只打印报告
 """
 
-import subprocess
+from lib.wechat import push_to_wechat
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -417,6 +417,17 @@ def build_report(assessments: dict, flywheel: tuple) -> str:
         lines.append("- ✅ 当前无触发风险信号")
     lines.append("")
 
+    lines.append("## L3 质量自检")
+    lines.append("- [ ] 引用的政策/法规/标准名称和条款号准确")
+    lines.append("- [ ] 论证链完整，有摘要→分析→结论结构")
+    lines.append("- [ ] 行动建议具体可执行（有负责人+截止日期）")
+    lines.append("")
+
+    lines.append("## L4 飞轮反思")
+    lines.append("- 本周三层扫描最意外的发现：")
+    lines.append("- 哪个维度的数据最薄弱：")
+    lines.append("- 下次扫描可以改进的地方：")
+
     lines.append(f"---\n飞轮自动运行 | {now}")
     return "\n".join(lines)
 
@@ -424,15 +435,6 @@ def build_report(assessments: dict, flywheel: tuple) -> str:
 # ============================================================
 # 主入口
 # ============================================================
-
-def push_to_wechat(title: str, content: str) -> bool:
-    script = SCRIPTS_DIR / "wechat_push.py"
-    result = subprocess.run(
-        ["python3", str(script), title, content],
-        capture_output=True, text=True, timeout=15,
-    )
-    return result.returncode == 0
-
 
 def main():
     is_dry_run = "--dry-run" in sys.argv

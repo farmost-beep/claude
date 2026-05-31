@@ -10,7 +10,7 @@ health_flywheel.py — 百岁健康自进化飞轮
   python3 health_flywheel.py --dry-run # 只打印报告
 """
 
-import subprocess
+from lib.wechat import push_to_wechat
 import sys
 import json
 from datetime import datetime, timedelta
@@ -283,18 +283,21 @@ def build_report(assessments: dict, flywheel: tuple) -> str:
     lines.append("- [ ] 腰围：[ ]cm（较上周 ±[ ]cm）")
     lines.append("- [ ] 血压：晨起 [ ]/[ ] mmHg（本周趋势：降/平/升）")
     lines.append("- [ ] P0行动有进展吗？[具体哪项]")
+    lines.append("")
+
+    lines.append("## L3 质量自检")
+    lines.append("- [ ] 测量值和参考范围正确")
+    lines.append("- [ ] 趋势判断明确（当前值 vs 基线 vs 目标方向）")
+    lines.append("- [ ] 标注'此为数据追踪，非医学建议'")
+    lines.append("")
+
+    lines.append("## L4 飞轮反思")
+    lines.append("- 本周最显著的输入→过程关联：")
+    lines.append("- 数据记录的连续性如何：")
+    lines.append("- 下次扫描可以改进的地方：")
 
     lines.append(f"\n---\n飞轮自动运行 | {now}")
     return "\n".join(lines)
-
-
-def push_to_wechat(title: str, content: str) -> bool:
-    script = SCRIPTS_DIR / "wechat_push.py"
-    result = subprocess.run(
-        ["python3", str(script), title, content],
-        capture_output=True, text=True, timeout=15,
-    )
-    return result.returncode == 0
 
 
 def main():

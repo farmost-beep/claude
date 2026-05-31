@@ -10,7 +10,7 @@ family_flywheel.py — 家庭支持自进化飞轮
   python3 family_flywheel.py --dry-run # 只打印报告
 """
 
-import subprocess
+from lib.wechat import push_to_wechat
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -396,18 +396,21 @@ def build_report(assessments: dict, flywheel: tuple) -> str:
     elif now_dt.month == 5:
         lines.append("- 📚 **暑假准备**：英语启动包+专业课路线图提前就位")
     lines.append("- 💬 **每周视频**：两位母亲各一次，听日常、关注健康")
+    lines.append("")
+
+    lines.append("## L3 质量自检")
+    lines.append("- [ ] 关键日期/事件/人物名称无错误")
+    lines.append("- [ ] 时间敏感事项（考试/截止日）有明确提醒")
+    lines.append("- [ ] 待办事项有负责人和截止日期")
+    lines.append("")
+
+    lines.append("## L4 飞轮反思")
+    lines.append("- 本周最值得关注的家庭动态：")
+    lines.append("- 飞轮扫描遗漏了什么：")
+    lines.append("- 下次扫描可以改进的地方：")
 
     lines.append(f"\n---\n家庭飞轮自动运行 | {now}")
     return "\n".join(lines)
-
-
-def push_to_wechat(title: str, content: str) -> bool:
-    script = SCRIPTS_DIR / "wechat_push.py"
-    result = subprocess.run(
-        ["python3", str(script), title, content],
-        capture_output=True, text=True, timeout=15,
-    )
-    return result.returncode == 0
 
 
 def main():

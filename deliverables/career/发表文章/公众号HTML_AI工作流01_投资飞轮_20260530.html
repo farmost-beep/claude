@@ -1,0 +1,118 @@
+<section style="font-size:16px;color:#333;line-height:1.8;letter-spacing:0.5px;">
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">AI工作流①：我用AI管钱——投资飞轮完整配置</h2>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;"><p>不是"AI能做什么"，是"我具体怎么用"。真实配置、真实案例、真实翻车记录。</p></blockquote>
+<br/>
+<br/>
+<p>我用AI管理几百万的股票持仓。每天花5分钟看AI推送的晨间简报，每周日花15分钟读AI生成的周度风险报告。</p>
+<p>有人说，你胆子真大——让AI管钱？</p>
+<p>我的回答是：我从不让我不信任的系统碰我的钱。但我信任一个被充分验证过的系统。</p>
+<p>这个系统长什么样，下面完整公开。</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">我的配置表</h2>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">动作</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">谁做</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">频率</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">我花的时间</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">价格抓取</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI脚本自动跑</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">每日收盘后</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">0</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">集中度计算</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI脚本自动跑</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">每日</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">0</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">晨间简报</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI生成→推送微信</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">每早8:30</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">1分钟阅读</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">周度风险报告</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI生成→L1自动扫描→推送</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">周日10:13</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">15分钟精读</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">深度分析</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI初稿→第二实例验证→我判断</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">触发式</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">0-30分钟</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">买卖决策</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">人</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">需要时</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">取决于复杂度</td>
+</tr>
+</table><br/>
+<p>关键设计：<strong>AI负责信息收集和初步分析；AI+AI负责交叉验证；人只做最终决策。</strong> 没有一个决策是由单一AI输出直接触发的。</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一个真实案例：集中度告警是怎么处理的</h2>
+<br/>
+<p>两周前，晨间简报里出现了一条黄色告警：</p>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;"><p>昆仑万维持仓集中度39.9%，超过预警线35%。建议关注。</p></blockquote>
+<br/>
+<p>操作型Agent到这里就停了——把告警推给我，让我自己判断。</p>
+<p>我的系统多做了一步：触发L2交叉验证。</p>
+<p>第二个AI实例被启动，独立读取同样的持仓数据和市场数据，判断：这次集中度超标，是因为昆仑万维连续上涨（选股正确），还是因为其他持仓下跌（选股失败），还是市场普涨带来的被动集中？</p>
+<p>第二个实例的结论：市场普涨驱动。同期创业板涨了3.2%，昆仑万维涨了4.1%——超额收益只有0.9个百分点，不是个股独立走强。集中度上升不是风险积聚的信号。</p>
+<p>两个AI结论不一致。系统没有推送"建议减仓"，而是推送了一张对比表：</p>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;"></td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI实例A</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI实例B</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">判断</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">集中度超标，建议关注</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">市场普涨驱动，无需操作</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">核心依据</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">39.9% > 35%阈值</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">个股超额收益仅0.9%</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">置信度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">72%</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">68%</td>
+</tr>
+</table><br/>
+<p>我看了这张表，决定：不减仓。但接下来一周每天监控——如果市场回落后昆仑万维的集中度仍超35%，说明不是普涨因素，那时再动。</p>
+<p>这个案例里，AI替我做了两件事：发现了异常（L1），帮我区分了信号和噪声（L2）。但最终决定——等——是我做的。</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一次翻车经历：AI给了一个漂亮的错误结论</h2>
+<br/>
+<p>去年有一段时间，我让AI帮我分析一只消费股。它给了我一串漂亮的结论：营收增长稳健、现金流健康、估值低于行业均值。</p>
+<p>我差点就按这个结论加仓了。</p>
+<p>然后我多看了一眼它的现金流数据——发现那个"健康的现金流"里，有40%来自一次性资产处置，不是主营业务。</p>
+<p>AI没骗我。它读到了"经营活动现金流净额"这个数字，判断它"健康"。但它没注意到这个数字的结构异常——非经常性收入占比过高。</p>
+<p>问题出在哪？出在我当时只用一个AI跑了一遍。单一判断源。</p>
+<p>后来我加了一条规则：<strong>任何涉及买卖决策的分析，必须两个AI独立跑，结论一致才通过。</strong></p>
+<p>这条规则拦住过至少3次类似的"漂亮的错误"。</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一条可迁移的原则</h2>
+<br/>
+<p><strong>把"AI分析"和"AI验证"分成两个独立步骤。</strong></p>
+<p>不是同一个AI分析完了自己检查自己。是第一个AI只做分析（不做判断），第二个AI只做验证（不看第一个的结论，只审原始数据）。两个实例独立、结论一致，才进入你的决策视野。</p>
+<p>怎么做到？不需要写代码。开两个独立的对话窗口，用不同的模型更好。第一个窗口发数据和问题，第二个窗口发同样的数据和同样的问题。对比两个答案。</p>
+<p>只花你多一分钟。但这一分钟，可能拦下一次让你亏钱的决策。</p>
+<br/>
+<p><strong>AI工作流系列</strong>：</p>
+<p>- ① 投资飞轮（本文）</p>
+<p>- ② 写作飞轮：我的公众号90%是AI写的</p>
+<p>- ③ 编程飞轮：什么时候信任AI直接改代码</p>
+<p>- ④ 健康飞轮：49岁，让AI盯着我</p>
+<p>- ⑤ 事业飞轮：AI怎么放大专业输出</p>
+</section>

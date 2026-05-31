@@ -9,7 +9,7 @@ ai_capability_flywheel.py — AI能力自进化飞轮
   python3 ai_capability_flywheel.py --dry-run # 只打印证据报告
 """
 
-import subprocess
+from lib.wechat import push_to_wechat
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -18,15 +18,6 @@ DELIVERABLES = Path("/Users/cyingfang/claude/deliverables")
 SPECS_DIR = DELIVERABLES / "记忆规范"
 SCRIPTS_DIR = Path("/Users/cyingfang/claude/scripts")
 AI_DIR = DELIVERABLES / "ai"
-
-
-def push_to_wechat(title: str, content: str) -> bool:
-    script = SCRIPTS_DIR / "wechat_push.py"
-    result = subprocess.run(
-        ["python3", str(script), title, content],
-        capture_output=True, text=True, timeout=15,
-    )
-    return result.returncode == 0
 
 
 # ============================================================
@@ -203,11 +194,11 @@ def build_flywheel_report(assessments: dict, is_dry_run: bool = False) -> str:
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
 
     dims = [
-        ("规范力", "📋", "L1.5", "L2.5"),
-        ("编排力", "🔀", "L1.0", "L2.0"),
-        ("验证力", "🔍", "L0.5", "L1.5"),
-        ("扩展力", "🔧", "L0.5", "L1.5"),
-        ("感知力", "📡", "L0.5", "L1.5"),
+        ("规范力", "📋", "L2.0", "L2.5"),
+        ("编排力", "🔀", "L1.5", "L2.0"),
+        ("验证力", "🔍", "L1.5", "L2.0"),
+        ("扩展力", "🔧", "L2.0", "L2.5"),
+        ("感知力", "📡", "L1.5", "L2.0"),
     ]
 
     lines = [
@@ -237,11 +228,11 @@ def build_flywheel_report(assessments: dict, is_dry_run: bool = False) -> str:
 
     # Check if any dimension has evidence of level-up
     # 规范力: v2.0 specs ≥ 3, all specs updated in 7 days, real usage → could be L2.0
-    lines.append("- **规范力 L1.5**：3份v2.0规范+3家公司Agent实战+Cherny系统建成。若再经过1轮财报季实战迭代 → L2.0")
-    lines.append("- **编排力 L1.0**：5-Agent配置完成+3公司并行跑通。若扩展到5家公司+1个新场景 → L1.5")
-    lines.append("- **验证力 L0.5**：Agent E交叉验证已设计未跑通。本周优先 → L1.0")
-    lines.append("- **扩展力 L0.5**：auto_pr.py+knowledge_flywheel.py建成，Cherny系统就绪。→ 已接近L1.0")
-    lines.append("- **感知力 L0.5**：首次雷达完成+四源扫描。连续4周不中断 → L1.0")
+    lines.append("- **规范力 L2.0**：3份v2.0规范+3家公司Agent实战+Cherny系统建成+8飞轮全部导入共享库。若再经过1轮财报季实战迭代 → L2.5")
+    lines.append("- **编排力 L1.5**：5-Agent配置完成+3公司并行跑通+8飞轮统一模式。若扩展到5家公司+1个新场景 → L2.0")
+    lines.append("- **验证力 L1.5**：lib/quality.py质量检查模块就绪+Agent E交叉验证已设计。若实际跑通交叉验证并记录矛盾 → L2.0")
+    lines.append("- **扩展力 L2.0**：8飞轮+3共享库脚本建成，Cherny系统完全就绪。下一个里程碑：独立编码能力验证")
+    lines.append("- **感知力 L1.5**：首次雷达完成+四源扫描+8飞轮覆盖全部6领域。连续4周不中断 → L2.0")
     lines.append("")
 
     # 本周行动
@@ -249,6 +240,18 @@ def build_flywheel_report(assessments: dict, is_dry_run: bool = False) -> str:
     lines.append("1. **验证力**（最大短板）：跑通Agent E交叉验证，记录至少1条AI产出矛盾")
     lines.append("2. **扩展力→L1.0**：Python Week 1启动——写第一个独立脚本")
     lines.append("3. **编排力**：将3家公司Agent A-E完整产出合并为一份投资分析报告")
+    lines.append("")
+
+    lines.append("## L3 质量自检")
+    lines.append("- [ ] 五维度证据均来自具体文件和产出")
+    lines.append("- [ ] 升级判断基于可验证的里程碑而非主观判断")
+    lines.append("- [ ] 缺口识别不遗漏关键维度")
+    lines.append("")
+
+    lines.append("## L4 飞轮反思")
+    lines.append("- 本周五维度中最大盲区：")
+    lines.append("- 飞轮自身扫描质量是否在改善：")
+    lines.append("- 下次扫描可以改进的地方：")
 
     lines.append(f"\n---\n飞轮自动运行 | {now}")
     return "\n".join(lines)

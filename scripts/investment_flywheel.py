@@ -10,7 +10,7 @@ investment_flywheel.py — 投资系统自进化飞轮
   python3 investment_flywheel.py --dry-run # 只打印报告
 """
 
-import subprocess
+from lib.wechat import push_to_wechat
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -259,18 +259,22 @@ def build_report(assessments: dict, flywheel: tuple) -> str:
     lines.append("- [ ] 配置健康：仓位有无超标？现金≥10%？")
     lines.append("- [ ] 进化健康：Auto-PR有修复吗？Agent E改进建议落实了没？")
     lines.append("- [ ] 知识健康：投资卡片有无该升级到规范的？")
+    lines.append("")
+
+    lines.append("## L3 质量自检")
+    lines.append("- [ ] 所有定价数据标注了来源和日期")
+    lines.append("- [ ] 关键判断经两个独立来源交叉验证")
+    lines.append("- [ ] 不确定的推断标注了[待核实]")
+    lines.append("- [ ] 分析结论不含'买入/卖出'操作指令")
+    lines.append("")
+
+    lines.append("## L4 飞轮反思")
+    lines.append("- 本周扫描最意外的发现：")
+    lines.append("- 数据管道哪个环节最脆弱：")
+    lines.append("- 下次扫描可以改进的地方：")
 
     lines.append(f"\n---\n飞轮自动运行 | {now}")
     return "\n".join(lines)
-
-
-def push_to_wechat(title: str, content: str) -> bool:
-    script = SCRIPTS_DIR / "wechat_push.py"
-    result = subprocess.run(
-        ["python3", str(script), title, content],
-        capture_output=True, text=True, timeout=15,
-    )
-    return result.returncode == 0
 
 
 def main():
