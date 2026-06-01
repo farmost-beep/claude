@@ -1,17 +1,6 @@
 {
   "tasks": [
     {
-      "id": "50dffd02",
-      "cron": "47 9 * * *",
-      "prompt": "执行三大Managed Agents日常循环：\n\n**1. Dreaming**：回顾 /Users/cyingfang/.claude/projects/-Users-cyingfang-claude/memory/ 下所有记忆文件，检查 (a)新产生的矛盾/冲突 (b)过时信息 (c)遗漏的连接。如果发现问题，直接修复并记录到记忆文件。\n\n**2. Multiagent**：并行扫描六大目标目录，检查每个目标 (a)新增.md是否都有.pdf (b)内容一致性 (c)日期引用是否过期。输出一个简短的质量报告到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202605.md 的当日条目下。\n\n**3. Outcomes**：独立验证Dreaming发现的修复是否真的被完成。如果修复未完成或错误，重新修复。\n\n最后，总结今天发现和修复了什么问题，如果一切正常就说\"系统健康\"。",
-      "createdAt": 1779842786284,
-      "lastFiredAt": 1780280220134,
-      "recurring": true,
-      "createdBySessionId": "71902245-1d39-407c-920a-b12333995151",
-      "createdByPid": 2526,
-      "createdByProcStart": "Tue May 26 13:22:38 2026"
-    },
-    {
       "id": "cb82afd6",
       "cron": "3 9 * * *",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/push_briefing.py morning，将早间简报推送到微信。不要做其他事情，只执行这条命令。",
@@ -45,33 +34,11 @@
       "createdByProcStart": "Wed May 27 22:25:00 2026"
     },
     {
-      "id": "0a69428b",
-      "cron": "37 8 * * *",
-      "prompt": "生成今日的每日综合简报到 /Users/cyingfang/claude/每日综合简报_[今天日期].md。内容包括：1.数据仪表盘（净资产/金融资产/集中度/信用贷/savings progress/deliverable计数/知识卡片数） 2.六大目标一句话状态 3.昨日完成项 4.今日关键行动（P0/P1/P2） 5.投资一图 6.今日AI要点（从每日AI简报中提取3-5条最重要的，含对陈颖芳的具体含义） 7.风险与阻滞 8.明日预告。简报要能在2分钟内扫完。参考模板：/Users/cyingfang/claude/每日综合简报_20260528.md。生成前先搜索今天AI前沿发展追加到每日AI简报中。",
-      "createdAt": 1779938388354,
-      "lastFiredAt": 1780275977205,
-      "recurring": true,
-      "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
-      "createdByPid": 88528,
-      "createdByProcStart": "Thu May 28 00:37:12 2026"
-    },
-    {
       "id": "b83c31e6",
       "cron": "0 8 * * *",
       "prompt": "检查今天是否有待发布的文章（公众号/财新博客）。运行: cd /Users/cyingfang/claude && python3 scripts/publish_articles.py --schedule。如果有今天到期的文章，提醒陈颖芳执行发布: python3 scripts/publish_articles.py --publish-plan。同时运行 python3 scripts/publish_articles.py --status 检查整体发布进度。",
       "createdAt": 1779939743213,
       "lastFiredAt": 1780274085253,
-      "recurring": true,
-      "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
-      "createdByPid": 88528,
-      "createdByProcStart": "Thu May 28 00:37:12 2026"
-    },
-    {
-      "id": "fba57a6c",
-      "cron": "47 8 * * *",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/auto_pr.py --auto-fix 完成每日自动检查+自动修复草案生成，将报告推送到微信。如果输出显示推送失败，告知用户检查微信推送配置。如果推送成功且待处理修复草案列表不为空，提醒用户来Claude审核修复草案，说\"执行auto-fix --all\"即可全部批准。",
-      "createdAt": 1779977200434,
-      "lastFiredAt": 1780276620973,
       "recurring": true,
       "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
       "createdByPid": 88528,
@@ -100,86 +67,110 @@
       "createdByProcStart": "Thu May 28 00:37:12 2026"
     },
     {
-      "id": "de8686e5",
-      "cron": "41 9 * * 6",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/career_flywheel.py 完成每周事业三层结构扫描，联动判断引擎→加速→结果是否通畅，推送到微信。",
-      "createdAt": 1779980041481,
-      "lastFiredAt": 1780107060847,
-      "recurring": true,
-      "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
-      "createdByPid": 88528,
-      "createdByProcStart": "Thu May 28 00:37:12 2026"
-    },
-    {
-      "id": "5cbcb8b5",
-      "cron": "53 9 * * 6",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/investment_flywheel.py 完成每周投资系统四层扫描（决策质量/行为纪律/资本配置/系统进化），推送到微信。",
-      "createdAt": 1779982629808,
-      "lastFiredAt": 1780107780228,
-      "recurring": true,
-      "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
-      "createdByPid": 88528,
-      "createdByProcStart": "Thu May 28 00:37:12 2026"
-    },
-    {
-      "id": "dc341b7a",
-      "cron": "59 9 * * 6",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/health_flywheel.py 完成每周健康三层因果链扫描（输入/过程/P0行动），推送到微信。",
-      "createdAt": 1780007240598,
-      "lastFiredAt": 1780108140577,
-      "recurring": true,
-      "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
-      "createdByPid": 88528,
-      "createdByProcStart": "Thu May 28 00:37:12 2026"
-    },
-    {
-      "id": "daily-goal-push-001",
-      "cron": "37 6 * * *",
-      "prompt": "继续推进总体目标。扫描六大目标当前状态，识别每个目标今天可以推进的最重要1件事（P0），然后执行那个行动或准备好让用户审核的材料。优先顺序：投资 > 事业 > 家庭 > 健康 > AI能力 > 知识库。完成后推送微信告知今日推进了什么。",
-      "createdAt": 1780020000000,
-      "lastFiredAt": 1780267020953,
-      "recurring": true,
-      "createdBySessionId": "daily-goal-push-setup",
-      "createdByPid": 0,
-      "createdByProcStart": "Thu May 29 2026"
-    },
-    {
-      "id": "family-flywheel-001",
-      "cron": "5 10 * * 6",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/family_flywheel.py 完成每周家庭支持飞轮扫描（关系清晰度/执行进度/风险预警/系统进化），将报告推送到微信。如果检测到风险信号（考研窗口/端午节点/赡养提醒），提醒用户关注家庭维度的待办事项。",
-      "createdAt": 1780020000000,
-      "lastFiredAt": 1780106700733,
-      "recurring": true,
-      "createdBySessionId": "family-flywheel-setup",
-      "createdByPid": 0,
-      "createdByProcStart": "Thu May 29 2026"
-    },
-    {
-      "id": "5ddfea0b",
-      "cron": "11 10 * * 6",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/happiness_flywheel.py 完成每周幸福人生六维度扫描，将报告推送到微信。这是元飞轮，在所有6个领域飞轮之后运行。",
-      "createdAt": 1780128736494,
-      "recurring": true,
-      "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
-      "createdByPid": 58297,
-      "createdByProcStart": "Sat May 30 08:08:21 2026"
-    },
-    {
-      "id": "42797fae",
-      "cron": "23 9 1 * *",
-      "prompt": "检查所有记忆文件的新鲜度。逐条阅读 ~/.claude/projects/-Users-cyingfang-claude/memory/ 下的所有 .md 文件（除 MEMORY.md），找出：1）标注\"X days old\"超过14天的记忆；2）引用了已删除文件或路径的记忆；3）内容与其他记忆矛盾的信息。将发现的问题列出，不直接修改，等用户确认。",
-      "createdAt": 1780149593158,
-      "lastFiredAt": 1780278780749,
-      "recurring": true,
-      "createdBySessionId": "6654c07c-a653-4f65-ad79-a6e76806500e",
-      "createdByPid": 65381,
-      "createdByProcStart": "Sat May 30 12:45:57 2026"
-    },
-    {
       "id": "6b70d1b3",
       "cron": "0 7,14,21 * * *",
       "prompt": "搜索今天关于AI的最前沿发展，包括：1.新工具发布 2.重要论文或思想观点 3.AI对社会工作方式的改变 4.政策监管动向。筛选最重要的3-5条，以\"日期+标题+一句话要点+来源链接\"格式，追加记录到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202606.md。然后告诉我今天最重要的发现。",
       "createdAt": 1780280073837,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "2687029c",
+      "cron": "47 21 * * *",
+      "prompt": "执行三大Managed Agents日常循环：\n\n**1. Dreaming**：回顾 /Users/cyingfang/.claude/projects/-Users-cyingfang-claude/memory/ 下所有记忆文件，检查 (a)新产生的矛盾/冲突 (b)过时信息 (c)遗漏的连接。如果发现问题，直接修复并记录到记忆文件。\n\n**2. Multiagent**：并行扫描六大目标目录，检查每个目标 (a)新增.md是否都有.pdf (b)内容一致性 (c)日期引用是否过期。输出一个简短的质量报告到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202606.md 的当日条目下。\n\n**3. Outcomes**：独立验证Dreaming发现的修复是否真的被完成。如果修复未完成或错误，重新修复。\n\n最后，总结今天发现和修复了什么问题，如果一切正常就说\"系统健康\"。",
+      "createdAt": 1780280578644,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "bfac8d72",
+      "cron": "37 6 * * *",
+      "prompt": "继续推进总体目标。扫描六大目标当前状态，识别每个目标今天可以推进的最重要1件事（P0）。优先顺序：投资 > 事业 > 家庭 > 健康 > AI能力 > 知识库。完成后推送微信摘要告知今日推进了什么。如果涉及需用户确认的材料，在推送摘要中标记'(待审核)'。",
+      "createdAt": 1780280803208,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "a33d4ca9",
+      "cron": "37 8 * * *",
+      "prompt": "生成今日的每日综合简报到 /Users/cyingfang/claude/每日综合简报_[今天日期].md。内容包括：1.数据仪表盘（净资产/金融资产/集中度/信用贷/savings progress/deliverable计数/知识卡片数） 2.六大目标一句话状态 3.昨日完成项 4.今日关键行动（P0/P1/P2） 5.投资一图 6.今日AI要点（从每日AI简报中提取3-5条最重要的，含对陈颖芳的具体含义） 7.风险与阻滞 8.明日预告。简报要能在2分钟内扫完。参考模板：/Users/cyingfang/claude/每日综合简报_20260528.md。注意：AI要点直接从每日AI简报中提取当日已有条目，不要再重新搜索。",
+      "createdAt": 1780280804295,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "d21f99d8",
+      "cron": "30 9 * * *",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/auto_pr.py --auto-fix 完成每日自动检查+自动修复草案生成，将报告推送到微信。如果推送失败，将失败记录追加到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202606.md 当天的条目下。如果推送成功且待处理修复草案列表不为空，提醒用户来Claude审核修复草案，说\"执行auto-fix --all\"即可全部批准。",
+      "createdAt": 1780280805083,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "faf12128",
+      "cron": "0 21 1 * *",
+      "prompt": "检查所有记忆文件的新鲜度。逐条阅读 ~/.claude/projects/-Users-cyingfang-claude/memory/ 下的所有 .md 文件（除 MEMORY.md），找出：1）标注\"X days old\"超过14天的记忆；2）引用了已删除文件或路径的记忆；3）内容与其他记忆矛盾的信息。将发现的问题列出，不直接修改，等用户确认。",
+      "createdAt": 1780280805900,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "d3c59810",
+      "cron": "47 9 * * 6",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/career_flywheel.py 完成每周事业三层结构扫描，联动判断引擎→加速→结果是否通畅，推送到微信。",
+      "createdAt": 1780280806390,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "4b616d86",
+      "cron": "59 9 * * 6",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/investment_flywheel.py 完成每周投资系统四层扫描（决策质量/行为纪律/资本配置/系统进化），推送到微信。",
+      "createdAt": 1780280806880,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "6611dd2b",
+      "cron": "11 10 * * 6",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/health_flywheel.py 完成每周健康三层因果链扫描（输入/过程/P0行动），推送到微信。",
+      "createdAt": 1780280807301,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "01d08d4c",
+      "cron": "23 10 * * 6",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/family_flywheel.py 完成每周家庭支持飞轮扫描（关系清晰度/执行进度/风险预警/系统进化），将报告推送到微信。如果检测到风险信号（考研窗口/端午节点/赡养提醒），提醒用户关注家庭维度的待办事项。",
+      "createdAt": 1780280807960,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 72514,
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "e779da80",
+      "cron": "35 10 * * 6",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/happiness_flywheel.py 完成每周幸福人生六维度扫描，将报告推送到微信。这是元飞轮，在所有6个领域飞轮之后运行。",
+      "createdAt": 1780280808427,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
