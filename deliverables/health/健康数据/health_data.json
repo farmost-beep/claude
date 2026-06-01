@@ -5,11 +5,11 @@
   "height_cm": 178,
   "baseline_date": "2026-06-01",
   "baseline": {
-    "weight_kg": null,
+    "weight_kg": 82.0,
     "waist_cm": null,
-    "resting_hr_bpm": null,
-    "blood_pressure_sys": null,
-    "blood_pressure_dia": null,
+    "resting_hr_bpm": 71,
+    "blood_pressure_sys": 125,
+    "blood_pressure_dia": 88,
     "knee_pushups": null,
     "bodyweight_squats": null,
     "plank_seconds": null,
@@ -30,6 +30,13 @@
       "sleep_hours": 7.0,
       "water_liters": 1.8,
       "note": "3大杯水≈1.8L，距目标2.5L差0.7L。运动步行>1万步达标。"
+    },
+    {
+      "date": "2026-06-01",
+      "weight_kg": 82.0,
+      "resting_hr_bpm": 71,
+      "blood_pressure": "125/88",
+      "note": "健康基线Day1：血压+心率+体重已测量"
     }
   ],
   "weekly_summaries": [],
