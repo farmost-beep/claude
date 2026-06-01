@@ -5,7 +5,7 @@
       "cron": "57 8 * * *",
       "prompt": "/loop 搜索今天关于AI的最前沿发展，包括：1.新工具发布 2.重要论文或思想观点 3.AI对社会工作方式的改变 4.政策监管动向。筛选最重要的3-5条，以\"日期+标题+一句话要点+来源链接\"格式，追加记录到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202605.md。然后告诉我今天最重要的发现。",
       "createdAt": 1779837125158,
-      "lastFiredAt": 1780190990645,
+      "lastFiredAt": 1780277220788,
       "recurring": true,
       "createdBySessionId": "71902245-1d39-407c-920a-b12333995151",
       "createdByPid": 2526,
@@ -27,7 +27,7 @@
       "cron": "3 9 * * *",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/push_briefing.py morning，将早间简报推送到微信。不要做其他事情，只执行这条命令。",
       "createdAt": 1779914159019,
-      "lastFiredAt": 1780191271228,
+      "lastFiredAt": 1780277580840,
       "recurring": true,
       "createdBySessionId": "87587ccc-b7cb-4bbf-80e0-75448960fb5c",
       "createdByPid": 53071,
@@ -82,7 +82,7 @@
       "cron": "47 8 * * *",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/auto_pr.py --auto-fix 完成每日自动检查+自动修复草案生成，将报告推送到微信。如果输出显示推送失败，告知用户检查微信推送配置。如果推送成功且待处理修复草案列表不为空，提醒用户来Claude审核修复草案，说\"执行auto-fix --all\"即可全部批准。",
       "createdAt": 1779977200434,
-      "lastFiredAt": 1780190990645,
+      "lastFiredAt": 1780276620973,
       "recurring": true,
       "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
       "createdByPid": 88528,
@@ -183,7 +183,8 @@
       "recurring": true,
       "createdBySessionId": "6654c07c-a653-4f65-ad79-a6e76806500e",
       "createdByPid": 65381,
-      "createdByProcStart": "Sat May 30 12:45:57 2026"
+      "createdByProcStart": "Sat May 30 12:45:57 2026",
+      "lastFiredAt": 1780278780749
     }
   ]
 }
