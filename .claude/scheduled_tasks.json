@@ -148,7 +148,7 @@
       "cron": "37 6 * * *",
       "prompt": "继续推进总体目标。扫描六大目标当前状态，识别每个目标今天可以推进的最重要1件事（P0），然后执行那个行动或准备好让用户审核的材料。优先顺序：投资 > 事业 > 家庭 > 健康 > AI能力 > 知识库。完成后推送微信告知今日推进了什么。",
       "createdAt": 1780020000000,
-      "lastFiredAt": 1780186536019,
+      "lastFiredAt": 1780267020953,
       "recurring": true,
       "createdBySessionId": "daily-goal-push-setup",
       "createdByPid": 0,
