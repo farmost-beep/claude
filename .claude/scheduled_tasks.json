@@ -27,7 +27,7 @@
       "cron": "42 22 * * *",
       "prompt": "执行每日自动commit：在 /Users/cyingfang/claude 目录下，运行 git status 检查是否有未提交的变更。如果有变更（包括被删除的文件、新增的文件、修改的文件），按以下规则commit：\n\n1. 用 git add -A 暂存所有变更\n2. 分析变更内容，生成一条简洁的中文commit信息，格式为 \"每日自动commit：YYYY-MM-DD：<变更摘要>\"，例如\"每日自动commit：2026-05-28：deliverables文件夹重组，文件按子目录分类归位\"\n3. 用 git commit -m 提交\n4. 运行 git status 确认提交成功\n\n如果没有变更，什么都不做，直接回复\"今日无变更，跳过commit\"。",
       "createdAt": 1779921087615,
-      "lastFiredAt": 1780241200037,
+      "lastFiredAt": 1780326720727,
       "recurring": true,
       "createdBySessionId": "f9d3fe1f-75e4-48ea-897f-7fb125ce1985",
       "createdByPid": 83003,
