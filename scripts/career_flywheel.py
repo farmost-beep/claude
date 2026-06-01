@@ -417,6 +417,29 @@ def build_report(assessments: dict, flywheel: tuple) -> str:
         lines.append("- ✅ 当前无触发风险信号")
     lines.append("")
 
+    lines.append("")
+    # 社会关系经营 — 每周行动生成
+    lines.append("## 🤝 社会关系经营 — 本周行动")
+    try:
+        import re as _re
+        周清单 = CAREER_DIR / "社会关系经营_周行动清单.md"
+        if 周清单.exists():
+            _content = 周清单.read_text(encoding="utf-8")
+            _matches = _re.findall(r"\|[^|]+\|[^|]+\|(\d+)\|", _content)
+            _c = int(_matches[0]) if len(_matches) > 0 else 0
+            _n = int(_matches[1]) if len(_matches) > 1 else 0
+            lines.append(f"- 📊 本月进度：已联系{_c}次 / 新识{_n}人")
+            if _c < 1 and _n < 1:
+                lines.append("- 🔴 P0：本周至少联系1位联系人 + 添加1位新联系人")
+            elif _c < 2:
+                lines.append("- 🟡 节奏不够：本周再联系1-2位")
+            else:
+                lines.append("- ✅ 节奏达标，可约线下见面")
+        else:
+            lines.append("- 📋 周行动清单未创建，请先填写潜在联系人")
+    except Exception as e:
+        lines.append(f"- ⚠️ 读取异常: {e}")
+    lines.append("")
     lines.append("## L3 质量自检")
     lines.append("- [ ] 引用的政策/法规/标准名称和条款号准确")
     lines.append("- [ ] 论证链完整，有摘要→分析→结论结构")
