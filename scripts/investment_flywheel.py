@@ -170,16 +170,19 @@ def assess_系统进化() -> dict:
     else:
         evidence["gaps"].append("AI异常日志尚未建立（Agent E首次运行已产生3条待记录异常）")
 
-    # 知识卡片→规范升级
+    # 知识卡片→规范升级（兼容Vault不可访问的情况）
     bridge = Path("/Users/cyingfang/Documents/Obsidian Vault 6goals/06-知识库/Layer2到Layer1升级映射.md")
-    if bridge.exists():
-        content = bridge.read_text(encoding="utf-8")
-        if "已升级" in content:
-            evidence["signals"].append("✅ 知识卡片→规范升级映射表存在")
-        if "待升级" in content:
-            evidence["signals"].append("⚠️ 有待升级的投资相关卡片（贝叶斯更新/凯利公式/均值回归）")
-
-    # 月度复盘
+    try:
+        if bridge.exists():
+            content = bridge.read_text(encoding="utf-8")
+            if "已升级" in content:
+                evidence["signals"].append("✅ 知识卡片→规范升级映射表存在")
+            if "待升级" in content:
+                evidence["signals"].append("⚠️ 有待升级的投资相关卡片（贝叶斯更新/凯利公式/均值回归）")
+    except (PermissionError, FileNotFoundError):
+        evidence["signals"].append("⚠️ Obsidian Vault不可访问，知识卡片升级映射表跳过")
+    
+    # 月度复盘    # 月度复盘
     evidence["gaps"].append("📋 本月投资决策复盘是否完成需手动确认")
 
     return evidence

@@ -96,11 +96,20 @@ def find_orphan_cards() -> list[str]:
 
     # 收集所有引用源（MOC + 索引文件）
     all_reference_content = ""
-    for moc in MOC_DIR.glob("*.md"):
-        all_reference_content += moc.read_text(encoding="utf-8") + "\n"
-    for idx_file in INDEX_FILES:
-        if idx_file.exists():
-            all_reference_content += idx_file.read_text(encoding="utf-8") + "\n"
+    try:
+        for moc in MOC_DIR.glob("*.md"):
+            try:
+                all_reference_content += moc.read_text(encoding="utf-8") + "\n"
+            except (PermissionError, FileNotFoundError):
+                pass
+        for idx_file in INDEX_FILES:
+            try:
+                if idx_file.exists():
+                    all_reference_content += idx_file.read_text(encoding="utf-8") + "\n"
+            except (PermissionError, FileNotFoundError):
+                pass
+    except (PermissionError, FileNotFoundError):
+        print("⚠️ Obsidian Vault不可访问，跳过MOC扫描")
 
     orphans = []
     for f in all_md_files:
@@ -124,8 +133,11 @@ def find_upgrade_candidates() -> list[dict]:
     bridge_file = VAULT_ROOT / "06-知识库" / "Layer2到Layer1升级映射.md"
 
     # 3.1 从升级映射中提取"待升级"条目
-    if bridge_file.exists():
-        content = bridge_file.read_text(encoding="utf-8")
+    try:
+        if bridge_file.exists():
+            content = bridge_file.read_text(encoding="utf-8")
+    except (PermissionError, FileNotFoundError):
+        content = ""
         in_pending = False
         for line in content.split("\n"):
             if "## 待升级" in line:
