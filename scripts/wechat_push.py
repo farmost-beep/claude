@@ -19,6 +19,7 @@
 """
 
 import os
+from lib.email_push import push as push_email, get_config as email_configured
 import sys
 import json
 import argparse
@@ -124,8 +125,11 @@ def main():
     pushplus_token = os.environ.get("WECHAT_PUSH_TOKEN")
     sendkey = os.environ.get("WECHAT_SENDKEY")
     webhook = os.environ.get("WECHAT_WEBHOOK")
+    email_cfg = email_configured()
 
-    if wxpusher_token and wxpusher_uid:
+    if email_cfg:
+        ok = push_email(args.title, content)
+    elif wxpusher_token and wxpusher_uid:
         ok = push_wxpusher(wxpusher_token, wxpusher_uid, args.title, content)
     elif webhook:
         ok = push_wecom_webhook(webhook, args.title, content)
@@ -134,9 +138,9 @@ def main():
     elif sendkey:
         ok = push_serverchan(sendkey, args.title, content)
     else:
-        print("错误：未配置微信推送渠道。请设置以下任一环境变量组合：",
+        print("错误：未配置推送渠道。请设置以下任一环境变量组合：",
               file=sys.stderr)
-        print("  WxPusher（免费推荐）: wxpusher.zjiecode.com → 创建应用 → export WECHAT_WXPUSHER_TOKEN=xxx WECHAT_WXPUSHER_UID=xxx",
+        print("  QQ邮箱（推荐）: 登录QQ邮箱→设置→账户→生成授权码 → export QQ_EMAIL=xxx QQ_EMAIL_AUTH=xxx",
               file=sys.stderr)
         print("  企业微信机器人: 创建群机器人 → export WECHAT_WEBHOOK=https://qyapi.weixin.qq.com/...",
               file=sys.stderr)

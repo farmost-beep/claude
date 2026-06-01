@@ -71,6 +71,7 @@
       "cron": "0 7,14,21 * * *",
       "prompt": "搜索今天关于AI的最前沿发展，包括：1.新工具发布 2.重要论文或思想观点 3.AI对社会工作方式的改变 4.政策监管动向。筛选最重要的3-5条，以\"日期+标题+一句话要点+来源链接\"格式，追加记录到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202606.md。然后告诉我今天最重要的发现。",
       "createdAt": 1780280073837,
+      "lastFiredAt": 1780309405910,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
@@ -175,6 +176,16 @@
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
       "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+    },
+    {
+      "id": "f26a2664",
+      "cron": "*/30 * * * *",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/check_inbox.py 检查QQ邮箱是否有新回复。如果有新回复，读取 .bridge/inbox.md 的内容并告诉我有什么新消息。",
+      "createdAt": 1780311346559,
+      "recurring": true,
+      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
+      "createdByPid": 97952,
+      "createdByProcStart": "Mon Jun  1 10:54:29 2026"
     }
   ]
 }
