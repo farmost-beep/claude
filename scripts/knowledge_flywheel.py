@@ -13,7 +13,7 @@ knowledge_flywheel.py — 知识库自进化飞轮
   python3 knowledge_flywheel.py --dry-run # 只打印报告
 """
 
-from lib.wechat import push_to_wechat
+from lib.wechat import push_to_wechat, push_incremental
 import re
 import sys
 from datetime import datetime, timedelta
@@ -311,7 +311,7 @@ def main():
 
     emoji = "✅" if total_issues == 0 else "⚠️"
     title = f"知识库飞轮 {emoji} {total_issues}项"
-    success = push_to_wechat(title, report)
+    success = push_incremental("知识库", title, report, f"👻{ghost_count}🃏{orphan_count}⬆️{candidate_count}")
     if success:
         print(f"推送成功 | 👻{ghost_count} 🃏{orphan_count} ⬆️{candidate_count} 🦠{len(stale_specs)}")
     else:

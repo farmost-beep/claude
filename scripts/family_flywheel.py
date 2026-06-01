@@ -10,7 +10,7 @@ family_flywheel.py — 家庭支持自进化飞轮
   python3 family_flywheel.py --dry-run # 只打印报告
 """
 
-from lib.wechat import push_to_wechat
+from lib.wechat import push_to_wechat, push_incremental
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -446,7 +446,7 @@ def main():
     else:
         emoji = "🔴"
     title = f"🏠 家庭飞轮 {emoji} {状态}"
-    success = push_to_wechat(title, report)
+    success = push_incremental("家庭", title, report, f"{状态}")
     if success:
         print(f"推送成功 | {状态}")
     else:

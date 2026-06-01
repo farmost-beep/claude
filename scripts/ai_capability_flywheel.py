@@ -9,7 +9,7 @@ ai_capability_flywheel.py — AI能力自进化飞轮
   python3 ai_capability_flywheel.py --dry-run # 只打印证据报告
 """
 
-from lib.wechat import push_to_wechat
+from lib.wechat import push_to_wechat, push_incremental
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -285,7 +285,7 @@ def main():
 
     emoji = "✅" if total_gaps <= 3 else "⚠️"
     title = f"AI能力飞轮 {emoji} {total_signals}信号 {total_gaps}缺口"
-    success = push_to_wechat(title, report)
+    success = push_incremental("AI能力", title, report, f"{total_signals}信号{total_gaps}缺口")
     if success:
         print(f"推送成功 | {total_signals}信号 {total_gaps}缺口")
     else:

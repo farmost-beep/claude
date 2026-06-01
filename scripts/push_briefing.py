@@ -60,42 +60,48 @@ def check_system_health() -> dict:
 
 
 def build_morning_briefing() -> tuple[str, str]:
-    ai = get_today_ai_briefing()
-    health = check_system_health()
+    """早间推送：发P0行动清单"""
     today_str = date.today().strftime("%Y年%m月%d日")
-    title = f"早间简报 | {today_str}"
-
-    parts = [f"## {today_str} 早间简报\n"]
-    if ai:
-        parts.append("### AI 前沿动态\n")
-        ai_items = [l for l in ai.split("\n") if l.strip().startswith(("-", "1.", "2.", "3.", "*"))]
-        for item in ai_items[:3]:
-            text = item.lstrip("-* 0123456789.。")
-            if len(text) > 100:
-                text = text[:100] + "..."
-            parts.append(f"- {text}")
-        parts.append("")
-
-    status = "健康" if health["healthy"] else "需关注"
-    parts.append(f"### 系统状态：{status}")
-    parts.append(f"- md: {health['md_count']} | pdf: {health['pdf_count']}")
-    for issue in health["issues"]:
-        parts.append(f"- {issue}")
+    title = f"今日P0行动 | {today_str}"
+    parts = [f"## {today_str} 今日P0行动清单\n"]
+    # 从综合行动卡提取P0
+    action_path = DELIVERABLES / f"6月1日综合行动卡_20260601.md"
+    if action_path.exists():
+        content = action_path.read_text(encoding="utf-8")
+        in_p0 = False
+        for line in content.split("\n"):
+            if "P0-" in line and "🔴" in line:
+                name = line.split("P0-")[-1].split("：")[0] if "：" in line else line[:30]
+                parts.append(f"🔴 {name}")
+                in_p0 = True
+            elif "P1-" in line and "🟡" in line:
+                name = line.split("P1-")[-1].split("：")[0] if "：" in line else line[:30]
+                parts.append(f"🟡 {name}")
+    if len(parts) == 1:
+        parts.append("- 查看综合行动卡获取今日P0")
     parts.append("")
-    parts.append(f"---\n推送: {datetime.now().strftime('%H:%M')}")
+    parts.append("---\n完整行动卡: deliverables/6月1日综合行动卡_20260601.md")
     return title, "\n".join(parts)
 
 
 def build_evening_checkin() -> tuple[str, str]:
+    """晚间推送：只发异常提醒（去掉固定模板）"""
     today_str = date.today().strftime("%Y年%m月%d日")
-    title = f"晚间检视 | {today_str}"
-    parts = [f"## {today_str} 晚间检视\n"]
-    parts.append("- [ ] 运动完成？")
-    parts.append("- [ ] 知识卡片 x3")
-    parts.append("- [ ] 投资组合复查")
-    parts.append("- [ ] 体重记录")
-    parts.append("")
-    parts.append(f"---\n推送: {datetime.now().strftime('%H:%M')}")
+    title = f"晚间提醒 | {today_str}"
+    alerts = []
+    # 检查有没有未完成的关键P0
+    action_path = DELIVERABLES / f"6月1日综合行动卡_20260601.md"
+    if action_path.exists():
+        content = action_path.read_text(encoding="utf-8")
+        if "⬜" in content:
+            unchecked = content.count("⬜")
+            if unchecked > 3:
+                alerts.append(f"⚠️ 今日还有 {unchecked} 项未完成，建议优先处理投资+健康P0")
+    if not alerts:
+        alerts.append("✅ 系统健康，无异常需关注")
+    parts = [f"## {today_str}\n"]
+    parts.extend(f"{a}\n" for a in alerts)
+    parts.append("---")
     return title, "\n".join(parts)
 
 

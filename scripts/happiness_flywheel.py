@@ -10,7 +10,7 @@ happiness_flywheel.py — 幸福人生元飞轮
   python3 happiness_flywheel.py --dry-run # 只打印报告
 """
 
-from lib.wechat import push_to_wechat
+from lib.wechat import push_to_wechat, push_incremental
 import sys
 import json
 from datetime import datetime, timedelta
@@ -606,7 +606,7 @@ def main():
     满意区 = [k for k, v in assessments.items() if "满意" in v.get("zone", "")]
     emoji = "✅" if len(满意区) >= 5 else "🟡" if len(满意区) >= 3 else "🔴"
     title = f"幸福人生飞轮 {emoji} {len(满意区)}/6满意"
-    success = push_to_wechat(title, report)
+    success = push_incremental("幸福", title, report, f"{len(满意区)}/6满意")
     if success:
         print(f"推送成功 | {len(满意区)}/6满意 | 瓶颈：{诊断[:20]}")
     else:

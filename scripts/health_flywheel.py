@@ -10,7 +10,7 @@ health_flywheel.py — 百岁健康自进化飞轮
   python3 health_flywheel.py --dry-run # 只打印报告
 """
 
-from lib.wechat import push_to_wechat
+from lib.wechat import push_to_wechat, push_incremental
 import sys
 import json
 from datetime import datetime, timedelta
@@ -324,7 +324,7 @@ def main():
     状态, _, _ = flywheel
     emoji = "✅" if "正常" in 状态 else "⚪" if "数据不足" in 状态 else "🟡" if "P0推进" in 状态 else "🔴"
     title = f"健康飞轮 {emoji} {状态}"
-    success = push_to_wechat(title, report)
+    success = push_incremental("健康", title, report, f"{状态}")
     if success:
         print(f"推送成功 | {状态}")
     else:

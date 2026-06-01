@@ -10,7 +10,7 @@ investment_flywheel.py — 投资系统自进化飞轮
   python3 investment_flywheel.py --dry-run # 只打印报告
 """
 
-from lib.wechat import push_to_wechat
+from lib.wechat import push_to_wechat, push_incremental
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -306,7 +306,7 @@ def main():
     状态, _, _ = flywheel
     emoji = "✅" if "健康" in 状态 else "⚠️" if "小缺口" in 状态 else "🔴"
     title = f"投资飞轮 {emoji} {状态}"
-    success = push_to_wechat(title, report)
+    success = push_incremental("投资", title, report, f"{状态}")
     if success:
         print(f"推送成功 | {状态}")
     else:

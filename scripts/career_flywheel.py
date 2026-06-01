@@ -9,7 +9,7 @@ career_flywheel.py — 事业成功自进化飞轮
   python3 career_flywheel.py --dry-run # 只打印报告
 """
 
-from lib.wechat import push_to_wechat
+from lib.wechat import push_to_wechat, push_incremental
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -467,7 +467,7 @@ def main():
     状态, _, _ = flywheel
     emoji = "✅" if "正常" in 状态 else "⚠️" if "未用" in 状态 else "🔴"
     title = f"事业飞轮 {emoji} {状态}"
-    success = push_to_wechat(title, report)
+    success = push_incremental("事业", title, report, f"{状态}")
     if success:
         print(f"推送成功 | {状态}")
     else:
