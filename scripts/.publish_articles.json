@@ -108,5 +108,23 @@
     "plan_date_caixin": "",
     "plan_date_wechat": "2026-06-18",
     "platform": "wechat"
+  },
+  {
+    "id": 11,
+    "title": "Claude Code是什么——它和你用过的AI工具有什么本质区别？",
+    "file": "career/发表文章/公众号文章_Claude Code入门_20260602.md",
+    "tags_wechat": "#AI编程 #ClaudeCode #效率工具 #AI工具对比",
+    "summary": "Claude Code和ChatGPT/GitHub Copilot有什么本质区别？四个核心能力决定了它是一个驻留在项目中的协作伙伴，而不是一个更好的聊天AI。",
+    "plan_date_wechat": "2026-06-02",
+    "platform": "wechat"
+  },
+  {
+    "id": 12,
+    "title": "AI Native Startup：创始人从“干活的人”变成“设计系统的人”",
+    "file": "career/发表文章/公众号文章_AI Native Startup方法论_20260602.md",
+    "tags_wechat": "#AI创业 #Startup #AI原生 #创始人手册",
+    "summary": "Anthropic发布创始人手册的核心洞察：AI Native startup的四阶段框架，以及创始人角色的根本转变。",
+    "plan_date_wechat": "2026-06-02",
+    "platform": "wechat"
   }
 ]

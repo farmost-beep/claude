@@ -1,0 +1,125 @@
+<section style="font-size:16px;color:#333;line-height:1.8;letter-spacing:0.5px;">
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">最大的区别：它活在你的项目里</h2>
+<br/>
+<p>网页版AI的工作方式：你复制代码贴进去，它回答，你复制代码贴回去。每一次对话都是独立的，它不知道你项目里还有什么其他文件，不知道你之前的决策，不知道你的项目结构。</p>
+<br/>
+<p>Claude Code的工作方式：它直接驻留在你的项目目录中。它可以<strong>读取任何文件、写入任何文件、执行任何命令、运行任何脚本</strong>。它看的不是一段代码，而是你的整个项目。</p>
+<br/>
+<p>举个例子：你想重构一个函数。</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">• **网页版AI**：你需要找到这个函数，复制它，粘贴到对话框，告诉AI要改成什么，等它返回结果，再复制粘贴回去。如果这个函数还调用了其他文件里的函数，你又得去找到那些文件。</p>
+<p style="margin:4px 0 4px 20px;">• **Claude Code**：你说"帮我重构这个函数"，它自己找到文件、读取相关依赖、理解上下文、修改代码、测试运行。你只需要说"看看这个，改一下"。</p>
+<br/>
+<p>这不是快慢的问题，这是<strong>能不能做</strong>的问题。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">四个核心能力</h2>
+<br/>
+<p>Claude Code有四个能力，这四点决定了它与所有其他AI工具的分水岭：</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">1. 读写文件</h3>
+<br/>
+<p>直接访问你的代码库、Markdown文档、配置文件、数据文件——不需要你复制粘贴。这意味着它能看到全局，而不是你给它看的局部。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">2. 执行命令</h3>
+<br/>
+<p>可以运行shell命令、Python脚本、git操作——它会自己动手。你不需要把"需要运行什么命令"翻译给它，它自己就知道。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">3. 多Agent并行</h3>
+<br/>
+<p>这是最被低估的能力。一个Claude可以同时分身成多个子Agent，分别处理不同任务，互不等待。</p>
+<br/>
+<p>你可以在同一个会话里说：</p>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>"同时做三件事：统计这个目录下的文件数、搜索所有含TODO的文件、检查git状态"</p>
+</blockquote>
+<br/>
+<p>三个任务同时运行——这在网页版AI里是不可能做到的。</p>
+<br/>
+<h3 style="font-size:18px;color:#2a5a8c;margin:16px 0 8px;">4. 记忆系统</h3>
+<br/>
+<p>通过CLAUDE.md文件，它可以记住你的项目背景、代码风格偏好、架构决策。每次启动都不是从零开始。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一个直观的对比</h2>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">维度</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">Claude Code</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">ChatGPT/网页Claude</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">GitHub Copilot</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">能看到的范围</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">整个项目目录</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">只有你粘贴的内容</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">当前打开的文件</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">能做的事</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">读写文件、执行命令、运行脚本</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">只能聊天</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">代码补全</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">能不能同时干多件事</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">能（多Agent并行）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">不能（单线程）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">不能</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">记不记得你</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">记得（CLAUDE.md）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">每次从零开始</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">不记</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">能不能自动化</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">能（定时任务）</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">不能</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">不能</td>
+</tr>
+</table>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">它不擅长什么</h2>
+<br/>
+<p>Claude Code不是万能的。明确它的边界和明确它的能力一样重要：</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">• **不适合纯聊天**——想闲聊、问百科知识、生成图片？用网页版Claude</p>
+<p style="margin:4px 0 4px 20px;">• **不适合一次性问答**——"帮我翻译这段话"这类单次任务，网页版更快</p>
+<p style="margin:4px 0 4px 20px;">• **不适合0基础非技术用户**——虽然它很强大，但你至少需要知道项目目录、文件、命令这些基本概念</p>
+<br/>
+<p>它最适合的场景是：<strong>你有一个项目（不管大小），需要持续地构建、修改、分析这个项目</strong>。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">适用场景</h2>
+<br/>
+<p>Claude Code最常用的场景包括：</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">• **软件开发**：写代码、调试、重构、代码审查</p>
+<p style="margin:4px 0 4px 20px;">• **文档编写**：技术文档、API文档、README</p>
+<p style="margin:4px 0 4px 20px;">• **数据分析**：处理数据文件、生成图表、统计分析</p>
+<p style="margin:4px 0 4px 20px;">• **知识管理**：整理笔记、构建知识库、维护文档体系</p>
+<p style="margin:4px 0 4px 20px;">• **自动化运维**：定时任务、日志分析、系统监控</p>
+<p style="margin:4px 0 4px 20px;">• **项目管理**：文件整理、批处理、规范化</p>
+<br/>
+<p>如果你在做以上任何一件事，Claude Code都会比网页版AI有用得多。</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">一句话总结</h2>
+<br/>
+<p>Claude Code不是一个更好的聊天AI——它是一个<strong>驻留在你项目中的协作伙伴</strong>。</p>
+<br/>
+<p>网页版AI是"你问它答"的工具。Claude Code是"你和它一起干活"的队友。</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>下一篇我会讲Claude Code最独特的能力：**多Agent并行**——一个AI同时分身处理多个任务，这才是真正的效率革命。</p>
+</blockquote>
+</section>

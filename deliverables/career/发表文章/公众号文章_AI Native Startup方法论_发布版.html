@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>AI Native Startup方法论</title>
+<style>
+body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; font-size: 16px; line-height: 1.8; color: #333; }
+h1 { font-size: 22px; color: #1a1a1a; text-align: center; margin: 30px 0 15px; }
+h2 { font-size: 18px; color: #2a3f6e; margin: 25px 0 10px; border-left: 4px solid #E07B2A; padding-left: 12px; }
+h3 { font-size: 16px; color: #333; margin: 20px 0 8px; }
+p { margin: 10px 0; }
+blockquote { border-left: 3px solid #ddd; margin: 15px 0; padding: 10px 15px; background: #f9f9f9; color: #666; font-size: 15px; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+td, th { border: 1px solid #ddd; padding: 8px 10px; text-align: left; }
+th { background: #1A2744; color: white; }
+hr { border: none; border-top: 1px solid #eee; margin: 25px 0; }
+</style>
+</head>
+<body>
+
+<h1>AI Native Startup：创始人从"干活的人"变成"设计系统的人"</h1>
+
+<p style="color:#999;text-align:center;font-size:14px;">基于 Anthropic《The Founder's Playbook: Building an AI-Native Startup》</p>
+
+<hr>
+
+<h2>创始人角色的根本转变</h2>
+
+<p>传统的 startup 成长路径是这样：验证 → 融资 → 招人 → 开发 → 再融资 → 增长 → 再招人 → 重复。每一个新阶段都需要更大的团队、不同的技能、新的一轮融资。</p>
+
+<p>现在，AI 把这个假设抹掉了。</p>
+
+<p>AI可以写生产级代码、做市场研究、分析竞争格局、起草融资材料、自动化运营流程。创始人不再需要自己是"最能干的人"，而是需要成为"最能设计系统的人"。</p>
+
+<blockquote>
+<p><b>传统创始人 = 亲自干活的人</b></p>
+<p><b>AI时代创始人 = 设计系统的人</b></p>
+</blockquote>
+
+<hr>
+
+<h2>一个反直觉的危险</h2>
+
+<p>AI 让建东西变得极其容易，这听起来是好事。但它带来了一个反直觉的危险——<b>42% 的 startup 失败是因为建了没人要的东西，而 AI 会让这个比例更高</b>。</p>
+
+<p>为什么？因为以前建一个原型要几个月的时间成本，你自然会先想清楚再动手。现在建一个原型可能只需要一个下午，你很容易跳过验证阶段，直接进入开发。</p>
+
+<p>更隐蔽的问题是<b>确认偏误放大</b>。问AI"我的想法对吗"，它会找到支持证据。一个创始人现在可以为一个坏想法编织一套精心研究的论证，而且在这个过程中感觉完全正确。</p>
+
+<p><b>解法</b>：用同一个工具做"结构化魔鬼代言人"——强制AI论证你的想法为什么是错的。让它找反证、找竞争对手为什么赢、找你的假设哪里站不住脚。</p>
+
+<hr>
+
+<h2>四阶段框架</h2>
+
+<h3>阶段1：Idea——验证问题</h3>
+<p><b>目标</b>：先验证问题存在，再写一行代码。</p>
+<p><b>出口标准</b>（三个都答"是"才推进）：</p>
+<p>1. 问题是否真实且具体？<br>
+2. 你的解法是否验证过的问题？<br>
+3. 有足够信号支持建 MVP 吗？</p>
+<p><b>这个阶段的核心工作</b>：客户访谈、竞争分析、市场研究。全部用 AI 辅助完成，但不跳过。</p>
+
+<h3>阶段2：MVP——建什么</h3>
+<p><b>目标</b>：Product-Market Fit 的早期信号。</p>
+<p><b>最独特的危险</b>：AI技术债。没有架构约束的AI每次对话都重新推导基础决策，代码库最终没有一致的思维模型。</p>
+<p><b>解法</b>：在写任何代码之前，先写一个 <code>CLAUDE.md</code> 文件——记录架构原则、设计取舍、范围边界。每次开始新会话时回顾它，每次结束时花5分钟更新它。</p>
+
+<h3>阶段3：Launch——增长</h3>
+<p><b>目标</b>：可规模化的复利增长。</p>
+<p><b>最难跨越的坎</b>：创始人成为瓶颈。MVP阶段，创始人亲力亲为是资产。Launch阶段，同一个习惯变成约束。</p>
+<p>从"自己做"到"设计系统让别人做"——这是创业生命周期中最难的转变之一。</p>
+
+<h3>阶段4：Scale——可持续</h3>
+<p><b>目标</b>：公司可持续运营，即使创始人不再直接参与日常运作。</p>
+<p><b>构建护城河的三种方式</b>：</p>
+<p>1. <b>领域知识</b>——隐性的行业经验，通用AI模型无法复制<br>
+2. <b>用户数据飞轮</b>——行为信号，竞争对手买不到<br>
+3. <b>工作流锁定</b>——用户的切换成本是"重建工作方式"，不是"换一个工具"</p>
+
+<hr>
+
+<h2>最有力的洞察</h2>
+
+<p>AI 消除了传统团队规模假设。</p>
+
+<blockquote><b>10人团队可以产出过去需要100人的产出。</b></blockquote>
+
+<p>案例：Medvi（4.01亿美元营收，仅2名全职员工）——这不是例外，是预告。</p>
+<p>一个创始人+AI，能干以前一个团队的活。这不是"用AI提高效率"，而是"重新定义了一个团队能做什么"。</p>
+
+<hr>
+
+<h2>三句话总结</h2>
+
+<p><b>1. 瓶颈不再是你能建什么，而是你选择建什么</b>——执行力变便宜了，判断力变得稀缺</p>
+<p><b>2. 建得快 ≠ 验证了</b>——AI最危险的能力是让一个错误想法看起来也很专业</p>
+<p><b>3. 创始人从干活的人变成设计系统的人</b>——最难跨越的不是技术，是放手</p>
+
+<br>
+<p style="color:#999;font-size:13px;text-align:center;">基于 Anthropic《The Founder's Playbook: Building an AI-Native Startup》（2026-05-14）</p>
+
+</body>
+</html>
