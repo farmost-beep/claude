@@ -5,7 +5,7 @@
       "cron": "3 9 * * *",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/push_briefing.py morning，将早间简报推送到微信。不要做其他事情，只执行这条命令。",
       "createdAt": 1779914159019,
-      "lastFiredAt": 1780277580840,
+      "lastFiredAt": 1780363980794,
       "recurring": true,
       "createdBySessionId": "87587ccc-b7cb-4bbf-80e0-75448960fb5c",
       "createdByPid": 53071,
@@ -38,7 +38,7 @@
       "cron": "0 8 * * *",
       "prompt": "检查今天是否有待发布的文章（公众号/财新博客）。运行: cd /Users/cyingfang/claude && python3 scripts/publish_articles.py --schedule。如果有今天到期的文章，提醒陈颖芳执行发布: python3 scripts/publish_articles.py --publish-plan。同时运行 python3 scripts/publish_articles.py --status 检查整体发布进度。",
       "createdAt": 1779939743213,
-      "lastFiredAt": 1780274085253,
+      "lastFiredAt": 1780360358928,
       "recurring": true,
       "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
       "createdByPid": 88528,
@@ -71,6 +71,7 @@
       "cron": "37 6 * * *",
       "prompt": "继续推进总体目标。扫描六大目标当前状态，识别每个目标今天可以推进的最重要1件事（P0）。优先顺序：投资 > 事业 > 家庭 > 健康 > AI能力 > 知识库。完成后推送微信摘要告知今日推进了什么。如果涉及需用户确认的材料，在推送摘要中标记'(待审核)'。",
       "createdAt": 1780280803208,
+      "lastFiredAt": 1780355917418,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
@@ -81,6 +82,7 @@
       "cron": "37 8 * * *",
       "prompt": "生成今日的每日综合简报到 /Users/cyingfang/claude/每日综合简报_[今天日期].md。内容包括：1.数据仪表盘（净资产/金融资产/集中度/信用贷/savings progress/deliverable计数/知识卡片数） 2.六大目标一句话状态 3.昨日完成项 4.今日关键行动（P0/P1/P2） 5.投资一图 6.今日AI要点（从每日AI简报中提取3-5条最重要的，含对陈颖芳的具体含义） 7.风险与阻滞 8.明日预告。简报要能在2分钟内扫完。参考模板：/Users/cyingfang/claude/每日综合简报_20260528.md。注意：AI要点直接从每日AI简报中提取当日已有条目，不要再重新搜索。",
       "createdAt": 1780280804295,
+      "lastFiredAt": 1780362420115,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
@@ -94,7 +96,8 @@
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
-      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
+      "createdByProcStart": "Mon Jun  1 01:02:51 2026",
+      "lastFiredAt": 1780365600676
     },
     {
       "id": "faf12128",
