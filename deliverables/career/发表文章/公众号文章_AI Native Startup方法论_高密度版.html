@@ -27,7 +27,11 @@ hr { border:none; border-top:1px solid #eee; margin:20px 0; }
 
 <p>2026年5月14日，Anthropic 发布了一份36页的创始人手册《The Founder"s Playbook: Building an AI-Native Startup》。同一天，它的CEO Dario Amodei在接受采访时说了一句话："<b>50%的白领入门级岗位将在1-5年内消失。</b>"</p>
 
-<p>这两件事放在一起看，才构成完整的图景。</p>
+<p>五个月后，2026年5月，Amodei收回了这句预言。他改用<b>Jevons悖论</b>来重新表述："如果你自动化了90%的工作，剩下10%的部分会膨胀为原来的10倍——岗位不会消失，但内容会被彻底重构。"OpenAI的Sam Altman也做了类似的转向："我很高兴自己错了。"</p>
+
+<p>但Yann LeCun（Meta前首席AI科学家）的回应更为尖锐：<b>"他对劳动力市场一无所知。"</b>诺贝尔奖得主Acemoglu则称之为"动机性推理"。与此同时，2026年科技公司裁员已超过11.5万人，正在逼近2025年全年12.4万的总数。</p>
+
+<p>这几件事放在一起看，才构成完整的图景。</p>
 
 <p>手册讲的是<b>如何用AI建公司</b>——四阶段框架、工具选择、实战技巧。但Amodei的警告揭示了另一面：<b>这不仅仅是一本创业指南，它描述的是整个职业世界的底层重构。</b></p>
 
@@ -49,7 +53,7 @@ hr { border:none; border-top:1px solid #eee; margin:20px 0; }
 <h3>阶段2：MVP——建什么</h3>
 <p><b>退出标准</b>：用户重复使用、愿意付费、愿意推荐<br>
 <b>最独特的危险</b>：Agentic 技术债——没有架构约束的AI每次对话都重新推导，代码库最终没有一致的思维模型</p>
-<p>Anthropic 在多Agent实验中展示了MVP的力量：一个<b>Planner + Generator + Evaluator</b> 的三Agent架构，6小时/200美元构建了一个完整的游戏编辑器，通过27项验收标准。另一个DAW（数字音频工作站）在4小时内建成。</p>
+<p>Anthropic 内部做了更激进的实验：<b>16个并行Claude Agent（无人工监督）</b>从零构建了一个Rust语言C编译器——最终产物是一个<b>10万行代码的编译器</b>，成功编译了Linux 6.9内核（支持x86/ARM/RISC-V），API调用成本约<b>2万美元</b>。Claude Code负责人Boris Cherny本人的数据是：<b>"我两个月没写一行代码，昨天发了22个PR，前天27个，每一个100%由Claude生成"</b>。Anthropic全司代码的70-90%由AI生成。</p>
 <p><b>关键实践</b>：写CLAUDE.md。在写任何代码之前，记录架构原则、设计取舍、范围边界。</p>
 
 <h3>阶段3：Launch——增长</h3>
@@ -69,7 +73,7 @@ hr { border:none; border-top:1px solid #eee; margin:20px 0; }
 <tr><td>Anthropic 游戏编辑器</td><td>0人类代码 / 6小时 / 200美元 / 27项验收</td><td>多Agent架构 > 单Agent能力</td></tr>
 <tr><td>Anthropic DAW</td><td>4小时 / 125美元 / 浏览器可运行</td><td>创意工具的建造成本趋近于零</td></tr>
 <tr><td>非编程背景创业</td><td>营销毕业生一晚建成供应商管理系统</td><td>判断力 > 编程能力</td></tr>
-<tr><td>Medvi</td><td>2名全职员工 / 4.01亿美元营收</td><td>"10人独角兽"不是概念是现实</td></tr>
+<tr><td>Medvi</td><td>2名员工 / 2025年4亿美元营收 / 2026年预计18亿</td><td>100%自筹资金，0融资，AI原生公司的极限样本</td></tr>
 <tr><td>Anthropic 自身</td><td>140亿年收入 / 3800亿估值 / 内部工程师两月没写代码</td><td>AI Native 公司的终极样板间</td></tr>
 </table>
 
@@ -77,13 +81,13 @@ hr { border:none; border-top:1px solid #eee; margin:20px 0; }
 
 <p>理解这份手册，必须理解写它的这家公司是谁。</p>
 
-<h3>四个核心判断</h3>
+<h3>五个关键事实</h3>
 
 <p><b>1. "我们接近指数增长的终点"</b>——Amodei认为1-3年内，AI将在所有可验证任务上达到或超越人类最优水平。这不是遥远的未来，而是迫在眉睫。</p>
 
 <p><b>2. "90%概率，10年内出现'数据中心里的天才之国'"</b>——一个数据中心里数百万个集体比全人类更聪明的智能。</p>
 
-<p><b>3. "50%的白领入门级岗位将消失"</b>——失业率可能达到10-20%。他明确说："我们有责任诚实地面对即将到来的事情。"</p>
+<p><b>3. "50%的白领岗位将消失"——然后他收回了</b>——Amodei在Davos 2026和多次采访中反复警告AI将消灭50%的入门级白领岗位。Meta前首席AI科学家Yann LeCun直接反驳："他对劳动力市场一无所知。"诺贝尔奖得主Acemoglu称其为"动机性推理"。到2026年5月，Amodei悄然转向，用Jevons悖论重新表述：自动化会膨胀剩下的工作，而非消灭它们。Sam Altman也做了类似转向。这次收回被部分人解读为——两家公司都在为万亿美元级别的IPO做准备，激进的失业论调不利于估值。</p>
 
 <p><b>4. 公司治理的独特实验</b>——Anthropic 是公共利益公司 + 长期利益信托的治理结构，独立受托人可以任命多数董事会。这是为了防止任何单一个人掌握不受制约的权力。</p>
 
@@ -126,8 +130,11 @@ hr { border:none; border-top:1px solid #eee; margin:20px 0; }
 
 <br>
 <p style="color:#999;font-size:12px;text-align:center;">
-核心来源：Anthropic《The Founder"s Playbook》(2026-05-14) | Fortune/Moneycontrol/36氪 多源交叉验证<br>
-案例：Sogeti Labs / Anthropic RetroForge DAW / Medvi / 数据截至2026年6月
+<b>验证说明</b>：本文全部核心数据经高质量信息流程验证（3票对抗式）<br>
+✅ 已确认：Sogeti 3人/6周 | Medvi 2人/4亿$ | Anthropic $14B/$380B | Boris Cherny两月未写代码 | 16 Agent编译10万行C编译器<br>
+⚠️ 请注意：Amodei"50%岗位消失"主张已于2026年5月收回，本文如实记录了这一变化<br>
+核心来源：Anthropic官方新闻稿 | Fortune | Sogeti Labs | NYT | 多源交叉验证<br>
+数据截至2026年6月
 </p>
 
 </body></html>
