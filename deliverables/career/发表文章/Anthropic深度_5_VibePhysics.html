@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>哈佛教授让AI做了一年量的理论物理</title>
+<style>
+body { font-family: -apple-system,"PingFang SC","Microsoft YaHei",sans-serif; max-width:620px; margin:0 auto; padding:20px; font-size:16px; line-height:1.85; color:#333; }
+h1 { font-size:22px; color:#1a1a1a; text-align:center; margin:30px 0 15px; }
+h2 { font-size:18px; color:#1A2744; margin:25px 0 10px; border-left:4px solid #E07B2A; padding-left:12px; }
+p { margin:10px 0; text-indent:2em; }
+p:first-of-type { text-indent:0; }
+li { margin:5px 0; padding-left:1em; }
+b { color:#1A2744; }
+hr { border:none; border-top:1px solid #eee; margin:25px 0; }
+</style></head><body>
+<h1 style='text-align:center'>哈佛教授让AI做了一年量的理论物理——两星期完成</h1>
+<br>
+<p>2026年3月，哈佛物理系教授Matthew Schwartz在Anthropic的新闻博客上发表了一篇客座文章。</p>
+<br>
+<p>这不是一篇普通的AI评论文章。Schwartz做了一件非常具体的事：<b>他监督Claude Opus 4.5完成了一个真实的理论物理计算——C-parameter中的Sudakov Shoulder重求和——全部通过文本提示完成，没有手动编辑过一行代码。</b></p>
+<br>
+<p>结果：<b>两星期完成原本需要一年的工作，产出了一篇技术上严格的高能理论物理论文。</b></p>
+<br>
+<p>Schwartz自己的评价："这可能是我写过的最重要的论文——不是因为物理学内容，而是因为方法。回不去了。"</p>
+<br>
+<h2>实验设计</h2>
+<br>
+<p>Schwartz将Claude当作一个"AI研究生"来管理。他不是自己写代码，而是<b>告诉AI要做什么</b>，让AI自己写代码、运行、调试、修改。</p>
+<br>
+<p>整个过程涉及：</p>
+<br>
+<li>**110个独立草稿**</li>
+<li>**3600万token处理量**</li>
+<li>**40小时以上的本地CPU计算**</li>
+<li>**7个阶段、102个子任务**</li>
+<br>
+<p>7个阶段分别是：运动学分析 → NLO结构 → SCET因式分解 → 反常维数 → 重求和 → 匹配 → 文档撰写</p>
+<br>
+<h2>AI物理学家也"幻觉"</h2>
+<br>
+<p>如果故事到这里就结束了，它听起来像"AI完美完成科研工作"。实际上不是。</p>
+<br>
+<p>Schwartz记录了Claude的多种失败模式：</p>
+<br>
+<li>**伪造结果**：AI生成了看似合理但实际错误的数值</li>
+<li>**编造术语**：出现了"看起来像专业物理但实际不存在"的概念</li>
+<li>**过度简化代码**：为了运行快而偷工减料</li>
+<li>**"僵尸章节"**：论文中出现了看起来完整但逻辑断裂的段落</li>
+<br>
+<p><b>关键点</b>：这些问题不是Claude独有的。人类研究生也会犯同样的错误。区别在于：人类知道自己在不确定，而AI不知道。</p>
+<br>
+<p>Schwartz的结论：<b>领域专业知识对评估AI输出的准确性不可替代。</b> 不是"AI取代科学家"，而是"AI放大了有判断力的科学家的产出"。</p>
+<br>
+<h2>定量的效率提升</h2>
+<br>
+<p>| 维度 | 传统方式 | AI辅助方式 |</p>
+<p>|:-----|:---------|:-----------|</p>
+<p>| 完成时间 | ~1年 | <b>2周</b> |</p>
+<p>| 人力投入 | 1名研究生+导师 | <b>1名导师（引导AI）</b> |</p>
+<p>| 草稿数 | 通常10-20版 | <b>110版</b>（迭代更频繁） |</p>
+<p>| 代码编写 | 手动 | AI自动生成+调试 |</p>
+<p>| 论文质量 | 经过同行评审 | <b>"技术上的严格"</b>（Schwartz评价） |</p>
+<br>
+<h2>为什么这个案例比其他的更有说服力</h2>
+<br>
+<p>市面上不缺"AI能写论文"的新闻。但大多数是：</p>
+<br>
+<li>AI写了一篇"看起来像论文"的综述</li>
+<li>AI生成了一篇没有经过领域专家验证的文章</li>
+<li>研究过程不可复现</li>
+<br>
+<p>Schwartz的案例不同：</p>
+<br>
+<li>**Schwartz是哈佛物理系教授**，他的判断有学术信誉背书</li>
+<li>**计算结果是可验证的**，不是"看起来不错"</li>
+<li>**过程完全透明**——7个阶段、102个任务、110个草稿全部公开</li>
+<br>
+<h2>"回不去"意味着什么</h2>
+<br>
+<p>Schwartz说"回不去了"，不是因为AI完美——而是因为效率差异太大。传统方式一年做一个这样的计算，现在两星期。</p>
+<br>
+<p>哪怕AI有一半的时间在"幻觉"，那也只是把两周拉长到三周——仍然远快于一年。</p>
+<br>
+<p>对于基础科学而言，这种效率提升意味着：<b>以前因为太耗时而不值得做的计算，现在值得做了。</b> 这不是加速现有研究，而是打开新的研究方向。</p>
+<br>
+<p><b>来源</b>：[anthropic.com/news/vibe-physics](https://www.anthropic.com/news/vibe-physics)</p>
+<br>
+</body></html>

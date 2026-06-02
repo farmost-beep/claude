@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Claude Mythos：一个AI找到了存在27年的漏洞</title>
+<style>
+body { font-family: -apple-system,"PingFang SC","Microsoft YaHei",sans-serif; max-width:620px; margin:0 auto; padding:20px; font-size:16px; line-height:1.85; color:#333; }
+h1 { font-size:22px; color:#1a1a1a; text-align:center; margin:30px 0 15px; }
+h2 { font-size:18px; color:#1A2744; margin:25px 0 10px; border-left:4px solid #E07B2A; padding-left:12px; }
+p { margin:10px 0; text-indent:2em; }
+p:first-of-type { text-indent:0; }
+li { margin:5px 0; padding-left:1em; }
+b { color:#1A2744; }
+hr { border:none; border-top:1px solid #eee; margin:25px 0; }
+</style></head><body>
+<h1 style='text-align:center'>Claude Mythos：一个AI找到了存在27年的漏洞</h1>
+<br>
+<p>2026年4月，Anthropic 的红队发布了一份安全评估报告。标题很克制，内容不克制。</p>
+<br>
+<p><b>Claude Mythos Preview 在自主安全测试中，成功发现并利用了所有主流操作系统和浏览器中的零日漏洞。</b> 包括一个在 OpenBSD 中埋藏了27年的 bug。</p>
+<br>
+<p>OpenBSD 以安全性著称。它的开发团队以代码审计严格闻名，声称"默认安全"。一个27年无人发现的漏洞，意味着在它被写入代码的时候，Windows 98 还没发布。</p>
+<br>
+<h2>它找到了什么</h2>
+<br>
+<p>漏洞在 OpenBSD 的 TCP SACK（选择性确认）实现中，是1998年加入的代码。实际上是两个 bug 链式利用：</p>
+<br>
+<p>1. SACK 块范围起始位置的边界检查缺失</p>
+<p>2. TCP 序列号比较中的<b>有符号整数溢出</b>，使得一个"不可能"的条件变得可达</p>
+<br>
+<p>攻击者可以利用这两个漏洞，<b>远程崩溃任何响应 TCP 的 OpenBSD 主机</b>（拒绝服务攻击）。</p>
+<br>
+<p>更值得注意的不是漏洞本身，而是发现成本：<b>不到50美元</b>（整次评估约1000次运行，总成本低于2万美元）。</p>
+<br>
+<h2>这不是孤例</h2>
+<br>
+<p>截至2026年5月22日，Anthropic 的漏洞披露仪表板显示：</p>
+<br>
+<li>**1,596个漏洞** 在 **281个开源项目** 中被发现</li>
+<li>**97个已被修复**，其中88个获得了 CVE 或 GHSA 编号</li>
+<li>涵盖 Python 生态（NumPy/SciPy/Pandas 中56%的报告为有效 bug）</li>
+<li>Firefox 单一评估中发现了 **22个漏洞**（14个高危）</li>
+<br>
+<p>作为对比，传统的代码审计和模糊测试也能发现漏洞，但 Mythos 的差异在于：它<b>不需要人为指定搜索范围</b>，它自己理解代码、自己构造利用链、自己验证结果。</p>
+<br>
+<h2>Project Glasswing</h2>
+<br>
+<p>Anthropic 同时启动了 Project Glasswing——用 AI 做防御性网络安全，而不是攻击性。核心思路：既然 AI 能找到漏洞，那就让它系统性地帮开源项目修复漏洞。</p>
+<br>
+<h2>这意味着什么</h2>
+<br>
+<p>AI 自主发现漏洞这件事，行业已经讨论了好几年。2025年的共识是"AI 可以辅助人类找漏洞"。2026年的 Mythos 评估把这个结论改写成：<b>AI 可以独立找到并利用人类专家多年未发现的漏洞。</b></p>
+<br>
+<p>对网络安全行业：漏洞发现的门槛正在从"专家经验"变成"算力成本"。一个运行成本50美元的 AI Agent 能完成一个安全团队数周的工作。</p>
+<br>
+<p>对 AI 能力边界：这是"AI 在特定领域超越人类专家"最清晰的证据之一。不是下棋，不是游戏——是真实世界的安全工程。</p>
+<br>
+<p><b>来源</b>：[red.anthropic.com/2026/mythos-preview](https://red.anthropic.com/2026/mythos-preview/) | [CVD Dashboard](https://red.anthropic.com/2026/cvd/)</p>
+<br>
+</body></html>
