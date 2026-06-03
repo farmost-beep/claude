@@ -16,7 +16,7 @@
       "cron": "7 21 * * *",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/push_briefing.py evening，将晚间检视提醒推送到微信。不要做其他事情，只执行这条命令。",
       "createdAt": 1779914159034,
-      "lastFiredAt": 1780407420596,
+      "lastFiredAt": 1780493820072,
       "recurring": true,
       "createdBySessionId": "87587ccc-b7cb-4bbf-80e0-75448960fb5c",
       "createdByPid": 53071,
@@ -168,7 +168,8 @@
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 97952,
-      "createdByProcStart": "Mon Jun  1 10:54:29 2026"
+      "createdByProcStart": "Mon Jun  1 10:54:29 2026",
+      "lastFiredAt": 1780494666267
     },
     {
       "id": "cc797c81",
@@ -178,7 +179,8 @@
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 97952,
-      "createdByProcStart": "Mon Jun  1 10:54:29 2026"
+      "createdByProcStart": "Mon Jun  1 10:54:29 2026",
+      "lastFiredAt": 1780494666267
     },
     {
       "id": "abb19898",

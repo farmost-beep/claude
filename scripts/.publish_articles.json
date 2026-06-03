@@ -111,29 +111,92 @@
   },
   {
     "id": 11,
-    "title": "Claude Code是什么——它和你用过的AI工具有什么本质区别？",
-    "file": "career/发表文章/公众号文章_Claude Code入门_20260602.md",
-    "tags_wechat": "#AI编程 #ClaudeCode #效率工具 #AI工具对比",
-    "summary": "Claude Code和ChatGPT/GitHub Copilot有什么本质区别？四个核心能力决定了它是一个驻留在项目中的协作伙伴，而不是一个更好的聊天AI。",
-    "plan_date_wechat": "2026-06-02",
+    "title": "AI编程工具三国杀：Claude Code vs Codex vs DeepSeek",
+    "file": "career/发表文章/主题1_AI编程三国杀.md",
+    "tags_wechat": "#AI编程 #ClaudeCode #Codex #DeepSeek",
+    "summary": "2026年AI编程工具市场的三强格局分析",
+    "plan_date_wechat": "2026-06-04",
     "platform": "wechat"
   },
   {
     "id": 12,
-    "title": "AI Native Startup：创始人从“干活的人”变成“设计系统的人”",
-    "file": "career/发表文章/公众号文章_AI Native Startup方法论_20260602.md",
-    "tags_wechat": "#AI创业 #Startup #AI原生 #创始人手册",
-    "summary": "Anthropic发布创始人手册的核心洞察：AI Native startup的四阶段框架，以及创始人角色的根本转变。",
-    "plan_date_wechat": "2026-06-02",
+    "title": "MIT研究发现95%的AI试点项目失败了",
+    "file": "career/发表文章/主题2_95AI试点失败.md",
+    "tags_wechat": "#AI #企业AI #数字化转型",
+    "summary": "300个企业GenAI试点中95%未产生可衡量影响",
+    "plan_date_wechat": "2026-06-08",
     "platform": "wechat"
   },
   {
     "id": 13,
-    "title": "The Answer to Life, the Universe and Everything",
-    "file": "career/发表文章/公众号文章_TheAnswer42.md",
-    "tags_wechat": "#AI思考 #科技哲学 #涌现 #银河系漫游指南",
-    "summary": "42是一个比喻。它告诉我们：有些答案，只有在经历了足够长的旅程之后才会显现。",
-    "plan_date_wechat": "2026-06-03",
+    "title": "200 TOPS的端侧AI意味着什么",
+    "file": "career/发表文章/主题3_端侧AI爆发.md",
+    "tags_wechat": "#AI芯片 #端侧AI #英伟达",
+    "summary": "英伟达N1X芯片开启的计算范式转移",
+    "plan_date_wechat": "2026-06-11",
+    "platform": "wechat"
+  },
+  {
+    "id": 14,
+    "title": "MCP和A2A：Agent时代的TCP/IP",
+    "file": "career/发表文章/主题4_AI Agent元年.md",
+    "tags_wechat": "#AI Agent #MCP #A2A",
+    "summary": "为什么2026年是AI Agent元年",
+    "plan_date_wechat": "2026-06-15",
+    "platform": "wechat"
+  },
+  {
+    "id": 15,
+    "title": "从预测下一个词到预测下一个世界",
+    "file": "career/发表文章/主题5_范式转移NSP.md",
+    "tags_wechat": "#AI #范式转移 #世界模型",
+    "summary": "2026年AI最大的范式转移",
+    "plan_date_wechat": "2026-06-18",
+    "platform": "wechat"
+  },
+  {
+    "id": 16,
+    "title": "16个AI并行工作3周做出了一个编译器",
+    "file": "career/发表文章/主题6_16个AI并行.md",
+    "tags_wechat": "#AI编程 #多Agent #编译器",
+    "summary": "Anthropic的多Agent协作实验",
+    "plan_date_wechat": "2026-06-22",
+    "platform": "wechat"
+  },
+  {
+    "id": 17,
+    "title": "让你的Agent觉醒的不是技术，是你的工作方式",
+    "file": "career/发表文章/主题7_Agent觉醒与用户行为.md",
+    "tags_wechat": "#AI Agent #涌现 #用户行为",
+    "summary": "涌现与用户行为模式的关系",
+    "plan_date_wechat": "2026-06-25",
+    "platform": "wechat"
+  },
+  {
+    "id": 18,
+    "title": "端侧AI对银行的真正改变不是效率是合规",
+    "file": "career/发表文章/主题8_端侧AI银行.md",
+    "tags_wechat": "#端侧AI #银行 #合规",
+    "summary": "端侧AI在银行业的合规价值",
+    "plan_date_wechat": "2026-06-29",
+    "platform": "wechat"
+  },
+  {
+    "id": 19,
+    "title": "30万亿科技贷款的灰犀牛",
+    "file": "career/发表文章/主题9_科技金融灰犀牛.md",
+    "tags_wechat": "#科技金融 #银行信贷 #风控",
+    "summary": "科技贷款30万亿规模下的结构性风险",
+    "plan_date_wechat": "2026-07-02",
+    "platform": "wechat"
+  },
+  {
+    "id": 20,
+    "title": "从现在开始建你的第二大脑",
+    "file": "career/发表文章/主题10_第二大脑指南.md",
+    "tags_wechat": "#知识管理 #第二大脑 #Obsidian",
+    "summary": "个人知识系统的搭建指南",
+    "plan_date_wechat": "2026-07-06",
     "platform": "wechat"
   }
 ]
