@@ -198,5 +198,14 @@
     "summary": "个人知识系统的搭建指南",
     "plan_date_wechat": "2026-07-06",
     "platform": "wechat"
+  },
+  {
+    "id": 21,
+    "title": "推理成本趋零时",
+    "file": "career/发表文章/主题12_推理成本趋零时.md",
+    "tags_wechat": "#AI成本 #杰文斯悖论 #推理 #涌现",
+    "summary": "当AI推理成本趋近零，真正贵的东西才浮出水面——杰文斯悖论在AI领域的重演",
+    "plan_date_wechat": "2026-07-10",
+    "platform": "wechat"
   }
 ]
