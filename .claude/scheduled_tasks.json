@@ -165,22 +165,22 @@
       "cron": "*/30 * * * *",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/check_inbox.py 检查QQ邮箱是否有新回复。如果有新回复，读取 .bridge/inbox.md 的内容并告诉我有什么新消息。",
       "createdAt": 1780311346559,
+      "lastFiredAt": 1780496052819,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 97952,
-      "createdByProcStart": "Mon Jun  1 10:54:29 2026",
-      "lastFiredAt": 1780494666267
+      "createdByProcStart": "Mon Jun  1 10:54:29 2026"
     },
     {
       "id": "cc797c81",
       "cron": "0 7,14,21 * * *",
       "prompt": "搜索今天关于AI的最前沿发展。严格限3-5条，且其中至少1条必须包含\"我今天能做不同的事\"的行动建议。筛选标准：信源分级A/B级（非C级传闻）。格式：日期+标题+一句话要点+对陈颖芳的具体含义+行动建议。追加记录到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202606.md。然后说清楚今天最重要的发现的行动指向是什么。",
       "createdAt": 1780318282419,
+      "lastFiredAt": 1780494666267,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 97952,
-      "createdByProcStart": "Mon Jun  1 10:54:29 2026",
-      "lastFiredAt": 1780494666267
+      "createdByProcStart": "Mon Jun  1 10:54:29 2026"
     },
     {
       "id": "abb19898",
