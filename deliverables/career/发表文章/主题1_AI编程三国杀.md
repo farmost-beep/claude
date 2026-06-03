@@ -1,0 +1,23 @@
+# AI编程工具三国杀：Claude Code vs Codex vs DeepSeek Code Harness
+
+2026年6月，AI编程工具市场形成了清晰的「三国杀」格局。Anthropic的Claude Code、OpenAI的Codex、DeepSeek的Code Harness——三家以完全不同的路线争夺同一个市场。
+
+## Claude Code：最深的工程集成
+
+Claude Code的核心优势不是模型能力——是工程化的深度。它不止是代码生成器，而是一个完整的工程环境：文件系统访问、git集成、多Agent并行、定时任务、hooks、MCP插件。它的定位不是"帮你写代码"，而是"驻留在你项目中的全栈队友"。
+
+## OpenAI Codex：最大的生态惯性
+
+Codex的优势在于OpenAI的生态规模。GPT-5.6的1.5亿token上下文窗口让Codex能一次性处理超大规模代码库。GitHub Copilot的按月计费改为按量计费，实际上是在为Codex铺路——按量计费意味着重度用户会倾向于选择性能更好的模型。
+
+## DeepSeek Code Harness：成本结构的降维打击
+
+DeepSeek走的是开源+低成本的路线。Code Harness完全开源，支持私有化部署。对于有合规要求的企业客户来说，这是最有吸引力的方案。如果Anthropic和OpenAI的定价维持在高位，DeepSeek可能在6-12个月内通过价格优势获得可观的市场份额。
+
+## 怎么选
+
+- 个人深度用户 → Claude Code（工程化最完整）
+- 团队协作 → Codex（生态最大）
+- 企业合规 → Code Harness（可私有化部署）
+
+一句话：Claude Code让你做得更好，Codex让你做得更大，Code Harness让你做得更省。
