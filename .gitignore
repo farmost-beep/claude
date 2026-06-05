@@ -27,3 +27,4 @@ __pycache__/
 
 # embedded git repos
 scripts/autostrategy/
+how-claude-code-works/
