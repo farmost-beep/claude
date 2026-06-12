@@ -1,59 +1,69 @@
 {
-  "last_scan_date": "2026-06-09",
+  "last_scan_date": "2026-06-12",
   "goals": {
     "投资": {
-      "last_status": "🟠 昆仑减仓未执行，研究报告继续产出",
+      "last_status": "🟠 昆仑减仓未执行（方案已生成），研究报告继续产出",
       "pending": [
-        "昆仑万维第一批减仓（69.5%→目标≤40%）",
+        "昆仑万维第一批减仓（方案已就绪：36.5-37.5区间分批卖出3批×3,000股）",
         "信用贷9月还本资金锁定"
       ],
-      "completed_last_scan": [],
-      "notes": "上次待办均未完成。新动作：3份深度研究报告已生成（本源量子/核聚变/AI全行业），但减仓未启动。"
+      "completed_last_scan": [
+        "昆仑减仓执行方案已生成（3批卖出计划+资金安排）"
+      ],
+      "notes": "减仓方案已写入 deliverable/investment/执行清单/，等待执行。当前股价37.22元。"
     },
     "事业": {
-      "last_status": "🟢 方法论就绪，社情民意待提交",
+      "last_status": "🟢 方法论就绪✅，社情民意已提交✅，备考启动方案已就绪",
       "pending": [
-        "社情民意稿件补全联系信息后提交",
-        "中级经济师考试准备"
-      ],
-      "completed_last_scan": [],
-      "notes": "公众号文章已累计12+篇，但社情民意仍未提交。"
-    },
-    "家庭": {
-      "last_status": "🟢 考研暑假计划v2.1已生成，待确认",
-      "pending": [
-        "与陈于东当面确认暑假时间表"
-      ],
-      "completed_last_scan": [],
-      "notes": "暑假临近，这是本周最紧迫的家庭事项。"
-    },
-    "健康": {
-      "last_status": "🔴 基线未完整，运动0次",
-      "pending": [
-        "购买血压计（欧姆龙上臂式）",
-        "完成至少一次运动（快走/深蹲3组）"
-      ],
-      "completed_last_scan": [],
-      "notes": "BLE读取失败2次（手表不在范围）。健康仍是最大短板"
-    },
-    "AI能力": {
-      "last_status": "🟢 脚本就绪，持续推进",
-      "pending": [
-        "华为Health Kit Cloud API脚本授权流程推进"
+        "执行中级经济师备考启动（下单教材+装APP+本周开始通读）"
       ],
       "completed_last_scan": [
-        "华为Health Kit Cloud API脚本 v1.0 完成"
+        "社情民意稿件（并购贷款与科创金融生态）已提交",
+        "中级经济师备考第1周启动方案已生成（追赶至原计划第2周进度）"
       ],
-      "notes": "huawei_health_cloud.py 已完成，待OAuth授权。持续任务链状态文件已建立。"
+      "notes": "社情民意已提交。备考方案已写入 deliverable/career/执行清单/。下一重点：教材下单+开始学习。"
+    },
+    "家庭": {
+      "last_status": "🟢 考研暑假计划v2.1已就绪 + 确认模板已优化",
+      "pending": [
+        "发送微信给陈于东确认暑假时间"
+      ],
+      "completed_last_scan": [
+        "子女暑假确认行动单已生成（含微信模板+暑假前准备清单）"
+      ],
+      "notes": "暑假窗口8/1-9/10，还有约7周准备时间，本周发送确认微信即可。"
+    },
+    "健康": {
+      "last_status": "🟡 基线Day1行动方案已生成",
+      "pending": [
+        "购买血压计（欧姆龙HEM-7125 京东~269元）",
+        "完成首次运动（快走20min或深蹲3组）",
+        "建立基线记录（体重/腰围/血压/静息心率）"
+      ],
+      "completed_last_scan": [
+        "健康基线Day1方案已生成（含购买链接+首次运动计划+基线记录表）"
+      ],
+      "notes": "健康仍是最大短板。基线Day1方案已就绪，今天即可执行首次运动+血压计购买。"
+    },
+    "AI能力": {
+      "last_status": "🟢 授权指引已就绪，待执行OAuth",
+      "pending": [
+        "执行华为Health Kit OAuth授权（运行 --auth 命令 + 手机扫码）"
+      ],
+      "completed_last_scan": [
+        "华为Health Kit Cloud API脚本 v1.0 完成",
+        "OAuth授权步骤指引已生成（详见 deliverable/ai/华为Health_授权指引_20260612.md）"
+      ],
+      "notes": "授权指引已生成，执行 python3 scripts/huawei_health_cloud.py --auth 即可。"
     },
     "知识库": {
-      "last_status": "🟢 AI简报持续积累，卡片未同步",
-      "pending": [
-        "将6/7-6/9 AI简报关键发现（Apple WWDC/ICoT/AI疫苗等）提取为知识卡片"
+      "last_status": "🟢 6月AI简报知识卡片已提取",
+      "pending": [],
+      "completed_last_scan": [
+        "从6月AI简报提取5张知识卡片（范式转移/成本危机/岗位重塑/Agent监督/Agent平台化）"
       ],
-      "completed_last_scan": [],
-      "notes": "AI简报已追加5天、累计15+条深度条目，但未降维为知识卡片。Obsidian Vault 6goals 有280个文件。"
+      "notes": "5张知识卡片已写入 knowledge-base/知识卡片/，建议同步至Obsidian Vault。"
     }
   },
-  "cross_goal_notes": "9项待办中0项完成。核心阻滞：昆仑减仓未启动、社情民意未提交、健康基线未补。建议今天集中突破1-2项而非分散。"
+  "cross_goal_notes": "✅ 6/12六维度P0行动方案全部生成。待执行：昆仑减仓（3批）| 中级经济师教材+启动 | 子女暑假微信 | 健康运动+血压计 | 华为OAuth授权"
 }
