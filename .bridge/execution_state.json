@@ -1,0 +1,107 @@
+{
+  "version": 2,
+  "last_update": "2026-06-10T09:07:34.027813",
+  "total_assets_cny": 0.0,
+  "debt": {
+    "target": 600000,
+    "raised_so_far": 0,
+    "from_sell_orders": [],
+    "from_savings": 0,
+    "last_check_date": ""
+  },
+  "pending_orders": [],
+  "executed_orders": [],
+  "last_snapshot": {
+    "holdings": {
+      "300418_普通": {
+        "name": "昆仑万维",
+        "account": "普通",
+        "shares": 10200,
+        "cost": 53.5,
+        "current_price": 0,
+        "market_value": 0,
+        "cost_basis": 545700.0,
+        "pnl": -545700.0,
+        "target_shares": 3000,
+        "weight_pct": 0
+      },
+      "300418_信用": {
+        "name": "昆仑万维(信用)",
+        "account": "信用",
+        "shares": 6800,
+        "cost": 57.25,
+        "current_price": 0,
+        "market_value": 0,
+        "cost_basis": 389300.0,
+        "pnl": -389300.0,
+        "target_shares": 0,
+        "weight_pct": 0
+      },
+      "159715": {
+        "name": "稀土ETF",
+        "account": "普通",
+        "shares": 45300,
+        "cost": 1.47,
+        "current_price": 0,
+        "market_value": 0,
+        "cost_basis": 66591.0,
+        "pnl": -66591.0,
+        "target_shares": 45300,
+        "weight_pct": 0
+      },
+      "300059": {
+        "name": "东方财富",
+        "account": "普通",
+        "shares": 1300,
+        "cost": 5.28,
+        "current_price": 0,
+        "market_value": 0,
+        "cost_basis": 6864.0,
+        "pnl": -6864.0,
+        "target_shares": 1300,
+        "weight_pct": 0
+      },
+      "159206": {
+        "name": "卫星ETF",
+        "account": "普通",
+        "shares": 4700,
+        "cost": 2.11,
+        "current_price": 0,
+        "market_value": 0,
+        "cost_basis": 9917.0,
+        "pnl": -9917.0,
+        "target_shares": 4700,
+        "weight_pct": 0
+      },
+      "09678_HK": {
+        "name": "云知声",
+        "account": "港股",
+        "shares": 80,
+        "cost": 262.0,
+        "current_price": 0,
+        "market_value": 0,
+        "cost_basis": 20960.0,
+        "pnl": -20960.0,
+        "target_shares": 80,
+        "weight_pct": 0
+      },
+      "06030_HK": {
+        "name": "中信证券",
+        "account": "港股",
+        "shares": 1000,
+        "cost": 29.91,
+        "current_price": 0,
+        "market_value": 0,
+        "cost_basis": 29910.0,
+        "pnl": -29910.0,
+        "target_shares": 0,
+        "weight_pct": 0
+      }
+    },
+    "total_value": 0.0,
+    "top_holding_name": "昆仑万维",
+    "top_holding_pct": 0,
+    "concentration_breach": false,
+    "total_unrealized_pnl": -1069242.0
+  }
+}

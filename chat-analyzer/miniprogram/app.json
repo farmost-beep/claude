@@ -1,0 +1,11 @@
+{
+  "appid": "wxe1ea479f0d75280c",
+  "pages": ["pages/index/index", "pages/gathering/gathering", "pages/memory/memory"],
+  "window": {
+    "navigationBarTitleText": "见面聊",
+    "navigationBarBackgroundColor": "#1A2744",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

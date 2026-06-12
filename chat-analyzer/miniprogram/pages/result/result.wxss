@@ -1,0 +1,13 @@
+.container{padding:16px}.header{text-align:center;padding:15px 0}.title{font-size:20px;font-weight:bold;color:#1A2744}
+.stats-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:10px 0}
+.stat-card{background:#f0f4ff;border-radius:10px;padding:12px 16px;text-align:center;width:42%}
+.stat-card .num{font-size:24px;font-weight:bold;color:#1A2744;display:block}
+.stat-card .label{font-size:12px;color:#666;margin-top:2px;display:block}
+.section{margin:16px 0}.section-title{font-size:16px;font-weight:bold;color:#1A2744;display:block;margin-bottom:8px}
+.rank-item{display:flex;align-items:center;margin:4px 0;font-size:13px}
+.rank{width:20px;font-weight:bold;color:#1A2744}.name{width:70px;overflow:hidden;text-overflow:ellipsis}
+.count{width:50px;text-align:right;color:#666}.bar-bg{flex:1;height:16px;background:#eee;border-radius:8px;margin:0 6px;overflow:hidden}
+.bar{height:100%;background:linear-gradient(90deg,#1A2744,#4a7bd4);border-radius:8px;min-width:2%}
+.hour-item{display:flex;align-items:center;margin:3px 0;font-size:12px}
+.hour-label{width:35px;color:#666}.hour-count{width:40px;text-align:right;color:#666}
+.share-btn{width:100%;padding:12px;background:#1A2744;color:#fff;border:none;border-radius:8px;font-size:16px;margin-top:20px;text-align:center}

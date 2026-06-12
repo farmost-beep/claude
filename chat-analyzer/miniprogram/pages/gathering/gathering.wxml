@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="card">
+    <view class="card-header">
+      <text class="card-icon">{{icon}}</text>
+      <text class="card-title">{{timeLabel}}{{time}}一起{{type}}</text>
+      <text class="card-note" wx:if="{{note}}">"{{note}}"</text>
+    </view>
+
+    <view class="info-row">
+      <text class="info-label">👥 已报名</text>
+      <text class="info-value">{{members.length}}人</text>
+    </view>
+
+    <view class="member-list" wx:if="{{members.length>0}}">
+      <text class="member-tag" wx:for="{{members}}" wx:key="index">{{item}}</text>
+    </view>
+
+    <view class="actions">
+      <button class="btn-go {{joined?'btn-done':''}}" bindtap="join">{{joined ? '✅ 已报名' : '✅ 我能去'}}</button>
+      <button class="btn-no {{passed?'btn-done-no':''}}" bindtap="pass">{{passed ? '❌ 已标记' : '❌ 这次不行'}}</button>
+      <button class="btn-maybe {{maybeDone?'btn-done-maybe':''}}" bindtap="maybe">{{maybeDone ? '⏳ 已标记' : '⏳ 下次一定'}}</button>
+    </view>
+
+    <view class="share-row">
+      <button class="btn-share" open-type="share">📤 邀请更多人</button>
+    </view>
+    <view class="after-party" bindtap="recordMemory">
+      <text class="after-icon">📸</text>
+      <text class="after-text">见面结束后，拍张合照记录一下</text>
+    </view>
+  </view>
+
+  <view class="tip" wx:if="{{showers.length>0}}">
+    <text class="tip-title">💔 这次来不了的</text>
+    <text class="member-tag no" wx:for="{{showers}}" wx:key="index">{{item}}</text>
+  </view>
+</view>

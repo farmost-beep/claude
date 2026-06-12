@@ -34,61 +34,6 @@
       "createdByProcStart": "Wed May 27 22:25:00 2026"
     },
     {
-      "id": "0d9458c6",
-      "cron": "23 9 * * 6",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/knowledge_flywheel.py 完成每周知识库自进化扫描（幽灵链接→孤儿卡片→升级候选→规范腐烂），将报告推送到微信。如果发现幽灵链接或孤儿卡片，提醒用户来Claude处理。如果升级候选列表非空，建议用户选择1-2张卡片升级到Layer 1规范。",
-      "createdAt": 1779978392206,
-      "lastFiredAt": 1780105980742,
-      "recurring": true,
-      "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
-      "createdByPid": 88528,
-      "createdByProcStart": "Thu May 28 00:37:12 2026"
-    },
-    {
-      "id": "8190c422",
-      "cron": "35 9 * * 6",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/ai_capability_flywheel.py 完成每周AI能力五维度自进化扫描（规范力/编排力/验证力/扩展力/感知力），将证据报告+升级判断推送到微信。关注缺口数量——如果某维度连续3周缺口不减少，提醒用户该维度建设停滞，需要重新审视提升方案。",
-      "createdAt": 1779978755713,
-      "lastFiredAt": 1780106700733,
-      "recurring": true,
-      "createdBySessionId": "ccc5eeb1-0b9f-4fd6-b427-fcb411882533",
-      "createdByPid": 88528,
-      "createdByProcStart": "Thu May 28 00:37:12 2026"
-    },
-    {
-      "id": "bfac8d72",
-      "cron": "37 6 * * *",
-      "prompt": "继续推进总体目标。扫描六大目标当前状态，识别每个目标今天可以推进的最重要1件事（P0）。优先顺序：投资 > 事业 > 家庭 > 健康 > AI能力 > 知识库。完成后推送微信摘要告知今日推进了什么。如果涉及需用户确认的材料，在推送摘要中标记'(待审核)'。",
-      "createdAt": 1780280803208,
-      "lastFiredAt": 1780614954965,
-      "recurring": true,
-      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
-      "createdByPid": 72514,
-      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
-    },
-    {
-      "id": "a33d4ca9",
-      "cron": "37 8 * * *",
-      "prompt": "生成今日的每日综合简报到 /Users/cyingfang/claude/每日综合简报_[今天日期].md。内容包括：1.数据仪表盘（净资产/金融资产/集中度/信用贷/savings progress/deliverable计数/知识卡片数） 2.六大目标一句话状态 3.昨日完成项 4.今日关键行动（P0/P1/P2） 5.投资一图 6.今日AI要点（从每日AI简报中提取3-5条最重要的，含对陈颖芳的具体含义） 7.风险与阻滞 8.明日预告。简报要能在2分钟内扫完。参考模板：/Users/cyingfang/claude/每日综合简报_20260528.md。注意：AI要点直接从每日AI简报中提取当日已有条目，不要再重新搜索。",
-      "createdAt": 1780280804295,
-      "lastFiredAt": 1780623957177,
-      "recurring": true,
-      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
-      "createdByPid": 72514,
-      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
-    },
-    {
-      "id": "d21f99d8",
-      "cron": "30 9 * * *",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/auto_pr.py --auto-fix 完成每日自动检查+自动修复草案生成，将报告推送到微信。如果推送失败，将失败记录追加到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202606.md 当天的条目下。如果推送成功且待处理修复草案列表不为空，提醒用户来Claude审核修复草案，说\"执行auto-fix --all\"即可全部批准。",
-      "createdAt": 1780280805083,
-      "lastFiredAt": 1780628972705,
-      "recurring": true,
-      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
-      "createdByPid": 72514,
-      "createdByProcStart": "Mon Jun  1 01:02:51 2026"
-    },
-    {
       "id": "faf12128",
       "cron": "0 21 1 * *",
       "prompt": "检查所有记忆文件的新鲜度。逐条阅读 ~/.claude/projects/-Users-cyingfang-claude/memory/ 下的所有 .md 文件（除 MEMORY.md），找出：1）标注\"X days old\"超过14天的记忆；2）引用了已删除文件或路径的记忆；3）内容与其他记忆矛盾的信息。将发现的问题列出，不直接修改，等用户确认。",
@@ -104,6 +49,7 @@
       "cron": "47 9 * * 6",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/career_flywheel.py 完成每周事业三层结构扫描，联动判断引擎→加速→结果是否通畅，推送到微信。",
       "createdAt": 1780280806390,
+      "lastFiredAt": 1780712220818,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
@@ -114,6 +60,7 @@
       "cron": "59 9 * * 6",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/investment_flywheel.py 完成每周投资系统四层扫描（决策质量/行为纪律/资本配置/系统进化），推送到微信。",
       "createdAt": 1780280806880,
+      "lastFiredAt": 1780712940185,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
@@ -124,6 +71,7 @@
       "cron": "11 10 * * 6",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/health_flywheel.py 完成每周健康三层因果链扫描（输入/过程/P0行动），推送到微信。",
       "createdAt": 1780280807301,
+      "lastFiredAt": 1780713660840,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
@@ -134,6 +82,7 @@
       "cron": "23 10 * * 6",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/family_flywheel.py 完成每周家庭支持飞轮扫描（关系清晰度/执行进度/风险预警/系统进化），将报告推送到微信。如果检测到风险信号（考研窗口/端午节点/赡养提醒），提醒用户关注家庭维度的待办事项。",
       "createdAt": 1780280807960,
+      "lastFiredAt": 1780714380251,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
@@ -144,42 +93,46 @@
       "cron": "35 10 * * 6",
       "prompt": "运行 python3 /Users/cyingfang/claude/scripts/happiness_flywheel.py 完成每周幸福人生六维度扫描，将报告推送到微信。这是元飞轮，在所有6个领域飞轮之后运行。",
       "createdAt": 1780280808427,
+      "lastFiredAt": 1780715100154,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 72514,
       "createdByProcStart": "Mon Jun  1 01:02:51 2026"
     },
     {
-      "id": "f26a2664",
-      "cron": "*/30 * * * *",
-      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/check_inbox.py 检查QQ邮箱是否有新回复。如果有新回复，读取 .bridge/inbox.md 的内容并告诉我有什么新消息。",
-      "createdAt": 1780311346559,
-      "lastFiredAt": 1780647252363,
-      "recurring": true,
-      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
-      "createdByPid": 97952,
-      "createdByProcStart": "Mon Jun  1 10:54:29 2026"
-    },
-    {
-      "id": "cc797c81",
-      "cron": "0 7,14,21 * * *",
-      "prompt": "搜索今天关于AI的最前沿发展。严格限3-5条，且其中至少1条必须包含\"我今天能做不同的事\"的行动建议。筛选标准：信源分级A/B级（非C级传闻）。格式：日期+标题+一句话要点+对陈颖芳的具体含义+行动建议。追加记录到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202606.md。然后说清楚今天最重要的发现的行动指向是什么。",
-      "createdAt": 1780318282419,
-      "lastFiredAt": 1780644115061,
-      "recurring": true,
-      "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
-      "createdByPid": 97952,
-      "createdByProcStart": "Mon Jun  1 10:54:29 2026"
-    },
-    {
       "id": "abb19898",
       "cron": "47 21 * * 6",
       "prompt": "执行三大Managed Agents日常循环：\n\n**1. Dreaming**：回顾 /Users/cyingfang/.claude/projects/-Users-cyingfang-claude/memory/ 下所有记忆文件，检查 (a)新产生的矛盾/冲突 (b)过时信息 (c)遗漏的连接。如果发现问题，直接修复并记录到记忆文件。\n\n**2. Multiagent**：并行扫描六大目标目录，检查每个目标 (a)新增.md是否都有.pdf (b)内容一致性 (c)日期引用是否过期。输出一个简短的质量报告到 /Users/cyingfang/claude/deliverables/ai/每日AI简报_202606.md 的当日条目下。\n\n**3. Outcomes**：独立验证Dreaming发现的修复是否真的被完成。如果修复未完成或错误，重新修复。\n\n最后，总结今天发现和修复了什么问题，如果一切正常就说\"系统健康\"。",
       "createdAt": 1780323756564,
+      "lastFiredAt": 1780755420483,
       "recurring": true,
       "createdBySessionId": "5faff83e-0064-4eb1-bfcd-5da0100444f5",
       "createdByPid": 97952,
       "createdByProcStart": "Mon Jun  1 10:54:29 2026"
-    }
-  ]
-}
+    },
+    {
+      "id": "ff507180",
+      "cron": "7 * * * *",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/check_feishu.py 2>&1。如果有新飞书消息，逐条读取 .bridge/feishu_inbox.md 中的最新消息，根据消息内容执行对应操作：\n\n- 如果消息以\"前沿扫描员：\"开头 → 执行多源搜索，推送简报到飞书群\n- 如果消息以\"记一个灵感：\"或\"灵感：\"开头 → 追加到 deliverables/inspiration/灵感合集.md\n- 如果消息包含\"检查邮箱\"或\"收件箱\" → 运行 check_inbox.py\n- 如果消息以\"ultracode\"开头 → 执行深度搜索并回复摘要到飞书群\n- 如果消息包含\"生成pdf\" → 生成PDF并发送到飞书群\n- 其他消息 → 直接回复收到了，告诉用户可用的命令格式\n\n执行完毕后，通过飞书推送简短摘要告知处理结果。",
+      "createdAt": 1780757066473,
+      "lastFiredAt": 1781255313077,
+      "recurring": true,
+      "createdBySessionId": "ff12528f-6a6e-42a8-8de1-43d37bd429cb",
+      "createdByPid": 61752,
+      "createdByProcStart": "Wed Jun  3 13:51:01 2026"
+    },
+    {
+      "id": "10976572",
+      "cron": "30 22 * * *",
+      "prompt": "运行 python3 /Users/cyingfang/claude/scripts/huawei_health_ble.py 2>&1。如果成功读取到心率数据，直接写入健康追踪文件，不在session显示。如果连续3次读取失败，在session中提醒用户检查手表心率广播是否开启。",
+      "createdAt": 1780795132886,
+      "lastFiredAt": 1781190000173,
+      "recurring": true,
+      "createdBySessionId": "ff12528f-6a6e-42a8-8de1-43d37bd429cb",
+      "createdByPid": 61752,
+      "createdByProcStart": "Wed Jun  3 13:51:01 2026"
+    },
+    {
+      "id": "market_report_daily",
+      "cron": "37 8 * * 1-5",
+      "prompt": "运行 python3 /Users/cyingfang/claude/                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

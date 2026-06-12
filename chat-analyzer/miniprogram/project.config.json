@@ -1,0 +1,14 @@
+{
+  "description": "项目配置文件",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true
+  },
+  "compileType": "miniprogram",
+  "appid": "wxe1ea479f0d75280c",
+  "projectname": "见面聊",
+  "libVersion": "3.7.7"
+}

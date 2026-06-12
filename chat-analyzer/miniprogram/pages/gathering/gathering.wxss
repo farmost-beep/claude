@@ -1,0 +1,19 @@
+.container{padding:16px}.card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 2px 16px rgba(0,0,0,0.08)}
+.card-header{text-align:center;padding-bottom:16px;border-bottom:1px solid #eee}
+.card-icon{font-size:48px;display:block;margin-bottom:8px}.card-title{font-size:20px;font-weight:bold;color:#1A2744;display:block}
+.card-note{display:block;font-size:14px;color:#666;margin-top:4px;font-style:italic}
+.info-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #eee}
+.info-label{font-size:15px;color:#333}.info-value{font-size:15px;font-weight:bold;color:#1A2744}
+.member-list{padding:10px 0;display:flex;flex-wrap:wrap;gap:6px}
+.member-tag{background:#f0f4ff;color:#1A2744;padding:4px 12px;border-radius:14px;font-size:13px}
+.member-tag.no{background:#f5f5f5;color:#999}
+.actions{margin-top:16px}.btn-go{width:100%;padding:12px;background:#1A2744;color:#fff;border:none;border-radius:8px;font-size:16px;margin:4px 0}
+.btn-done{background:#10B981;opacity:0.8}
+.btn-no{width:100%;padding:10px;background:#fff;color:#999;border:1px solid #ddd;border-radius:8px;font-size:14px;margin:4px 0}
+.btn-done-no{background:#f5f5f5;color:#ccc;border-color:#eee}
+.btn-maybe{width:100%;padding:10px;background:#fff;color:#666;border:1px solid #eee;border-radius:8px;font-size:14px;margin:4px 0}
+.btn-done-maybe{background:#FEF3C7;color:#92400E;border-color:#FBBF24}
+.share-row{margin-top:16px}.btn-share{width:100%;padding:10px;background:#fff;color:#1A2744;border:1px solid #1A2744;border-radius:8px;font-size:14px;text-align:center}
+.after-party{background:linear-gradient(135deg,#8B5CF6,#EC4899);border-radius:12px;padding:14px;margin:12px 0;text-align:center;color:#fff}
+.after-icon{font-size:28px;display:block}.after-text{font-size:14px;display:block;margin-top:2px}
+.tip{background:#f8f9fa;border-radius:12px;padding:14px;margin:12px 0}.tip-title{display:block;font-size:14px;color:#666;margin-bottom:6px}

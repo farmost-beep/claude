@@ -15,6 +15,10 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
+# 第5层：执行层
+sys.path.insert(0, str(Path(__file__).resolve().parent / "lib"))
+from investment_execution import assess_执行, run_daily
+
 DELIVERABLES = Path("/Users/cyingfang/claude/deliverables")
 SPECS_DIR = DELIVERABLES / "记忆规范"
 AI_DIR = DELIVERABLES / "ai"
@@ -192,15 +196,16 @@ def assess_系统进化() -> dict:
 # 飞轮联动判断
 # ============================================================
 
-def 联动判断(决策: dict, 纪律: dict, 配置: dict, 进化: dict) -> tuple:
+def 联动判断(决策: dict, 纪律: dict, 配置: dict, 进化: dict, 执行: dict = None) -> tuple:
     total_gaps = (len(决策.get("gaps", [])) + len(纪律.get("gaps", [])) +
                   len(配置.get("gaps", [])) + len(进化.get("gaps", [])))
 
     # 统计真正需要关注的缺口（排除📋手动确认项）
-    real_gaps = [g for g in
-                 (决策.get("gaps", []) + 纪律.get("gaps", []) +
-                  配置.get("gaps", []) + 进化.get("gaps", []))
-                 if not g.startswith("📋")]
+    all_gaps = (决策.get("gaps", []) + 纪律.get("gaps", []) +
+                配置.get("gaps", []) + 进化.get("gaps", []))
+    if 执行:
+        all_gaps += 执行.get("gaps", [])
+    real_gaps = [g for g in all_gaps if not g.startswith("📋")]
 
     if len(real_gaps) == 0:
         return ("✅ 系统健康", "四层无实质性缺口，飞轮正常运转", [
@@ -228,7 +233,7 @@ def build_report(assessments: dict, flywheel: tuple) -> str:
 
     lines = [
         f"# 投资飞轮 | {now}",
-        f"> 四层联动：{状态} — {诊断}\n",
+        f"> 五层联动：{状态} — {诊断}\n",
     ]
 
     lines.append("## 🎯 飞轮判断")
@@ -238,12 +243,13 @@ def build_report(assessments: dict, flywheel: tuple) -> str:
         lines.append(f"- [ ] {a}")
     lines.append("")
 
-    # 四层
+    # 五层
     layers = [
         ("决策质量", "🔬", "分析管道健康"),
         ("行为纪律", "📏", "规范执行"),
         ("资本配置", "💰", "组合管理"),
         ("系统进化", "🔄", "投资飞轮"),
+        ("执行", "⚡", "操作执行层"),
     ]
 
     for layer_name, icon, desc in layers:
@@ -283,12 +289,13 @@ def build_report(assessments: dict, flywheel: tuple) -> str:
 def main():
     is_dry_run = "--dry-run" in sys.argv
 
-    print("🔍 扫描投资系统四层架构...")
+    print("🔍 扫描投资系统五层架构...")
     assessments = {
         "决策质量": assess_决策质量(),
         "行为纪律": assess_行为纪律(),
         "资本配置": assess_资本配置(),
         "系统进化": assess_系统进化(),
+        "执行": assess_执行(),
     }
 
     flywheel = 联动判断(
@@ -296,8 +303,17 @@ def main():
         assessments["行为纪律"],
         assessments["资本配置"],
         assessments["系统进化"],
+        assessments["执行"],
     )
     report = build_report(assessments, flywheel)
+
+    # 如果有P0待办，也推送执行层订单
+    exec_data = assessments.get("执行", {})
+    if exec_data.get("orders"):
+        try:
+            run_daily(dry_run=is_dry_run)
+        except Exception:
+            pass
 
     if is_dry_run:
         print(report)

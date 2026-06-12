@@ -20,7 +20,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 SMTP_SERVER = "smtp.qq.com"
-SMTP_PORT = 465
+SMTP_PORT = 587  # 备用端口 465 (SSL), 587 (TLS)
 IMAP_SERVER = "imap.qq.com"
 IMAP_PORT = 993
 
@@ -47,7 +47,7 @@ def get_config():
 
 
 def push(title: str, content: str) -> tuple[bool, str]:
-    """通过QQ邮箱SMTP发送推送。返回 (成功?, 消息)"""
+    """通过QQ邮箱SMTP发送推送。支持自动重试。返回 (成功?, 消息)"""
     cfg = get_config()
     if not cfg:
         return False, "QQ邮箱未配置（设置 QQ_EMAIL + QQ_EMAIL_AUTH）"
@@ -58,13 +58,38 @@ def push(title: str, content: str) -> tuple[bool, str]:
     msg["From"] = cfg["addr"]
     msg["To"] = cfg["recipient"]
 
-    try:
-        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT, timeout=15) as server:
-            server.login(cfg["addr"], cfg["auth"])
-            server.sendmail(cfg["addr"], [cfg["recipient"]], msg.as_string())
-        return True, f"邮件已发送到 {cfg['recipient']}"
-    except Exception as e:
-        return False, f"SMTP发送失败: {e}"
+    import time
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        # 冷却等待：QQ SMTP 有频率限制，每次发送前等待
+        if attempt > 1:
+            wait = attempt * 30
+            time.sleep(wait)
+        try:
+            # 尝试 SSL (465), 失败则尝试 TLS (587)
+            ports = [(SMTP_SERVER, 465, True), (SMTP_SERVER, 587, False)]
+            last_error = None
+            for host, port, use_ssl in ports:
+                try:
+                    if use_ssl:
+                        server = smtplib.SMTP_SSL(host, port, timeout=15)
+                    else:
+                        server = smtplib.SMTP(host, port, timeout=15)
+                        server.starttls()
+                    server.login(cfg["addr"], cfg["auth"])
+                    server.sendmail(cfg["addr"], [cfg["recipient"]], msg.as_string())
+                    server.quit()
+                    return True, f"邮件已发送到 {cfg['recipient']}"
+                except Exception as e:
+                    last_error = e
+                    continue
+            if attempt < max_retries:
+                continue
+            return False, f"SMTP发送失败: {last_error}"
+        except Exception as e:
+            if attempt < max_retries:
+                continue
+            return False, f"SMTP发送失败: {e}"
 
 
 def check_replies(hours_back: int = 24) -> list[dict]:

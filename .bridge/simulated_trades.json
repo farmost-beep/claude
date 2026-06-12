@@ -1,0 +1,50 @@
+[
+  {
+    "id": "SIM-0001",
+    "date": "2026-06-10",
+    "action": "sell",
+    "symbol": "300418",
+    "name": "昆仑万维(信用)",
+    "shares": 6800,
+    "price": 46.5,
+    "value": 316200.0,
+    "reason": "清信用账户消除杠杆，触发条件：集中度69.5%>40%上限",
+    "status": "closed"
+  },
+  {
+    "id": "SIM-0002",
+    "date": "2026-06-10",
+    "action": "sell",
+    "symbol": "300418",
+    "name": "昆仑万维(普通)",
+    "shares": 7200,
+    "price": 47.0,
+    "value": 338400.0,
+    "reason": "降低集中度至目标持股3000股",
+    "status": "closed"
+  },
+  {
+    "id": "SIM-0003",
+    "date": "2026-06-10",
+    "action": "buy",
+    "symbol": "688525",
+    "name": "佰维存储",
+    "shares": 2000,
+    "price": 68.5,
+    "value": 137000.0,
+    "reason": "存储龙头，PE14 ROE34%，存储紧缺至2030年",
+    "status": "open"
+  },
+  {
+    "id": "SIM-0004",
+    "date": "2026-06-10",
+    "action": "buy",
+    "symbol": "601899",
+    "name": "紫金矿业",
+    "shares": 5000,
+    "price": 18.2,
+    "value": 91000.0,
+    "reason": "铜金龙头PE9，低估值防御配置",
+    "status": "open"
+  }
+]

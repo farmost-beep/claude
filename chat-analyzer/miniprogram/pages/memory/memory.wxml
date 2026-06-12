@@ -1,0 +1,36 @@
+<view class="container">
+  <view class="header">
+    <text class="title">📸 见面记忆墙</text>
+    <text class="subtitle">每一次见面，都值得被记住</text>
+  </view>
+
+  <view class="upload-card" bindtap="takePhoto">
+    <text class="upload-icon">📷</text>
+    <text class="upload-text">记录这次见面</text>
+    <text class="upload-sub">拍张合照，保存记忆</text>
+  </view>
+
+  <view class="stats-row">
+    <view class="stat"><text class="stat-num">{{memories.length}}</text><text class="stat-label">次见面</text></view>
+    <view class="stat"><text class="stat-num">{{totalPeople}}</text><text class="stat-label">参与人次</text></view>
+    <view class="stat"><text class="stat-num">{{uniqueMonths}}</text><text class="stat-label">连续月</text></view>
+  </view>
+
+  <view class="section-title">📅 见面记录</view>
+  <view class="empty" wx:if="{{memories.length==0}}">
+    <text class="empty-text">还没有见面记录</text>
+    <text class="empty-sub">在群里发起一个局，出来见面吧！</text>
+  </view>
+
+  <view class="memory-card" wx:for="{{memories}}" wx:key="index" wx:for-item="mem">
+    <image class="memory-img" src="{{mem.image}}" mode="aspectFill" wx:if="{{mem.image}}"></image>
+    <view class="memory-info">
+      <text class="memory-time">{{mem.date}} {{mem.time}}</text>
+      <text class="memory-desc">{{mem.desc}}</text>
+      <view class="memory-tags">
+        <text class="tag">{{mem.type}}</text>
+        <text class="tag-people">👥 {{mem.count}}人</text>
+      </view>
+    </view>
+  </view>
+</view>

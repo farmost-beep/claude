@@ -1,0 +1,128 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"><title>深度定制个人智能体——架构设计v1.0</title><style>
+body{font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;max-width:100%;margin:0 auto;padding:5px 12px 30px;font-size:15px;line-height:1.75;color:#333;-webkit-font-smoothing:antialiased}
+h1{font-size:20px;color:#1A2744;text-align:center;margin:15px 0 5px;line-height:1.4}
+h2{font-size:16px;color:#1A2744;margin:16px 0 6px;border-left:3px solid #0f3460;padding-left:10px;line-height:1.4}
+h3{font-size:15px;color:#1A2744;margin:12px 0 4px}
+p{margin:6px 0;text-indent:2em;word-break:break-word}
+p:first-of-type{text-indent:0}
+b{color:#0f3460}
+blockquote{background:#f5f7fa;border-left:3px solid #0f3460;padding:6px 10px;margin:8px 0;color:#555;font-size:14px;line-height:1.6;border-radius:0 4px 4px 0}
+table{width:100%;border-collapse:collapse;margin:8px 0;font-size:12px;overflow-x:auto;display:block;-webkit-overflow-scrolling:touch}
+th{background:#0f3460;color:#fff;padding:4px 6px;text-align:left;white-space:nowrap;font-weight:500;font-size:12px}
+td{padding:4px 6px;border-bottom:1px solid #e2e8f0;font-size:12px}
+tr:nth-child(even){background:#f8fafc}
+code{background:#f1f5f9;padding:1px 4px;border-radius:3px;font-size:13px;word-break:break-word}
+pre{background:#0f172a;color:#e2e8f0;padding:8px 10px;border-radius:6px;font-size:11px;overflow-x:auto;-webkit-overflow-scrolling:touch;line-height:1.4;margin:6px 0}
+pre code{background:transparent;color:inherit;padding:0;font-size:11px}
+.highlight{background:#fef9ef;border-left:3px solid #E07B2A;padding:8px 10px;margin:8px 0;border-radius:0 4px 4px 0}
+.footnote{text-align:center;color:#94a3b8;font-size:12px;margin-top:15px;line-height:1.6}
+.tag{display:inline-block;background:#e8edf5;color:#0f3460;padding:1px 8px;border-radius:10px;font-size:12px;margin:2px}
+.cover{text-align:center;padding:20px 0 10px;border-bottom:2px solid #0f3460;margin-bottom:15px}
+.cover h1{font-size:22px;color:#16213e;margin-bottom:4px;border:none}
+.cover .sub{color:#00b4a0;font-size:16px;font-weight:500;margin-bottom:8px}
+.cover .meta{color:#999;font-size:12px}
+</style></head><body>
+
+<div class="cover">
+<h1>深度定制个人智能体</h1>
+<div class="sub">架构设计 v1.0</div>
+<div class="meta">2026-06-05 ｜ 基于Claude Code平台</div>
+</div>
+
+<blockquote><b>核心目标</b>：将前沿探索飞轮 + 感知引擎 + 投资决策引擎 + 质量框架从「Markdown规范」升级为「可执行系统」。</blockquote>
+
+<h2>一、核心理念：从Prompt驱动到Event驱动</h2>
+
+<p>当前AI使用模式是<b>被动</b>的：打开Claude Code，手动输入任务，AI遵循规范执行。目标模式是<b>事件驱动</b>：Session打开自动推简报、到期自动执行飞轮、信号条件触发自动推送。用户只在关键决策点介入。</p>
+
+<p>对于时间极度稀缺的用户（工作+家庭+投资+教育），每一分钟手动操作都是一种浪费。系统应主动推送高价值信号，用户只需做<b>判断和决策</b>。</p>
+
+<div class="highlight"><b>三层架构比喻</b>：CLAUDE.md是<b>灵魂</b>（定义你是谁、你要什么）— 已就绪。Hooks是<b>骨架</b>（"当什么事件发生，自动做什么"）— 当前完全缺失。Cron是<b>肌肉</b>（定时任务）— 有3条但不够。三层必须同时存在，系统才能自主运转。</div>
+
+<h2>二、四层架构</h2>
+
+<p>整个系统由事件总线驱动，分为四层：</p>
+
+<h3>第一层：感知层</h3>
+<p><b>入口</b>：SessionStart hook（每次会话自动触发）+ Cron定时 + Agent主动扫描。感知触手在每次打开Claude Code时自动检查信号看板，输出当日简报。</p>
+<p><b>关键约束</b>：不重复推送同一条信号；连续3次无新信号则输出"今日无新信号"。</p>
+
+<h3>第二层：分析层</h3>
+<p>感知层产出的原始信号经过<b>VIX四维评分</b>（冲击力/时效性/可行动性/可信度），自动填充至少前两个维度。然后做<b>偏差检查</b>（近因效应/确认偏误/可得性启发/损失厌恶），最后分级：≥60高优先级，40-59中优先，<40低优先。</p>
+
+<h3>第三层：行动层</h3>
+<p>分级信号通过三个通道转化：<b>记录</b>（更新领域追踪文件+记忆文件+信号看板）→ <b>报告</b>（经对抗式审查后生成飞轮报告/周报）→ <b>推送</b>（微信推送关键信号）。S级/A级产出在交付前必须经过对抗式审查。</p>
+
+<h3>第四层：记忆层</h3>
+<p>实现<b>双写双读</b>——所有记忆同时写入Claude原生记忆目录和Git追踪仓库目录。原生记忆保证自动加载，Git仓库保证永久保存。索引文件跨两个系统统一定位。</p>
+
+<h2>三、五个Agent角色</h2>
+
+<p>系统定义了5个Agent，各司其职：</p>
+
+<table><tr><th>Agent</th><th>角色</th><th>核心职能</th></tr>
+<tr><td>1</td><td>前沿扫描员</td><td>多源搜索，提取关键信号（最多5条），输出结构化简报</td></tr>
+<tr><td>2</td><td>分析过滤员</td><td>VIX四维自动评分 + 偏差检查 + 信号分级</td></tr>
+<tr><td>3</td><td>领域记录员</td><td>更新领域追踪文件 + 写入记忆 + 更新信号看板</td></tr>
+<tr><td>4</td><td>飞轮审查员</td><td>对抗式质量审查：尝试证伪核心结论、检查遗漏信息、数据一致性</td></tr>
+<tr><td>5</td><td>感知触手</td><td>每次会话开始自动执行，推送当日最高价值信号</td></tr></table>
+
+<h2>四、Hooks：自动化骨架</h2>
+
+<p>在<code>settings.local.json</code>中配置以下Hooks：</p>
+
+<table><tr><th>Hook</th><th>触发时机</th><th>行为</th><th>拦截?</th></tr>
+<tr><td>SessionStart</td><td>每次会话开始</td><td>读取信号看板，输出当日简报</td><td>不拦截</td></tr>
+<tr><td>PreToolUse</td><td>执行rm -rf前</td><td>拦截危险操作并退出</td><td>✅ 拦截</td></tr>
+<tr><td>PostToolUse</td><td>写入记忆文件后</td><td>验证YAML frontmatter完整性</td><td>不拦截</td></tr>
+<tr><td>PostToolUse</td><td>写入飞轮报告后</td><td>执行L1质量检查</td><td>不拦截</td></tr>
+<tr><td>PreCompact</td><td>上下文压缩前</td><td>备份MEMORY.md</td><td>不拦截</td></tr>
+<tr><td>Stop</td><td>会话结束前</td><td>检查未推送信号和未同步记忆</td><td>不拦截</td></tr></table>
+
+<h2>五、Cron：定时任务体系</h2>
+
+<table><tr><th>时间</th><th>任务</th><th>负责人</th></tr>
+<tr><td>工作日 08:17</td><td>感知引擎每日简报</td><td>Agent 5</td></tr>
+<tr><td>每日 22:37</td><td>信号看板维护（过期/降级/关闭）</td><td>Agent 2+3</td></tr>
+<tr><td>每日 03:07</td><td>记忆系统双写同步</td><td>同步脚本</td></tr>
+<tr><td>周六 09:57</td><td>完整前沿飞轮（扫描→分析→记录→审查）</td><td>Agents 1-5</td></tr>
+<tr><td>周日 08:03</td><td>考研/高考深度研究</td><td>Agents 1-4</td></tr>
+<tr><td>周日 09:37</td><td>投资扫描+周报</td><td>Agents 1-4</td></tr>
+<tr><td>每月1日</td><td>月度深度回顾+飞轮计分</td><td>Agent 4+记忆</td></tr></table>
+
+<h2>六、实施路线图</h2>
+
+<h3>Phase 1（立即可做，零开发成本）</h3>
+<p>添加SessionStart/PreToolUse/PostToolUse/Stop hooks + 新增每日简报/信号看板维护/记忆同步 cron。预计20分钟完成。<b>交付标志</b>：下一次Session启动，屏幕自动显示简报。</p>
+
+<h3>Phase 2（1-2周）</h3>
+<p>创建5个可执行Workflow脚本（前沿扫描员/分析过滤员/领域记录员/飞轮审查员/感知触手）。预计2小时完成。<b>交付标志</b>：输入"前沿扫描员: NVIDIA最新动态"输出结构化简报。</p>
+
+<h3>Phase 3（3-4周）</h3>
+<p>完整飞轮管道自动化：5个Agent协作完成扫描→分析→记录→审查→报告全流程，无需用户干预。<b>交付标志</b>：周六09:57飞轮自动执行，用户周一打开即看到报告。</p>
+
+<h3>Phase 4（持续）</h3>
+<p>自我改进循环：VIX评分准确度追踪、偏差补偿规则自动调优、行动转化率分析、季度能力评估。</p>
+
+<h2>七、预期效果</h2>
+
+<div class="highlight"><b>Day 1</b>：以前需要手动输入"帮我看看今天有什么重要信号"，现在打开就是。零认知负担。</div>
+
+<p><b>Week 2</b>：只需要输入Agent名称+方向，不需要在prompt中复述角色定义。</p>
+
+<p><b>Month 1</b>：每周一打开Claude Code，上周飞轮已经跑完。只需阅读报告。</p>
+
+<p><b>Month 3</b>：系统不仅执行飞轮，还在评估自己执行飞轮的质量。每季度能看到VIX评分准确度趋势。</p>
+
+<h2>八、关键原则</h2>
+
+<p><b>1. 事件驱动 > Prompt驱动</b>：被动等待输入→主动推送信号。用户只在关键决策点介入。</p>
+<p><b>2. 对抗式验证是标准环节</b>：S级/A级产出在交付前必须经过飞轮审查员的对抗式审查。这不是可选项，是P0行为规则级别的强制要求。</p>
+<p><b>3. 记忆双写双读</b>：所有记忆写入必须同时写入Claude原生记忆（自动加载）+ Git仓库（永久保存）。任何一条线写入的信息，另一条线不可见是不可持续的。</p>
+<p><b>4. VIX评分必须自动化</b>：至少自动填充I（冲击力）和U（时效性）的基线分，用户只需微调A（可行动性）和C（可信度）。</p>
+
+<blockquote>本设计文档是活文档。随着实现进展和Claude Code能力升级，设计会持续迭代。当前基于Claude Code v2.1.161功能集。下版预期更新：Routines替换本地cron、Dynamic Workflows作为默认编排模式、Plugin打包Agent角色。</blockquote>
+
+<p class="footnote">深度定制个人智能体架构设计 v1.0 · 前沿探索飞轮 · 基于Claude Code平台</p>
+
+</body></html>

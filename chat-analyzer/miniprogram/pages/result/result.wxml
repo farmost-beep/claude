@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="header"><text class="title">📊 分析报告</text></view>
+
+  <view class="stats-grid">
+    <view class="stat-card" wx:for="{{stats}}" wx:key="label">
+      <text class="num">{{item.value}}</text>
+      <text class="label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">🏆 发言排行 TOP10</text>
+    <view class="rank-item" wx:for="{{rankings}}" wx:key="index">
+      <text class="rank">{{index+1}}</text>
+      <view class="bar-bg"><view class="bar" style="width:{{item.percent}}%"></view></view>
+      <text class="name">{{item.name}}</text>
+      <text class="count">{{item.count}}条</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <text class="section-title">⏰ 时段活跃分布</text>
+    <view class="hour-item" wx:for="{{hours}}" wx:key="hour">
+      <text class="hour-label">{{item.hour}}:00</text>
+      <view class="bar-bg"><view class="bar" style="width:{{item.percent}}%"></view></view>
+      <text class="hour-count">{{item.count}}条</text>
+    </view>
+  </view>
+
+  <button class="share-btn" open-type="share">📤 分享报告到群</button>
+</view>

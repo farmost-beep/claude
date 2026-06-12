@@ -1,0 +1,64 @@
+<view class="container">
+  <view class="header">
+    <text class="title">👋 见面聊</text>
+    <text class="subtitle">把线上热闹，变成线下见面</text>
+  </view>
+
+  <view class="stats-row">
+    <view class="stat">
+      <text class="stat-num">0</text>
+      <text class="stat-label">本周局</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num">0</text>
+      <text class="stat-label">本月见面</text>
+    </view>
+    <view class="stat">
+      <text class="stat-num">--</text>
+      <text class="stat-label">上次见面</text>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <view class="qa-btn" bindtap="goMemory">
+      <text class="qa-icon">📸</text>
+      <text class="qa-text">见面记忆</text>
+      <text class="qa-sub">记录每一次聚会</text>
+    </view>
+    <view class="qa-btn" bindtap="scrollToForm">
+      <text class="qa-icon">🎯</text>
+      <text class="qa-text">发起一个局</text>
+      <text class="qa-sub">约群友出来见面</text>
+    </view>
+  </view>
+
+  <view class="section" id="formSection">
+    <text class="section-title">🎯 发起一个局</text>
+    <text class="section-desc">选时间，选类型，发到群里</text>
+
+    <view class="form">
+      <text class="label">什么时间</text>
+      <view class="options">
+        <view class="option {{timeSel=='今天'?'active':''}}" bindtap="selTime" data-t="今天">🔥 就今天</view>
+        <view class="option {{timeSel=='周六'?'active':''}}" bindtap="selTime" data-t="周六">本周六</view>
+        <view class="option {{timeSel=='周日'?'active':''}}" bindtap="selTime" data-t="周日">本周日</view>
+      </view>
+
+      <text class="label">做什么</text>
+      <view class="options">
+        <view class="option {{typeSel=='吃饭'?'active':''}}" bindtap="selType" data-t="吃饭">🍽️ 吃饭</view>
+        <view class="option {{typeSel=='咖啡'?'active':''}}" bindtap="selType" data-t="咖啡">☕ 咖啡</view>
+        <view class="option {{typeSel=='运动'?'active':''}}" bindtap="selType" data-t="运动">⚽ 运动</view>
+        <view class="option {{typeSel=='散步'?'active':''}}" bindtap="selType" data-t="散步">🚶 散步</view>
+        <view class="option {{typeSel=='其他'?'active':''}}" bindtap="selType" data-t="其他">🎲 其他</view>
+      </view>
+
+      <text class="label">说点什么（选填）</text>
+      <input class="input" placeholder="如：好久没见了聚聚" maxlength="50" bindinput="onNote" />
+    </view>
+
+    <button class="btn" disabled="{{!canCreate}}" bindtap="createGathering">
+      {{loading ? '⏳ 生成中...' : '📤 生成卡片，发到群里'}}
+    </button>
+  </view>
+</view>

@@ -1,0 +1,59 @@
+{
+  "last_scan_date": "2026-06-09",
+  "goals": {
+    "投资": {
+      "last_status": "🟠 昆仑减仓未执行，研究报告继续产出",
+      "pending": [
+        "昆仑万维第一批减仓（69.5%→目标≤40%）",
+        "信用贷9月还本资金锁定"
+      ],
+      "completed_last_scan": [],
+      "notes": "上次待办均未完成。新动作：3份深度研究报告已生成（本源量子/核聚变/AI全行业），但减仓未启动。"
+    },
+    "事业": {
+      "last_status": "🟢 方法论就绪，社情民意待提交",
+      "pending": [
+        "社情民意稿件补全联系信息后提交",
+        "中级经济师考试准备"
+      ],
+      "completed_last_scan": [],
+      "notes": "公众号文章已累计12+篇，但社情民意仍未提交。"
+    },
+    "家庭": {
+      "last_status": "🟢 考研暑假计划v2.1已生成，待确认",
+      "pending": [
+        "与陈于东当面确认暑假时间表"
+      ],
+      "completed_last_scan": [],
+      "notes": "暑假临近，这是本周最紧迫的家庭事项。"
+    },
+    "健康": {
+      "last_status": "🔴 基线未完整，运动0次",
+      "pending": [
+        "购买血压计（欧姆龙上臂式）",
+        "完成至少一次运动（快走/深蹲3组）"
+      ],
+      "completed_last_scan": [],
+      "notes": "BLE读取失败2次（手表不在范围）。健康仍是最大短板"
+    },
+    "AI能力": {
+      "last_status": "🟢 脚本就绪，持续推进",
+      "pending": [
+        "华为Health Kit Cloud API脚本授权流程推进"
+      ],
+      "completed_last_scan": [
+        "华为Health Kit Cloud API脚本 v1.0 完成"
+      ],
+      "notes": "huawei_health_cloud.py 已完成，待OAuth授权。持续任务链状态文件已建立。"
+    },
+    "知识库": {
+      "last_status": "🟢 AI简报持续积累，卡片未同步",
+      "pending": [
+        "将6/7-6/9 AI简报关键发现（Apple WWDC/ICoT/AI疫苗等）提取为知识卡片"
+      ],
+      "completed_last_scan": [],
+      "notes": "AI简报已追加5天、累计15+条深度条目，但未降维为知识卡片。Obsidian Vault 6goals 有280个文件。"
+    }
+  },
+  "cross_goal_notes": "9项待办中0项完成。核心阻滞：昆仑减仓未启动、社情民意未提交、健康基线未补。建议今天集中突破1-2项而非分散。"
+}
