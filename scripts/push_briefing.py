@@ -22,7 +22,7 @@ def push(title: str, content: str) -> bool:
     script = PROJECT_ROOT / "scripts" / "wechat_push.py"
     result = subprocess.run(
         ["python3", str(script), title, content],
-        capture_output=True, text=True, timeout=15,
+        capture_output=True, text=True, timeout=25,
     )
     return result.returncode == 0
 
