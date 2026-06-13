@@ -29,3 +29,9 @@ __pycache__/
 scripts/autostrategy/
 how-claude-code-works/
 scripts/lib/huawei_credentials.py
+
+# 隐私数据 — 含联系人姓名/电话/微信/公司
+deliverables/career/*.xls
+deliverables/career/*.xlsx
+social-agent/data/*.json
+social-agent/data/*.png
