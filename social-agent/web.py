@@ -3,7 +3,7 @@
 from flask import Flask, render_template_string, request, redirect, url_for, jsonify
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
-from lib.engine import *
+import lib.engine as engine
 from lib.ai import draft_message
 
 app = Flask(__name__)
@@ -343,28 +343,28 @@ body{font-family:-apple-system,Helvetica,sans-serif;background:#f5f5f5;color:#33
 
 @app.route('/')
 def home():
-    d = get_dashboard()
-    todos = list_todos()
+    d = engine.get_dashboard()
+    todos = engine.list_todos()
     for t in todos:
-        c = get_contact(t["contact"])
+        c = engine.get_contact(t["contact"])
         t["contact_name"] = c["name"] if c else t["contact"]
-    contacts = list_contacts()
+    contacts = engine.list_contacts()
     return render_template_string(HOME, d=d, todos=todos[:5], contacts=contacts)
 
 @app.route('/contacts')
 def contacts():
-    return render_template_string(CONTACTS_PAGE, contacts=list_contacts())
+    return render_template_string(CONTACTS_PAGE, contacts=engine.list_contacts())
 
 @app.route('/contact/<contact_id>')
 def contact_detail(contact_id):
-    c = get_contact(contact_id)
+    c = engine.get_contact(contact_id)
     if not c:
         return "联系人不存在", 404
-    records = list_timeline(contact=contact_id, days=365)
+    records = engine.list_timeline(contact=contact_id, days=365)
     return render_template_string(CONTACT_DETAIL, c=c, records=records)
 
 @app.route('/add', methods=['GET', 'POST'])
-def add_contact():
+def add_contact_web():
     msg = ""
     if request.method == 'POST':
         cid = request.form.get('contact_id', '').strip()
@@ -376,15 +376,15 @@ def add_contact():
         notes = request.form.get('notes', '').strip()
         tags = [t for t in tags_s.split() if t] if tags_s else []
         if cid and name:
-            ok, msg_text = add_contact(cid, name, role, tags, None, notes)
+            ok, msg_text = engine.add_contact(cid, name, role, tags, None, notes)
             if ok:
                 # Update stage and strength
-                contacts = _load(CONTACTS_FILE)
+                contacts = engine._load(engine.CONTACTS_FILE)
                 for c in contacts:
                     if c["id"] == cid:
                         if stage: c["stage"] = stage
                         c["strength"] = strength
-                _save(CONTACTS_FILE, contacts)
+                engine._save(engine.CONTACTS_FILE, contacts)
                 msg = f"已添加: {name}"
             else:
                 msg = msg_text
@@ -394,11 +394,11 @@ def add_contact():
 
 @app.route('/todos')
 def todos_page():
-    todos = list_todos()
+    todos = engine.list_todos()
     for t in todos:
-        c = get_contact(t["contact"])
+        c = engine.get_contact(t["contact"])
         t["contact_name"] = c["name"] if c else t["contact"]
-        t["due_soon"] = t.get("due", "") and t["due"] < date.today().isoformat()
+        t["due_soon"] = t.get("due", "") and t["due"] < engine.date.today().isoformat()
     return render_template_string(TODOS_PAGE, todos=todos)
 
 if __name__ == '__main__':
