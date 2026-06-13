@@ -35,3 +35,7 @@ deliverables/career/*.xls
 deliverables/career/*.xlsx
 social-agent/data/*.json
 social-agent/data/*.png
+
+# 定时任务状态文件 — 运行时自动生成，不提交（防并发写入冲突）
+.claude/scheduled_tasks.json
+.claude/scheduled_tasks.lock
