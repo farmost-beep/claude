@@ -41,3 +41,12 @@
 - [P2] 参考信息按需读取，不预加载
 - 上下文不足时，丢弃 P2 记忆保留 P0 规则
 - 长任务完成后主动询问是否需要压缩上下文
+
+## 社交关系AI管家数据规则（硬规则）
+
+用户通过任何渠道（微信/本对话）询问联系人数据时：
+1. **禁止从记忆或训练数据猜测**联系人数量、状态、列表
+2. **必须直接读 `contacts.json` 获取实时数据**（用 Read 工具，不要用 Bash）：
+   - 路径：`/Users/cyingfang/.claude/skills/social-agent/data/contacts.json`
+   - 用 Read 工具直接读文件，不要绕道 Bash 运行脚本
+3. 数据写入/修改用 Python 脚本（`social.py`/`agent.py`），但**查询只需读 JSON 文件**

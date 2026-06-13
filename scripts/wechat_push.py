@@ -37,15 +37,21 @@ def load_account():
         return json.load(f)
 
 
-def push_via_bridge(title: str, content: str):
-    """通过 wechat-claude-code 桥接API发送消息"""
+def push_via_bridge(title: str, content: str, to_wxid: str = ""):
+    """通过 wechat-claude-code 桥接API发送消息
+
+    Args:
+        title: 消息标题
+        content: 消息内容
+        to_wxid: 目标微信用户ID。为空则发给自己（通知模式）
+    """
     account = load_account()
     if not account:
         return False, "未找到微信桥接账号"
 
     bot_token = account.get("botToken", "")
     account_id = account.get("accountId", "")
-    user_id = account.get("userId", "")
+    user_id = to_wxid or account.get("userId", "")
     base_url = account.get("baseUrl", "https://ilinkai.weixin.qq.com")
 
     if not bot_token or not account_id or not user_id:
@@ -73,30 +79,42 @@ def push_via_bridge(title: str, content: str):
     }
 
     url = f"{base_url}/ilink/bot/sendmessage"
-    data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
 
-    req = urllib.request.Request(url, data=data, method="POST")
-    req.add_header("Content-Type", "application/json")
-    req.add_header("Authorization", f"Bearer {bot_token}")
-    req.add_header("AuthorizationType", "ilink_bot_token")
-    req.add_header("X-WECHAT-UIN", os.urandom(4).hex())
+    # 退避重试（应对 ret:-2 限流）
+    max_retries = 3
+    delay = 2
+    uin = os.urandom(4).hex()
 
-    try:
-        resp = urllib.request.urlopen(req, timeout=10)
-        result = json.loads(resp.read().decode())
-        ret = result.get("ret")
-        if ret is None or ret == 0 or result.get("errcode") == 0:
-            return True, "微信桥接推送成功"
-        if ret == -2:
-            return False, "桥接API限流，请稍后重试"
-        return False, f"桥接API返回: {result}"
-    except urllib.error.HTTPError as e:
-        body = e.read().decode()[:200]
-        return False, f"桥接HTTP {e.code}: {body}"
-    except urllib.error.URLError as e:
-        return False, f"桥接网络错误: {e.reason}"
-    except Exception as e:
-        return False, f"桥接异常: {e}"
+    for attempt in range(max_retries + 1):
+        data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        req = urllib.request.Request(url, data=data, method="POST")
+        req.add_header("Content-Type", "application/json")
+        req.add_header("Authorization", f"Bearer {bot_token}")
+        req.add_header("AuthorizationType", "ilink_bot_token")
+        req.add_header("X-WECHAT-UIN", uin)
+
+        try:
+            resp = urllib.request.urlopen(req, timeout=10)
+            result = json.loads(resp.read().decode())
+            ret = result.get("ret")
+            if ret is None or ret == 0 or result.get("errcode") == 0:
+                return True, "微信桥接推送成功"
+            if ret == -2:
+                if attempt < max_retries:
+                    time.sleep(delay)
+                    delay = min(delay * 2, 12)
+                    continue
+                return False, "桥接API限流已达最大重试次数"
+            return False, f"桥接API返回: {result}"
+        except urllib.error.HTTPError as e:
+            body = e.read().decode()[:200]
+            return False, f"桥接HTTP {e.code}: {body}"
+        except urllib.error.URLError as e:
+            return False, f"桥接网络错误: {e.reason}"
+        except Exception as e:
+            return False, f"桥接异常: {e}"
+
+    return False, "桥接发送失败（未知错误）"
 
 
 def push_fallback(title: str, content: str):
@@ -158,18 +176,30 @@ def _push_serverchan(sendkey: str, title: str, content: str):
 
 def main():
     if len(sys.argv) < 2:
-        print("用法: python3 scripts/wechat_push.py 标题 [内容]", file=sys.stderr)
+        print("用法: python3 scripts/wechat_push.py [--to-wxid USER_ID] 标题 [内容]", file=sys.stderr)
         sys.exit(1)
 
-    title = sys.argv[1]
-    content = sys.argv[2] if len(sys.argv) > 2 else ""
+    # 解析 --to-wxid 参数
+    to_wxid = ""
+    args = sys.argv[1:]
+    title_idx = 0
+    if len(args) >= 2 and args[0] == "--to-wxid":
+        to_wxid = args[1]
+        title_idx = 2
+
+    if title_idx >= len(args):
+        print("错误：缺少标题参数", file=sys.stderr)
+        sys.exit(1)
+
+    title = args[title_idx]
+    content = args[title_idx + 1] if len(args) > title_idx + 1 else ""
 
     if not content.strip():
         print("错误：内容不能为空", file=sys.stderr)
         sys.exit(1)
 
     # 优先使用微信桥接
-    ok, msg = push_via_bridge(title, content)
+    ok, msg = push_via_bridge(title, content, to_wxid=to_wxid)
     if ok:
         print(msg)
         return
