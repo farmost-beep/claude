@@ -1,0 +1,200 @@
+<section style="font-size:16px;color:#333;line-height:1.8;letter-spacing:0.5px;">
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">为什么需要这套"安装套装"？</h2>
+<br/>
+<p>Claude Code 是当前最强的 AI 编程 Agent，但它默认只跑在终端里。装上 <strong>cc-switch</strong>（模型切换器）+ <strong>cc-connect</strong>（微信桥接），就能：</p>
+<br/>
+<p style="margin:4px 0 4px 20px;">• ✅ 用 **DeepSeek** 等国产模型替代官方 Claude（省钱+国内直连）</p>
+<p style="margin:4px 0 4px 20px;">• ✅ 在 **微信** 里远程操控 Claude Code</p>
+<p style="margin:4px 0 4px 20px;">• ✅ 通过 **Web界面** 管理项目</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第一步：安装 Claude Code</h2>
+<br/>
+<p>```bash</p>
+<p>npm install -g @anthropic-ai/claude-code</p>
+<p>claude --version  # 验证安装</p>
+<p>```</p>
+<br/>
+<p>国内用户加镜像：</p>
+<p>```bash</p>
+<p>npm install -g @anthropic-ai/claude-code --registry=https://registry.npmmirror.com</p>
+<p>```</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>💡 如果遇到登录验证弹窗，在用户目录创建 `.claude.json`：</p>
+<p>`{"hasCompletedOnboarding": true}`</p>
+</blockquote>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第二步：安装 cc-switch（模型切换器）</h2>
+<br/>
+<p>cc-switch 是一个桌面应用，一键切换 Claude Code 背后的模型供应商。</p>
+<br/>
+<p>```bash</p>
+<p># macOS（推荐）</p>
+<p>brew tap farion1231/ccswitch && brew install --cask cc-switch</p>
+<br/>
+<p># Windows/Linux → 从 GitHub Releases 下载</p>
+<p>```</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>在 cc-switch 中添加 DeepSeek：</strong></p>
+<br/>
+<p>打开 cc-switch → Add Provider → 选择 DeepSeek 预设 → 填入：</p>
+<br/>
+<p>```</p>
+<p>Base URL: https://api.deepseek.com/anthropic</p>
+<p>API Key:  你的 DeepSeek API Key</p>
+<p>主模型:   deepseek-v4-pro[1M]</p>
+<p>快速模型: deepseek-v4-flash</p>
+<p>接口类型: Anthropic 兼容格式</p>
+<p>```</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>⚠️ DeepSeek 需先充值（platform.deepseek.com，支持微信/支付宝），否则报 402。</p>
+</blockquote>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第三步：安装 cc-connect（微信桥接）</h2>
+<br/>
+<p>cc-connect 是核心桥梁，把 Claude Code 接到微信、飞书、钉钉等平台。</p>
+<br/>
+<p>```bash</p>
+<p>npm install -g cc-connect@beta</p>
+<p>cc-connect --version  # v1.3.3+</p>
+<p>```</p>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>配置微信连接：</strong></p>
+<br/>
+<p>编辑 `~/.cc-connect/config.toml`：</p>
+<br/>
+<p>```toml</p>
+<p>[[projects]]</p>
+<p>name = "my-project"</p>
+<br/>
+<p>[projects.agent]</p>
+<p>type = "claudecode"</p>
+<p>[projects.agent.options]</p>
+<p>work_dir = "/你的工作目录"</p>
+<br/>
+<p>[[projects.platforms]]</p>
+<p>type = "weixin"</p>
+<p>[projects.platforms.options]</p>
+<p>token = "你的iLink Bot Token"</p>
+<p>base_url = "https://ilinkai.weixin.qq.com"</p>
+<p>```</p>
+<br/>
+<blockquote style="border-left:4px solid #d4a853;padding:8px 12px;margin:8px 0;background:#f9f7f2;color:#666;">
+<p>微信 Token 获取方式：用微信扫码绑定 iLink Bot，或直接用 wechat-claude-code 的 `npm run setup` 生成。</p>
+</blockquote>
+<br/>
+<p style="margin:8px 0;font-weight:bold;"><strong>启动：</strong></p>
+<br/>
+<p>```bash</p>
+<p>cc-connect                # 启动主服务</p>
+<p>cc-connect web            # 启动 Web 管理界面 → http://localhost:9820</p>
+<p>```</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">第四步：配置更多模型供应商（可选）</h2>
+<br/>
+<p>cc-connect 的 `[[providers]]` 配置支持同时接入多个模型。以下是我实际在用的配置：</p>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">供应商</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模型</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">用途</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">**DeepSeek V4 Flash**</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">`deepseek-v4-flash`</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">日常快速任务</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">**DeepSeek V4 Pro**</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">`deepseek-v4-pro[1M]`</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">深度推理任务</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">**OpenRouter**</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">`claude-sonnet-4.6`</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">官方 Claude 通道</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">**小米 Mimo**</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">`mimo-v2-pro`</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">备用</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">**云知声**</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">`u2`</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">备用</td>
+</tr>
+</table>
+<br/>
+<p>配置格式：</p>
+<p>```toml</p>
+<p>[[providers]]</p>
+<p>name = "deepseek-v4-pro"</p>
+<p>api_key = "sk-xxx"</p>
+<p>base_url = "https://api.deepseek.com/anthropic"</p>
+<p>model = "deepseek-v4-pro[1M]"</p>
+<p>agent_types = ["claudecode"]</p>
+<p>```</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">最终效果</h2>
+<br/>
+<p>全部装好后，你的微信就是 Claude Code 的远程终端：</p>
+<br/>
+<p>```</p>
+<p>微信发消息 → cc-connect → Claude Code → 执行结果 → 微信回复</p>
+<br/>
+<p>Web管理界面 → http://localhost:9820</p>
+<p>```</p>
+<br/>
+<p>支持命令：</p>
+<p style="margin:4px 0 4px 20px;">• `/mode yolo` — 全自动执行模式</p>
+<p style="margin:4px 0 4px 20px;">• `/new` — 新建会话</p>
+<p style="margin:4px 0 4px 20px;">• `/list` — 查看会话列表</p>
+<p style="margin:4px 0 4px 20px;">• 直接发文字/图片 → AI 实时处理</p>
+<br/>
+<p>---</p>
+<br/>
+<h2 style="font-size:20px;color:#1a3a5c;margin:20px 0 10px;border-left:4px solid #d4a853;padding-left:10px;">总结</h2>
+<br/>
+<table style="width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;">
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">工具</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">作用</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">安装方式</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">**Claude Code**</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">AI 编程 Agent</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">`npm install -g`</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">**cc-switch**</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">模型供应商切换</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">`brew install --cask`</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">**cc-connect**</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">微信桥接 + Web 管理</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">`npm install -g`</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd;padding:6px 8px;">**DeepSeek**</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">国产模型替代</td>
+<td style="border:1px solid #ddd;padding:6px 8px;">注册 + 充值 + 配置</td>
+</tr>
+</table>
+<br/>
+<p>全套装好约 10 分钟，之后就能在微信里随时调用 AI Agent 了。</p>
+</section>

@@ -216,5 +216,14 @@
     "summary": "理论上人类历史上出现过超过1000万具备顶级认知潜力的人，但被文明记录的不到5000。99.9%+的天才去哪了？",
     "plan_date_wechat": "2026-06-05",
     "platform": "wechat"
+  },
+  {
+    "id": 23,
+    "title": "AI Agent安装套装入门：从Claude Code到微信对话，10分钟打通",
+    "file": "career/发表文章/AI Agent安装套装入门_20260613.md",
+    "tags_wechat": "#AI Agent #ClaudeCode #DeepSeek #cc-connect",
+    "summary": "Claude Code + cc-switch + cc-connect + DeepSeek 四合一安装指南，10分钟从零搭建AI Agent开发环境，支持微信远程操控。",
+    "plan_date_wechat": "2026-06-13",
+    "platform": "wechat"
   }
 ]
