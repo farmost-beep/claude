@@ -23,6 +23,5 @@ def push_to_wechat(title, content):
         return False, str(e)
 
 def send_message(contact_name, text, platform="weixin"):
-    """Send an AI-drafted message to a contact."""
-    title = f"给{contact_name}的消息"
-    return push_to_wechat(title, text)
+    """Send a draft message preview to the user's WeChat."""
+    return push_to_wechat("", text)

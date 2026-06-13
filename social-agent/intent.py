@@ -33,7 +33,7 @@ def parse(text):
         return {"action": "draft", "contact": _find_contact(name), "topic": topic, "tone": "亲切"}
 
     # "发消息给xxx说..." or "告诉xxx..."
-    m = re.match(r'(?:发消息给|告诉|通知)(.{1,8})(?:说|[，,：:])\s*(.+)', text)
+    m = re.match(r'(?:发消息给|告诉|通知)(.{1,8}?)(?:说|[，,：:])\s*(.+)', text)
     if m:
         return {"action": "send", "contact": _find_contact(m.group(1)), "text": m.group(2)}
 
