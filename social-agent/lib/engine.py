@@ -61,6 +61,12 @@ def list_timeline(contact=None, days=30):
 
 def add_timeline(contact, summary, type_="message", key_points=None, pending=""):
     records = _load(TIMELINE_FILE)
+    # Auto-extract pending and key points using AI if not provided
+    if not pending and not key_points:
+        ai_result = _ai_extract(contact, summary)
+        if ai_result:
+            pending = ai_result.get("pending", pending)
+            key_points = ai_result.get("key_points", key_points or [])
     record = {
         "id": f"t-{uuid.uuid4().hex[:6]}",
         "date": date.today().isoformat(),
@@ -71,7 +77,35 @@ def add_timeline(contact, summary, type_="message", key_points=None, pending="")
     }
     records.append(record)
     _save(TIMELINE_FILE, records)
-    # Auto-extract todo if pending exists
+    if pending:
+        _auto_add_todo(contact, pending, record["id"])
+    return record
+
+def _ai_extract(contact, summary):
+    try:
+        import subprocess, json as _json
+        prompt = f"""从这条互动记录中提取待办事项和关键信息。
+
+联系人：{contact}
+互动记录：{summary}
+
+请以JSON格式返回：
+{{"pending": "如果有需要跟进的事用一句话描述（没有就留空）",
+  "key_points": ["关键点1", "关键点2"]}}"""
+        result = subprocess.run(
+            ["claude", "--print", prompt],
+            capture_output=True, text=True, timeout=15,
+            cwd=str(Path(__file__).resolve().parent.parent),
+        )
+        if result.returncode == 0:
+            text = result.stdout.strip()
+            start = text.find("{")
+            end = text.rfind("}") + 1
+            if start >= 0 and end > start:
+                return _json.loads(text[start:end])
+    except:
+        pass
+    return None
     if pending:
         _auto_add_todo(contact, pending, record["id"])
     return record

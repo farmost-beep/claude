@@ -251,6 +251,33 @@ def main():
                 print(f"    上次: {summary[:40]}")
         return 0
 
+    elif cmd == "remind":
+        d = get_dashboard()
+        lines = [f"今日待办提醒 ({date.today().isoformat()})"]
+        if d["overdue_todos"]:
+            lines.append(f"\n超期待办 {len(d['overdue_todos'])}项:")
+            for t in d["overdue_todos"]:
+                c = get_contact(t["contact"])
+                name = c["name"] if c else t["contact"]
+                lines.append(f"  P0 {name} - {t['task']}")
+        todos = [t for t in list_todos() if t.get("status") == "pending"]
+        if todos:
+            lines.append(f"\n待办 {len(todos)}项:")
+            for t in todos[:5]:
+                c = get_contact(t["contact"])
+                name = c["name"] if c else t["contact"]
+                lines.append(f"  [{t['priority']}] {name} - {t['task']}")
+        if d["cold_relationships"]:
+            lines.append(f"\n冷却关系 {len(d['cold_relationships'])}个:")
+            for c in d["cold_relationships"]:
+                lines.append(f"  {c['contact']} - {c['days']}天未联系")
+        if not todos and not d["overdue_todos"] and not d["cold_relationships"]:
+            lines.append("\n今日无事，安心赚钱。")
+        msg = "\n".join(lines)
+        ok, result = push_to_wechat("社交关系AI管家", msg)
+        print(result)
+        return 0 if ok else 1
+
     else:
         print(f"未知命令: {cmd}")
         return 1
