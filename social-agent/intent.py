@@ -93,7 +93,7 @@ def _parse_log(content):
     result = {"action": "log", "summary": content}
 
     # Try to extract contact from pattern like "和张总聊了..."
-    m = re.match(r'和(.{1,8})[聊说了谈]', content)
+    m = re.match(r'和(.{2,4})(?:[聊谈约]|聊了|谈了|约了|沟通|吃饭|见面|通话)', content)
     if m:
         name = m.group(1)
         c = _find_contact_obj(name)
@@ -130,14 +130,23 @@ def execute(action):
                 reply += f"\n待办已建：{record['pending']}"
             return reply
         else:
-            # Log as general note without specific contact
-            return f"已记录：{summary}\n（未识别到联系人，可在消息前加联系人名）"
+            # Auto-create contact from "和XXX聊" pattern
+            # Extract name from "和XXX聊/谈/约/吃饭/见面..." patterns
+            m = re.search(r'和(.{2,4})(?:[聊谈约]|聊了|谈了|约了|沟通|吃饭|见面|通话|开了)', summary)
+            if m:
+                name = m.group(1).strip()
+                if not _find_contact_obj(name):
+                    cid = name[:20]
+                    add_contact(cid, name, "其他", [], None, f"自动创建 {date.today()}")
+                    add_timeline(cid, summary, type_=type_)
+                    return f"已添加联系人「{name}」并记录。\n告诉我「{name}是什么关系」可以分类。"
+            return f"已记录：{summary}\n（未识别到联系人，直接说名字就行）"
 
     elif act == "query":
         contact_id = action.get("contact")
         c = get_contact(contact_id)
         if not c:
-            return f"未找到联系人：{contact_id}"
+            return f"未找到联系人：{contact_id}\n试试「记一下：和{contact_id}聊了什么」先建档案"
         records = list_timeline(contact=contact_id, days=90)
         if records:
             r = records[0]
